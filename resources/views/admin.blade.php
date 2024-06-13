@@ -4,7 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin</title>
+  <title>
+    @php
+      $role = Auth::user()->role;
+    @endphp
+    @if($role == 'orangtua')
+      siPAUD - {{ 'Orang Tua Murid' }}
+    @else
+      siPAUD - {{ ucfirst($role) }}
+    @endif</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -13,67 +21,129 @@
 
 <body class="bg-secondary">
   @if(Auth::check())
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-success text-light">
     <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">&nbsp;&nbsp;{{ ucfirst(Auth::user()->role) }} - siPAUD</a>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          @if(Auth::user()->role == 'admin')
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('users') }}">Manajemen Pengguna</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('students') }}">Manajemen Data Siswa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('teachers') }}">Manajemen Data Guru</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('class') }}">Manajemen Kelas</a>
-          </li>
-          @endif
-
-          @if(Auth::user()->role == 'guru')
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('guru.daftarsiswa') }}">Daftar Siswa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('guru.kurikulum') }}">Kurikulum dan Penilaian</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('guru.report') }}">Laporan dan Analisis</a>
-          </li>
-          @endif
-
-          @if(Auth::user()->role == 'orangtua')
-          <li class="nav-item active">
-            <a class="nav-link" href="{{ route('orangtua.report') }}">Laporan Siswa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('orangtua.payment') }}">History Pembayaran</a>
-          </li>
-          @endif
-        </ul> 
-
-        <form id="logout-form d-flex" action="{{ route('logout') }}" method="POST">
-          @csrf
-          <button type="submit">Logout</button>
-        </form>
-      </div>
+      <a class="navbar-brand text-light fw-bold" href="#">&nbsp;&nbsp;
+        @php
+          $role = Auth::user()->role;
+        @endphp
+        @if($role == 'orangtua')
+          {{ 'Orang Tua' }}
+        @else
+          {{ ucfirst($role) }}
+        @endif
+        - siPAUD</a>
+    </div>
+    <div class="mx-3">
+    <form id="logout-form d-flex" action="{{ route('logout') }}" method="POST">
+      @csrf
+      <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
     </div>
   </nav>  
-  <div class="bg-white container-sm col-6 border my-3 rounded px-5 py-3 pb-5">
-    
-    <h1>Halo!! {{ ucfirst(Auth::user()->name) }}</h1>
-        <div>Selamat datang di halaman {{ ucfirst(Auth::user()->role) }}</div>
-    @endif
-
-    <div class="card mt-3">
-          
+  
+  <div class="bg-white container-sm col-6 border my-5 rounded px-5 py-3 pb-5">  
+    <h1 class="text-center">Halo!! {{ ucfirst(Auth::user()->name) }}</h1>
+        <h5 class="text-center">Selamat datang di halaman 
+        @php
+          $role = Auth::user()->role;
+        @endphp
+        @if($role == 'orangtua')
+          {{ 'orang tua murid' }}
+        @else
+          {{ ucfirst($role) }}
+        @endif</h5>
+        <hr>
+        <div class="row">
+          <h5 class="text-center fw-bold">M E N U</h5>
+        </div>  
+    <div class="container my-3">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    @if(Auth::user()->role == 'admin')
+                    <a class="nav-link" href="{{ route('users') }}">
+                      <h1 class="card-title text-center"><i class="fa fa-user" aria-hidden="true"></i></h5>
+                      <p class="card-text text-center">Manajemen Pengguna</p>
+                    </a>
+                    @endif
+                    @if(Auth::user()->role == 'guru')
+                      <a class="nav-link" href="{{ route('guru.daftarsiswa') }}">
+                        <h1 class="card-title text-center"><i class="fa fa-child" aria-hidden="true"></i></h5>
+                        <p class="card-text text-center">Daftar Siswa</p>
+                      </a>
+                    @endif
+                    @if(Auth::user()->role == 'orangtua')
+                      <a class="nav-link" href="{{ route('orangtua.report') }}">
+                        <h1 class="card-title text-center"><i class="fa fa-book" aria-hidden="true"></i></h5>
+                        <p class="card-text text-center">Laporan Siswa</p>
+                      </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    @if(Auth::user()->role == 'admin')
+                    <a class="nav-link" href="{{ route('students') }}">
+                      <h1 class="card-title text-center"><i class="fa fa-child" aria-hidden="true"></i></h5>
+                      <p class="card-text text-center">Manajemen Data Siswa</p>
+                    </a>
+                    @endif
+                    @if(Auth::user()->role == 'guru')
+                      <a class="nav-link" href="{{ route('guru.kurikulum') }}">
+                        <h1 class="card-title text-center"><i class="fa fa-pencil" aria-hidden="true"></i></h5>
+                        <p class="card-text text-center">Penilaian</p>
+                      </a>
+                    @endif
+                    @if(Auth::user()->role == 'orangtua')
+                      <a class="nav-link" href="{{ route('orangtua.payment') }}">
+                        <h1 class="card-title text-center"><i class="fa fa-money" aria-hidden="true"></i></h5>
+                        <p class="card-text text-center">History Pembayaran</p>
+                        </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+        @if(Auth::user()->role !== 'orangtua')
+        <div class="col-md-6 mb-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                  @if(Auth::user()->role == 'admin')
+                    <a class="nav-link" href="{{ route('teachers') }}">
+                      <h1 class="card-title text-center"><i class="fa fa-users" aria-hidden="true"></i></h5>
+                      <p class="card-text text-center">Manajemen Data Guru</p>
+                    </a>
+                  @endif
+                  @if(Auth::user()->role == 'guru')
+                    <a class="nav-link" href="{{ route('guru.report') }}">
+                      <h1 class="card-title text-center"><i class="fa fa-book" aria-hidden="true"></i></h5>
+                      <p class="card-text text-center">Laporan</p>
+                    </a>
+                  @endif
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(Auth::user()->role == 'admin')
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                  @if(Auth::user()->role == 'admin')
+                    <a class="nav-link" href="{{ route('class') }}">
+                      <h1 class="card-title text-center"><i class="fa fa-building-o" aria-hidden="true"></i></h5>
+                      <p class="card-text text-center">Manajemen Kelas</p>
+                    </a>
+                  @endif
+                </div>
+            </div>
+        </div>
+        @endif
+    </div>   
     </div>
+    @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>  
