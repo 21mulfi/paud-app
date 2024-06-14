@@ -11,4 +11,29 @@ class AdminController extends Controller
     {
         return view('admin');
     }
+
+    function users()
+    {
+        return view('/pages/admin/users');
+    }
+
+    function students()
+    {
+        return view('/pages/admin/students');
+    }
+
+    function teachers()
+    {
+        return view('/pages/admin/teachers');
+    }
+
+    function classroom()
+    {
+        return view('/pages/admin/classroom');
+    }
+
+    function profile()
+    {
+        return view('/pages/admin/profile');
+    }
 }

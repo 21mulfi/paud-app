@@ -34,16 +34,48 @@
         @endif
         - siPAUD</a>
     </div>
-    <div class="mx-3">
-    <form id="logout-form d-flex" action="{{ route('logout') }}" method="POST">
-      @csrf
-      <button type="submit" class="btn btn-danger">Logout</button>
-    </form>
+    {{-- <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown align-items-center">
+          <a class="nav-link dropdown-toggle d-flex align-items-center">
+          <img src="{{ asset('user-3296.png') }}" alt="User Photo" class="rounded-circle" width="40" height="40">
+          <span class="nav-link ms-1 user-style">{{ ucfirst(Auth::user()->name) }}</span>
+          </a>
+        </li>
+      </ul>
+    </div> --}}
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ asset('user-3296.png') }}" alt="User Photo" class="rounded-circle" width="40" height="40">
+            <span class="nav-link ms-1 user-style text-light">{{ ucfirst(Auth::user()->name) }}</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li>
+              @if(Auth::user()->role == 'admin')
+              <a class="dropdown-item prof" href="{{ route('admin.profile') }}">Profil Saya</a>
+              @endif
+              @if(Auth::user()->role == 'guru')
+              <a class="dropdown-item prof" href="{{ route('guru.profile') }}">Profil Saya</a>
+              @endif
+              @if(Auth::user()->role == 'orangtua')
+              <a class="dropdown-item prof" href="{{ route('orangtua.profile') }}">Profil Saya</a>
+              @endif
+            </li>
+            <li>
+              <a class="dropdown-item logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </nav>  
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
   
-  <div class="bg-white container-sm col-6 border my-5 rounded px-5 py-3 pb-5">  
-    <h1 class="text-center">Halo!! {{ ucfirst(Auth::user()->name) }}</h1>
+  <div class="bg-white container-sm col-6 border my-5 rounded px-5 py-3 pb-5">
         <h5 class="text-center">Selamat datang di halaman 
         @php
           $role = Auth::user()->role;
@@ -63,7 +95,7 @@
             <div class="card">
                 <div class="card-body">
                     @if(Auth::user()->role == 'admin')
-                    <a class="nav-link" href="{{ route('users') }}">
+                    <a class="nav-link" href="{{ route('admin.users') }}">
                       <h1 class="card-title text-center"><i class="fa fa-user" aria-hidden="true"></i></h5>
                       <p class="card-text text-center">Manajemen Pengguna</p>
                     </a>
@@ -87,7 +119,7 @@
             <div class="card">
                 <div class="card-body">
                     @if(Auth::user()->role == 'admin')
-                    <a class="nav-link" href="{{ route('students') }}">
+                    <a class="nav-link" href="{{ route('admin.students') }}">
                       <h1 class="card-title text-center"><i class="fa fa-child" aria-hidden="true"></i></h5>
                       <p class="card-text text-center">Manajemen Data Siswa</p>
                     </a>
@@ -112,7 +144,7 @@
             <div class="card">
                 <div class="card-body">
                   @if(Auth::user()->role == 'admin')
-                    <a class="nav-link" href="{{ route('teachers') }}">
+                    <a class="nav-link" href="{{ route('admin.teachers') }}">
                       <h1 class="card-title text-center"><i class="fa fa-users" aria-hidden="true"></i></h5>
                       <p class="card-text text-center">Manajemen Data Guru</p>
                     </a>
@@ -132,7 +164,7 @@
             <div class="card">
                 <div class="card-body">
                   @if(Auth::user()->role == 'admin')
-                    <a class="nav-link" href="{{ route('class') }}">
+                    <a class="nav-link" href="{{ route('admin.classroom') }}">
                       <h1 class="card-title text-center"><i class="fa fa-building-o" aria-hidden="true"></i></h5>
                       <p class="card-text text-center">Manajemen Kelas</p>
                     </a>

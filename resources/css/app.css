@@ -6,6 +6,21 @@ body {
       padding-left: 240px;
     }
   }
+
+.navbar .nav-item img {
+  border: 2px solid #fff;
+  padding: 2px;
+}
+
+.user-name {
+  padding-left: 50px; /* Sesuaikan padding kiri sesuai kebutuhan */
+  padding-right: 50px; /* Tambahkan padding kanan untuk memperlebar kolom */
+  white-space: nowrap; /* Mencegah nama terpotong menjadi beberapa baris */
+}
+
+.user-style {
+  white-space : nowrap;
+}
   
   /* Sidebar */
   .sidebar {

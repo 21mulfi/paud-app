@@ -7,6 +7,32 @@ body {
     }
   }
   
+.user-style {
+  padding-left: 10px;
+  white-space: nowrap;
+  max-width: 200px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.prof {
+  color: black;
+}
+
+.prof:hover {
+  color: white;
+  background-color: rgb(43, 41, 41);
+}
+
+.logout {
+  color: red;
+}
+
+.logout:hover {
+  background-color: red;
+  color: white;
+}
   /* Sidebar */
   .sidebar {
     position: fixed;
