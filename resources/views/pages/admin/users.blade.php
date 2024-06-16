@@ -71,8 +71,14 @@
     <hr>
     
     <div class="row align-items-start">
-      <div>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah</button>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah</button>
+        </div>
+        <form class="d-flex" action="{{ route('admin.users') }}" method="GET">
+          <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->query('search') }}">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
       <span class="float-left">{{ session('msg') }}</span>
       <div class="table-responsive">
@@ -88,11 +94,11 @@
             </tr>
           </thead>
           
-          <?php $i = 1; ?>
           <tbody>
+            <?php $i = 1; ?>
             @foreach($users as $data)
             <tr>
-              <td>{{ $i++ }}</td>
+              <td align="center">{{ $i++ }}</td>
               <td>{{ $data->name }}</td>
               <td>{{ $data->email }}</td>
               <td>{{ ucfirst($data->gender) }}</td>
@@ -119,7 +125,11 @@
         </table>
       </div>
     </div>
-    
+    @if ($users->isEmpty())
+    <tr>
+      <td colspan="6" class="text-center">Data tidak ditemukan</td>
+    </tr>
+    @endif
     {{-- TAMBAH USER MODAL --}}
     <div class="modal fade" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
       <div class="modal-dialog">

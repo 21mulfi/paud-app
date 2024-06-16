@@ -15,10 +15,22 @@ class AdminController extends Controller
         return view('admin');
     }
 
-    function users()
+    public function users(Request $request)
     {
-        $users = User::all(); // Mengambil semua data pengguna
-        return view('/pages/admin/users', compact('users'));
+    $users = User::query();
+
+    // query search
+    if ($request->filled('search')) {
+        $search = $request->search;
+        $users->where(function($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+        });
+    }
+
+    $users = $users->paginate(10); // pagination
+
+    return view('/pages/admin/users', compact('users'));
     }
 
     function students()
@@ -49,6 +61,8 @@ class AdminController extends Controller
             'action' => 'user'
         ]);
     }
+
+    // Tambah User
     public function store(Request $request)
     {
         $user = new User;
@@ -66,14 +80,7 @@ class AdminController extends Controller
         return User::find($id);
     }
 
-    // Fungsi untuk menampilkan form edit pengguna
-    public function editUser($id)
-    {
-        $user = User::findOrFail($id);
-        return view('/pages/admin/editUser', compact('user'));
-    }
-
-    // Fungsi untuk memperbarui pengguna
+    // Update User
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -92,11 +99,10 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'User updated successfully.');
-        // return redirect()->route('admin.users')->with('success', 'User updated successfully.');
+        return redirect()->back()->with('success', 'User berhasil di update.');
     }
 
-    // Fungsi untuk menghapus pengguna
+    // Delete User
     public function deleteUser($id)
     {
         $users = User::findOrFail($id);
