@@ -28,9 +28,19 @@ class AdminController extends Controller
         });
     }
 
+     // query sorting
+     $sortField = $request->query('sort', 'name');
+     $sortOrder = $request->query('order', 'asc');
+ 
+     if (!in_array($sortField, ['name', 'email'])) {
+         $sortField = 'name'; // Default sort field
+     }
+ 
+     $users->orderBy($sortField, $sortOrder);
+
     $users = $users->paginate(10); // pagination
 
-    return view('/pages/admin/users', compact('users'));
+    return view('/pages/admin/users', compact('users', 'sortField', 'sortOrder'));
     }
 
     function students()

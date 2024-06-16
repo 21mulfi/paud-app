@@ -24,7 +24,7 @@
   @if(Auth::check())
   <nav class="navbar navbar-expand-lg navbar-light bg-success text-light">
     <div class="container-fluid">
-      <a class="navbar-brand text-light fw-bold" href="#">&nbsp;&nbsp;
+      <a class="navbar-brand text-light fw-bold" href="{{ route('admin.index') }}">&nbsp;&nbsp;
         @php
           $role = Auth::user()->role;
         @endphp
@@ -76,8 +76,8 @@
           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah</button>
         </div>
         <form class="d-flex" action="{{ route('admin.users') }}" method="GET">
-          <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ request()->query('search') }}">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <input class="form-control me-2" type="search" name="search" placeholder="Cari Data..." aria-label="Search" value="{{ request()->query('search') }}">
+          <button class="btn btn-outline-success" type="submit">Cari</button>
         </form>
       </div>
       <span class="float-left">{{ session('msg') }}</span>
@@ -86,8 +86,34 @@
           <thead class="table-dark">
             <tr>
               <th scope="col" style="text-align: center">No.</th>
-              <th scope="col">Nama</th>
-              <th scope="col">Email</th>
+              <th scope="col">
+                <a class="text-decoration-none text-light" href="{{ request()->fullUrlWithQuery(['sort' => 'name', 'order' => $sortField == 'name' && $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                  Nama Lengkap
+                  @if ($sortField == 'name')
+                    @if ($sortOrder == 'asc')
+                      <i class="fa fa-sort-alpha-up"></i>
+                    @else
+                      <i class="fa fa-sort-alpha-down"></i>
+                    @endif
+                  @else
+                    <i class="fa fa-sort"></i>
+                  @endif
+                </a>
+              </th>
+              <th scope="col">
+                <a class="text-decoration-none text-light" href="{{ request()->fullUrlWithQuery(['sort' => 'email', 'order' => $sortField == 'email' && $sortOrder == 'asc' ? 'desc' : 'asc']) }}">
+                  Email
+                  @if ($sortField == 'email')
+                    @if ($sortOrder == 'asc')
+                      <i class="fa fa-sort-alpha-up"></i>
+                    @else
+                      <i class="fa fa-sort-alpha-down"></i>
+                    @endif
+                  @else
+                    <i class="fa fa-sort"></i>
+                  @endif
+                </a>
+              </th>
               <th scope="col">Jenis Kelamin</th>
               <th scope="col">Role</th>
               <th scope="col">Aksi</th>
@@ -127,30 +153,31 @@
     </div>
     @if ($users->isEmpty())
     <tr>
-      <td colspan="6" class="text-center">Data tidak ditemukan</td>
+      <td colspan="6" class="text-center">Data tidak ditemukan.</td>
     </tr>
     @endif
+
     {{-- TAMBAH USER MODAL --}}
     <div class="modal fade" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="tambahUserLabel">Add New User</h5>
+            <h5 class="modal-title" id="tambahUserLabel">Tambah User Baru</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form action="{{ route('admin.users.store') }}" method="POST">
               @csrf
               <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
+                <label for="name" class="form-label">Nama Lengkap</label>
                 <input type="text" class="form-control" id="name" name="name" required>
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
+                <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
               </div>
               <div class="mb-3">
-              <label for="gender" class="form-label">Gender</label>
+              <label for="gender" class="form-label">Jenis Kelamin</label>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="gender" id="laki-laki" value="laki-laki" required>
                 <label class="form-check-label" for="laki-laki">
@@ -180,7 +207,7 @@
                 <label for="password_confirmation" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
               </div> -->
-              <button type="submit" class="btn btn-primary w-100">Save User</button>
+              <button type="submit" class="btn btn-primary w-100">Simpan</button>
             </form>
           </div>
         </div>
@@ -193,7 +220,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="editUserLabel{{ $data->id }}">Edit User</h1>
+        <h1 class="modal-title fs-5" id="editUserLabel{{ $data->id }}">Perbarui Data User</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -238,7 +265,7 @@
             </select>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary w-100">Simpan</button>
+            <button type="submit" class="btn btn-primary w-100">Perbarui</button>
           </div>
         </form>
       </div>
