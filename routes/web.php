@@ -19,12 +19,15 @@ Route::middleware(['web'])->group(function () {
     Route::get('/admin/teachers', [AdminController::class, 'teachers'])->name('admin.teachers');
     Route::get('/admin/classroom', [AdminController::class, 'classroom'])->name('admin.classroom');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::post('/admin/users', [AdminController::class, 'store'])->name('admin.users.store');
+    Route::put('/admin/users/{id}', [AdminController::class, 'update'])->name('admin.users.update');
+    Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
     });
 
     //menu guru
     Route::middleware(['checkRole:guru'])->group(function () {
         Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
-        Route::get('/guru/daftarsiswa', [GuruController::class, 'daftarsiswa'])->name('guru.daftarsiswa');
+        Route::get('/guru/jadwal', [GuruController::class, 'jadwal'])->name('guru.jadwal');
         Route::get('/guru/kurikulum', [GuruController::class, 'daftarsiswa'])->name('guru.kurikulum');
         Route::get('/guru/report', [GuruController::class, 'report'])->name('guru.report');
         Route::get('/guru/profile', [GuruController::class, 'profile'])->name('guru.profile');

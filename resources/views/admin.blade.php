@@ -21,6 +21,7 @@
 
 <body class="bg-secondary">
   @if(Auth::check())
+  {{-- START NAVBAR --}}
   <nav class="navbar navbar-expand-lg navbar-light bg-success text-light">
     <div class="container-fluid">
       <a class="navbar-brand text-light fw-bold" href="#">&nbsp;&nbsp;
@@ -73,8 +74,10 @@
   </nav>  
   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
-</form>
-  
+  </form>
+  {{-- END NAVBAR --}}
+
+
   <div class="bg-white container-sm col-6 border my-5 rounded px-5 py-3 pb-5">
         <h5 class="text-center">Selamat datang di halaman 
         @php
@@ -91,9 +94,10 @@
         </div>  
     <div class="container my-3">
       <div class="row">
+        {{-- CARD 1 --}}
         <div class="col-md-6 mb-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body card-1">
                     @if(Auth::user()->role == 'admin')
                     <a class="nav-link" href="{{ route('admin.users') }}">
                       <h1 class="card-title text-center"><i class="fa fa-user" aria-hidden="true"></i></h5>
@@ -101,9 +105,9 @@
                     </a>
                     @endif
                     @if(Auth::user()->role == 'guru')
-                      <a class="nav-link" href="{{ route('guru.daftarsiswa') }}">
-                        <h1 class="card-title text-center"><i class="fa fa-child" aria-hidden="true"></i></h5>
-                        <p class="card-text text-center">Daftar Siswa</p>
+                      <a class="nav-link" href="{{ route('guru.jadwal') }}">
+                        <h1 class="card-title text-center"><i class="fa fa-calendar" aria-hidden="true"></i></h5>
+                        <p class="card-text text-center">Jadwal Mengajar</p>
                       </a>
                     @endif
                     @if(Auth::user()->role == 'orangtua')
@@ -115,6 +119,7 @@
                 </div>
             </div>
         </div>
+        {{-- CARD 2 --}}
         <div class="col-md-6 mb-4">
             <div class="card">
                 <div class="card-body">
@@ -139,6 +144,7 @@
                 </div>
             </div>
         </div>
+        {{-- CARD 3 --}}
         @if(Auth::user()->role !== 'orangtua')
         <div class="col-md-6 mb-4 mx-auto">
             <div class="card">
@@ -159,6 +165,7 @@
             </div>
         </div>
         @endif
+        {{-- CARD 4 --}}
         @if(Auth::user()->role == 'admin')
         <div class="col-md-6 mb-4">
             <div class="card">
