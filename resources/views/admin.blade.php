@@ -19,12 +19,12 @@
   <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 </head>
 
-<body class="bg-secondary">
+<body class="bg-light">
   @if(Auth::check())
   {{-- START NAVBAR --}}
-  <nav class="navbar navbar-expand-lg navbar-light bg-success text-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border text-dark">
     <div class="container-fluid">
-      <a class="navbar-brand text-light fw-bold" href="#">&nbsp;&nbsp;
+      <a class="navbar-brand fw-bold" href="#">&nbsp;&nbsp;
         @php
           $role = Auth::user()->role;
         @endphp
@@ -48,9 +48,9 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex align-items-center text-light" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{ asset('user-3296.png') }}" alt="User Photo" class="rounded-circle" width="40" height="40">
-            <span class="nav-link ms-1 user-style text-light">{{ ucfirst(Auth::user()->name) }}</span>
+            <span class="nav-link ms-1 user-style">{{ ucfirst(Auth::user()->name) }}</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li>

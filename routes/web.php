@@ -7,8 +7,10 @@ use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', [SessionController::class, 'index']);
-Route::post('/', [SessionController::class, 'login']);
+// landing page & login
+Route::get('/', [SessionController::class, 'index'])->name('landing');
+Route::get('/login', [SessionController::class, 'loginpage'])->name('loginpage');
+Route::post('/login', [SessionController::class, 'login']);
 
 Route::middleware(['web'])->group(function () {
     // menu admin
@@ -44,5 +46,5 @@ Route::middleware(['web'])->group(function () {
 
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('');
+    return redirect('/login');
 })->name('logout');

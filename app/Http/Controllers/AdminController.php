@@ -38,7 +38,7 @@ class AdminController extends Controller
  
      $users->orderBy($sortField, $sortOrder);
 
-    $users = $users->paginate(10); // pagination
+    $users = $users->paginate(20); // pagination
 
     return view('/pages/admin/users', compact('users', 'sortField', 'sortOrder'));
     }

@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
+    // landing page
     function index()
+    {
+        return view("landing");
+    }
+
+    // login page
+    function loginpage()
     {
         return view("login");
     }
 
+    // proses login
     function login(Request $request)
     {
         $request->validate([
@@ -37,7 +45,7 @@ class SessionController extends Controller
                 return redirect('orangtua');
             }
         } else {
-            return redirect('')->withErrors('Email dan password yang dimasukkan belum sesuai!')->withInput();
+            return redirect('/login')->withErrors('Email dan password yang dimasukkan belum sesuai!')->withInput();
         }
         
     }
@@ -45,7 +53,7 @@ class SessionController extends Controller
     function logout()
     {
         Auth::logout();
-        return redirect('')->refresh();
+        return redirect('/login')->refresh();
     }
     // public function logout(Request $request)
     // {

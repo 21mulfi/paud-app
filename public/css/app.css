@@ -35,7 +35,23 @@ body {
 }
 
 .card-body:hover {
-  background-color: rgb(25, 135, 84);
+  /* background-color: rgb(25, 135, 84); */
+  background-color: #0d6efd;
   color: white;
   border-radius: 3%;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.page-link {
+  color: #007bff;
+}
+.page-link:hover {
+  color: #0056b3;
+}
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
 }
