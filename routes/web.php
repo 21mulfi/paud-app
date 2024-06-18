@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\DaftarController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [SessionController::class, 'index'])->name('landing');
 Route::get('/login', [SessionController::class, 'loginpage'])->name('loginpage');
 Route::post('/login', [SessionController::class, 'login']);
+
+// pendaftaran
+Route::get('/pendaftaran', [DaftarController::class, 'pendaftaran'])->name('pendaftaran');
 
 Route::middleware(['web'])->group(function () {
     // menu admin

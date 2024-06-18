@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- CSS only -->
+    <link rel="icon" href="{{ asset('logo_paud.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>siPAUD</title>
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -47,7 +47,7 @@
                         <a class="nav-link" href="#">Metode</a>
                     </li>
                 </ul>
-                <button class="btn ms-3" style="background-color: #85B6CD; color: white"><a class="text-decoration-none text-light" href="#">Pendaftaran</a></button>
+                <button class="btn ms-3" style="background-color: #85B6CD; color: white"><a class="text-decoration-none text-light" href="{{ route('pendaftaran') }}">Pendaftaran</a></button>
                 <button class="btn ms-3" style="background-color: #28A8E3; color: white"><a class="text-decoration-none text-light" href="{{ route('loginpage') }}">Login</a></button>
             </div>
         </div>
