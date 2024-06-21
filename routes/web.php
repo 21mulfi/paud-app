@@ -16,6 +16,7 @@ Route::post('/login', [SessionController::class, 'login']);
 // pendaftaran
 Route::get('/pendaftaran', [DaftarController::class, 'pendaftaran'])->name('pendaftaran');
 
+
 Route::middleware(['web'])->group(function () {
     // menu admin
     Route::middleware(['checkRole:admin'])->group(function () {
@@ -25,6 +26,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/admin/teachers', [AdminController::class, 'teachers'])->name('admin.teachers');
     Route::get('/admin/classroom', [AdminController::class, 'classroom'])->name('admin.classroom');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin/registrasi', [AdminController::class, 'registration'])->name('admin.registration');
     Route::post('/admin/users', [AdminController::class, 'store'])->name('admin.users.store');
     Route::put('/admin/users/{id}', [AdminController::class, 'update'])->name('admin.users.update');
     Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');

@@ -41,18 +41,6 @@
                         </a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link mx-2" href="#kegiatan">
-                            <img src="{{ asset('assets/landing/pohon.png') }}" width="24" class="d-block mx-auto mb-1">
-                            Kegiatan
-                        </a>
-                    </li>
-                    <li class="nav-item text-center">
-                        <a class="nav-link mx-2" href="#galeri">
-                            <img src="{{ asset('assets/landing/bebek.png') }}" width="32" class="d-block mx-auto mb-1">
-                            Galeri
-                        </a>
-                    </li>
-                    <li class="nav-item text-center">
                         <a class="nav-link mx-2" href="#guru">
                             <img src="{{ asset('assets/landing/topi.png') }}" width="32" class="d-block mx-auto mb-1">
                             Guru
@@ -62,6 +50,18 @@
                         <a class="nav-link mx-2" href="#metode">
                             <img src="{{ asset('assets/landing/roket.png') }}" width="35" class="d-block mx-auto mb-1">
                             Metode
+                        </a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link mx-2" href="#galeri">
+                            <img src="{{ asset('assets/landing/traktor.png') }}" width="43" class="d-block mx-auto mb-1">
+                            Galeri
+                        </a>
+                    </li>
+                    <li class="nav-item text-center">
+                        <a class="nav-link mx-2" href="#kegiatan">
+                            <img src="{{ asset('assets/landing/pohon.png') }}" width="24" class="d-block mx-auto mb-1">
+                            Kegiatan
                         </a>
                     </li>
                 </ul>
@@ -128,21 +128,21 @@
             <div class="col-lg-3 col-md-6 mb-4">
               <div class="teacher-card">
                 <img src="{{ asset('assets/landing/harun.png') }}" alt="Harun" class="teacher-img">
-                <div class="teacher-name salsa">Harun</div>
+                <div class="teacher-name salsa">Harun Mubarok</div>
                 <div class="teacher-title">Guru Pengajar</div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
               <div class="teacher-card">
                 <img src="{{ asset('assets/landing/mulfi.png') }}" alt="Mulfi" class="teacher-img">
-                <div class="teacher-name salsa">Mulfi</div>
+                <div class="teacher-name salsa">Mulfi Indra Gunawan</div>
                 <div class="teacher-title">Guru Pengajar</div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
               <div class="teacher-card">
                 <img src="{{ asset('assets/landing/rifa.png') }}" alt="Rifa Azzimah" class="teacher-img">
-                <div class="teacher-name salsa">Rifa Azzimah</div>
+                <div class="teacher-name salsa">Azimah Arifanida</div>
                 <div class="teacher-title">Guru Pengajar</div>
               </div>
             </div>
@@ -333,12 +333,12 @@
                 <div class="col-md-4">
                     <h5>Sekolah</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#">Kegiatan</a></li>
-                        <li><a href="#">Galeri</a></li>
-                        <li><a href="#">Guru</a></li>
-                        <li><a href="#">Metode</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#profil">Profil</a></li>
+                        <li><a href="#guru">Guru</a></li>
+                        <li><a href="#metode">Metode</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                        <li><a href="#kegiatan">Kegiatan</a></li>
                     </ul>
                 </div>
             </div>
@@ -375,21 +375,6 @@
     }
     scrollToTopBtn.addEventListener("click", scrollToTop)
     document.addEventListener("scroll", handleScroll)
-    
-    // Disable Click, Copy, Paste
-    // $('body').bind('cut copy', function (e) {
-    //         return false;
-    //     });
-    //     $(document).bind('contextmenu', function (e) {
-    //         return false;
-    //     });
-    //     $(document).keydown(function (event) {
-    //         if (event.keyCode == 123) { 
-    //             return false;
-    //         } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) {        
-    //             return false;
-    //         }
-    //     });
     </script>
   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

@@ -28,21 +28,6 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link active" aria-current="page" href="{{ route('landing') }}">Home</a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">Profil</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">Kegiatan</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">Galeri</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">Guru</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">Metode</a>
-                </li>
             </ul>
             <button class="btn ms-3" style="background-color: #28A8E3; color: white"><a class="text-decoration-none text-light" href="{{ route('loginpage') }}">Login</a></button>
         </div>

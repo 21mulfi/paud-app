@@ -63,6 +63,11 @@ class AdminController extends Controller
         return view('/pages/admin/profile');
     }
 
+    function registration()
+    {
+        return view('/pages/admin/registration');
+    }
+
     public function create()
     {
         return view('admin.users', [

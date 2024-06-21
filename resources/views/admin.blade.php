@@ -98,7 +98,7 @@
         {{-- CARD 1 --}}
         <div class="col-md-6 mb-4">
             <div class="card">
-                <div class="card-body card-1">
+                <div class="card-body card-1 dash-card">
                     @if(Auth::user()->role == 'admin')
                     <a class="nav-link" href="{{ route('admin.users') }}">
                       <h1 class="card-title text-center"><i class="fa fa-user" aria-hidden="true"></i></h5>
@@ -123,7 +123,7 @@
         {{-- CARD 2 --}}
         <div class="col-md-6 mb-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body dash-card">
                     @if(Auth::user()->role == 'admin')
                     <a class="nav-link" href="{{ route('admin.students') }}">
                       <h1 class="card-title text-center"><i class="fa fa-child" aria-hidden="true"></i></h5>
@@ -149,7 +149,7 @@
         @if(Auth::user()->role !== 'orangtua')
         <div class="col-md-6 mb-4 mx-auto">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body dash-card">
                   @if(Auth::user()->role == 'admin')
                     <a class="nav-link" href="{{ route('admin.teachers') }}">
                       <h1 class="card-title text-center"><i class="fa fa-users" aria-hidden="true"></i></h5>
@@ -170,7 +170,7 @@
         @if(Auth::user()->role == 'admin')
         <div class="col-md-6 mb-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body dash-card">
                   @if(Auth::user()->role == 'admin')
                     <a class="nav-link" href="{{ route('admin.classroom') }}">
                       <h1 class="card-title text-center"><i class="fa fa-building-o" aria-hidden="true"></i></h5>
@@ -180,10 +180,24 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 mb-4 mx-auto">
+          <div class="card">
+              <div class="card-body dash-card">
+                  <a class="nav-link" href="{{ route('admin.registration') }}">
+                    <h1 class="card-title text-center"><i class="fa fa-check-square-o" aria-hidden="true"></i></h5>
+                    <p class="card-text text-center">Verifikasi Registrasi</p>
+                  </a>
+              </div>
+          </div>
+      </div>
         @endif
     </div>   
     </div>
     @endif
+  </div>
+<footer class="d-flex flex-wrap justify-content-between align-items-center mt-4 border-top bg-dark">
+  <p class="col-md-12 my-3 text-center text-light fw-bold">Copyright &copy;2024 <a href="#" class="text-decoration-none">Pendidikan Anak Usia Dini Nur Kids</a>, All rights reserved.</p>
+</footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>  
