@@ -24,23 +24,28 @@
   @if(Auth::check())
   <nav class="navbar navbar-expand-lg navbar-light bg-light border text-dark">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="{{ route('admin.index') }}">&nbsp;&nbsp;
+      <a class="navbar-brand fw-bold" href="{{ route('admin.index') }}">
+        <img src="{{ asset('logo_paud.png') }}" alt="Logo PAUD" width="60">&nbsp;&nbsp;
         @php
-          $role = Auth::user()->role;
+        $role = Auth::user()->role;
         @endphp
         @if($role == 'orangtua')
           {{ 'Orang Tua' }}
         @else
           {{ ucfirst($role) }}
         @endif
-        - siPAUD</a>
+        - siPAUD
+      </a>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ asset('user-3296.png') }}" alt="User Photo" class="rounded-circle" width="40" height="40">
-            <span class="nav-link ms-1 user-style">{{ ucfirst(Auth::user()->name) }}</span>
+            <div class="welcome-message me-3"> <!-- Added wrapper div -->
+              <span class="fw-bold">{{ ucfirst(Auth::user()->name) }}</span>
+              <span id="time-now"></span>
+            </div>
+            <img src="{{ asset('user-3296.png') }}" alt="User Photo" width="40" height="40">
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li>
@@ -160,7 +165,7 @@
     <div class="modal fade" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header text-light" style="background-color: #1B96CE">
             <h5 class="modal-title" id="tambahUserLabel">Tambah User Baru</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -218,7 +223,7 @@
 <div class="modal fade" id="editUser{{ $data->id }}" tabindex="-1" aria-labelledby="editUserLabel{{ $data->id }}" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header text-light" style="background-color: #1B96CE">
         <h1 class="modal-title fs-5" id="editUserLabel{{ $data->id }}">Perbarui Data User</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -279,6 +284,20 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>  
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const day = now.getDate();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const formattedTime = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('time-now').textContent = formattedTime;
+    }
+
+    setInterval(updateTime, 1000); // Update every second
+    updateTime(); // Initial call to display the time immediately
+  </script>
 </body>
 
 </html>
