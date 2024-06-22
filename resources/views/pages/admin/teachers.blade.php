@@ -36,7 +36,6 @@
           </table>
         </div>
     </div>
-    @endif
 
     {{-- TAMBAH GURU --}}
     <div class="modal fade" id="tambahGuru" tabindex="-1" aria-labelledby="tambahGuruLabel" aria-hidden="true">
@@ -158,4 +157,5 @@
       </div>
     </div>
     {{-- /EDIT GURU --}}
+  </div>
     @include('template.endmaster')

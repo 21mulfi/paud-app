@@ -36,7 +36,6 @@
           </table>
         </div>
     </div>
-    @endif
 
     <div class="modal fade" id="tambahSiswa" tabindex="-1" aria-labelledby="tambahSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
