@@ -8,6 +8,11 @@ class OrtuController extends Controller
 {
     function index()
     {
-        return view('admin');
+        return view('dashboard');
+    }
+
+    function profile()
+    {
+        return view('/pages/orangtua/profile');
     }
 }

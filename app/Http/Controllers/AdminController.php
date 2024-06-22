@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     function index()
     {
-        return view('admin');
+        return view('dashboard');
     }
 
     public function users(Request $request)

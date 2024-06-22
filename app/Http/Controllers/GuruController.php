@@ -8,7 +8,7 @@ class GuruController extends Controller
 {
     function index()
     {
-        return view('admin');
+        return view('dashboard');
     }
 
     function profile()
