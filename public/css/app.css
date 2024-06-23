@@ -1,76 +1,75 @@
 body {
-    background-color: #fbfbfb;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
   }
-  @media (min-width: 991.98px) {
-    main {
-      padding-left: 240px;
-    }
-  }
+}
 
-  .content {
-    flex: 1;
-  }
-  
+.content {
+  flex: 1;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.dropdown-menu-end {
+  left: auto !important;
+  right: 0;
+}
+
+@media (max-width: 991.98px) {
   .navbar-nav {
-    flex-direction: row;
-  }
-
-  .dropdown-menu-end {
-    left: auto !important;
-    right: 0;
-  }
-
-  @media (max-width: 991.98px) {
-    .navbar-nav {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .welcome-message {
-      text-align: center;
-    }
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1px;
-  }
-  .navbar-brand {
-    display: flex;
+    flex-direction: column;
     align-items: center;
   }
-  .navbar-brand img {
-    margin-right: 10px;
+
+  .welcome-message {
+    text-align: center;
   }
-  .navbar .nav-link img {
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  .navbar .dropdown-menu {
-    right: 0;
-    left: auto;
-  }
-  .navbar .user-style {
-    margin-left: 5px;
-  }
-  .navbar .nav-link {
-    display: flex;
-    align-items: center;
-  }
-  .navbar .welcome-message {
-    display: flex;
-    flex-direction: column; /* Change to column to stack Welcome and time vertically */
-    /* font-weight: bold; */
-  }
-  .navbar .welcome-message img {
-    margin-right: 10px;
-  }
-  
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand img {
+  margin-right: 10px;
+}
+.navbar .nav-link img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.navbar .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.navbar .user-style {
+  margin-left: 5px;
+}
+.navbar .nav-link {
+  display: flex;
+  align-items: center;
+}
+.navbar .welcome-message {
+  display: flex;
+  flex-direction: column;
+}
+.navbar .welcome-message img {
+  margin-right: 10px;
+}
+
 .user-style {
   padding-left: 10px;
   white-space: nowrap;
@@ -103,8 +102,7 @@ body {
 }
 
 .dash-card:hover {
-  /* background-color: rgb(25, 135, 84); */
-  background-color: #1B96CE;
+  background-color: #1b96ce;
   color: white;
   border-radius: 3%;
 }
@@ -142,13 +140,22 @@ body {
   text-decoration: none;
 }
 
-/* .navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-} */
-
-.navbar-toggler:active, .navbar-toggler:focus, .navbar-toggler-icon:focus {
+.navbar-toggler:active,
+.navbar-toggler:focus,
+.navbar-toggler-icon:focus {
   outline: none;
   box-shadow: none;
   border: none;
+}
+
+#navbar2 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-item.dropdown .drop1 {
+  position: absolute;
+  z-index: 1050;
 }

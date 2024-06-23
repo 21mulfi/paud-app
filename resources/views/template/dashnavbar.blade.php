@@ -34,7 +34,7 @@
               </div>
               <img src="{{ asset('user-3296.png') }}" alt="User Photo" width="40" height="40">
             </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <ul class="dropdown-menu drop1 dropdown-menu-end" aria-labelledby="userDropdown">
               <li>
                 @if(Auth::user()->role == 'admin')
                 <a class="dropdown-item prof" href="{{ route('admin.profile') }}">Profil Saya</a>
@@ -58,7 +58,7 @@
   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
   </form>
-    <nav class="navbar navbar-expand-lg bg-dash p-1">
+    <nav class="navbar navbar-expand-lg bg-dash p-1" id="navbar2">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon">   
@@ -84,10 +84,10 @@
                 <i class="fa fa-th-list ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen&nbsp;
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item prof" href="{{ route('admin.users') }}">Manajemen User</a></li>
-                <li><a class="dropdown-item prof" href="{{ route('admin.students') }}">Manajemen Data Siswa</a></li>
-                <li><a class="dropdown-item prof" href="{{ route('admin.teachers') }}">Manajemen Data Guru</a></li>
-                <li><a class="dropdown-item prof" href="{{ route('admin.classroom') }}">Manajemen Kelas</a></li>
+                <li><a class="dropdown-item prof" href="{{ route('admin.users') }}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen User</a></li>
+                <li><a class="dropdown-item prof" href="{{ route('admin.students') }}"><i class="fa fa-child" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen Data Siswa</a></li>
+                <li><a class="dropdown-item prof" href="{{ route('admin.teachers') }}"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Manajemen Data Guru</a></li>
+                <li><a class="dropdown-item prof" href="{{ route('admin.classroom') }}"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen Kelas</a></li>
               </ul>
             </li>
             <li class="nav-item">

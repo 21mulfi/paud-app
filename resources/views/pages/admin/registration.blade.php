@@ -130,7 +130,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <p class="text-left">Verifikasi Registrasi</p>
+          <p class="text-left fw-bold">Verifikasi Registrasi</p>
           <button class="btn btn-success" title="Setuju"><i class="fa fa-check" aria-hidden="true"></i></button>
             <button class="btn btn-danger" title="Tolak"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
