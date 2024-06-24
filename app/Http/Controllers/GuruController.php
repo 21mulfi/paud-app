@@ -20,4 +20,14 @@ class GuruController extends Controller
     {
         return view('/pages/guru/jadwal');
     }
+
+    function penilaian()
+    {
+        return view('/pages/guru/penilaian');
+    }
+
+    function form_penilaian()
+    {
+        return view('/pages/guru/form_penilaian');
+    }
 }
