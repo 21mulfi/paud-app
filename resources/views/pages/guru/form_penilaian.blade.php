@@ -6,7 +6,15 @@
         <hr>
         <div class="row align-items-start">
           <form>
-            <textarea name="nilai" class="form-control"></textarea>
+            <div class="mb-3">
+              <label for="penilaian" class="form-label fw-bold">Laporan Penilaian</label>
+              <textarea name="penilaian" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="penilaian" class="form-label fw-bold">Tanggal Penilaian</label>
+              <input type="date" class="form-control" name="tgl_penilaian">
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit Penilaian</button>
           </form>

@@ -57,14 +57,14 @@
                       <td>1</td>
                       <td>Ujang</td>
                       <td>
-                        <button class="btn btn-warning" title="Nilai Siswa"><a href="{{ route('guru.form_penilaian') }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
+                        <button class="btn btn-warning" title="Nilai Siswa"><a href="{{ route('guru.form_penilaian') }}" target="_blank" class="text=decoration-none text-dark"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
                       </td>
                     </tr>
                     <tr>
                       <td>2</td>
                       <td>Steven</td>
                       <td>
-                        <button class="btn btn-warning" title="Nilai Siswa"><a href="{{ route('guru.form_penilaian') }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
+                        <button class="btn btn-warning" title="Nilai Siswa"><a href="{{ route('guru.form_penilaian') }}" target="_blank" class="text=decoration-none text-dark"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
                       </td>
                     </tr>
                   </tbody>

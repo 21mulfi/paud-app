@@ -15,4 +15,14 @@ class OrtuController extends Controller
     {
         return view('/pages/orangtua/profile');
     }
+
+    function report()
+    {
+        return view('/pages/orangtua/report');
+    }
+
+    function payment()
+    {
+        return view('/pages/orangtua/payment');
+    }
 }
