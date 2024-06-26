@@ -36,8 +36,9 @@ Route::middleware(['web'])->group(function () {
     Route::middleware(['checkRole:guru'])->group(function () {
         Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
         Route::get('/guru/jadwal', [GuruController::class, 'jadwal'])->name('guru.jadwal');
-        Route::get('/guru/kurikulum', [GuruController::class, 'daftarsiswa'])->name('guru.kurikulum');
-        Route::get('/guru/report', [GuruController::class, 'report'])->name('guru.report');
+        Route::get('/guru/penilaian', [GuruController::class, 'penilaian'])->name('guru.penilaian');
+        Route::get('/guru/penilaian/form', [GuruController::class, 'form_penilaian'])->name('guru.form_penilaian');
+        Route::get('/guru/listsiswa', [GuruController::class, 'listsiswa'])->name('guru.listsiswa');
         Route::get('/guru/profile', [GuruController::class, 'profile'])->name('guru.profile');
     });
 

@@ -97,13 +97,13 @@
   
             @if(Auth::user()->role == 'guru')
             <li class="nav-item">
+              <a class="nav-link text-light" href="{{ route('guru.listsiswa') }}"><i class="fa fa-list ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Daftar Siswa</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link text-light" href="{{ route('guru.jadwal') }}"><i class="fa fa-calendar ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Jadwal Mengajar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('guru.kurikulum') }}"><i class="fa fa-pencil ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Penilaian</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('guru.report') }}"><i class="fa fa-book ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Laporan</a>
+              <a class="nav-link text-light" href="{{ route('guru.penilaian') }}"><i class="fa fa-pencil ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Penilaian</a>
             </li>
             @endif
   
