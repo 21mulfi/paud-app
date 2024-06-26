@@ -116,6 +116,23 @@
         </div>
       </div>
     </section>
+    
+    <div class="profil">
+    <div class="container">
+      <div class="row">
+        <h5 class="salsa">PAUD Nur Kids memiliki berbagai program pembelajaran yang mencakup Program Kognitif, yang berfokus pada pengembangan kemampuan berpikir anak melalui kegiatan yang merangsang otak, seperti pemecahan masalah, permainan logika, dan aktivitas eksplorasi.</h5>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-5">
+          <h6 class="salsa">Visi: <br>Mencerdaskan anak bangsa dengan mengembangkan potensi unik setiap anak melalui pendidikan yang holistik, menyenangkan, dan berkelanjutan, serta menciptakan generasi muda yang cerdas, kreatif, dan berkarakter.</h6>
+        </div>
+        <div class="col-md-6 mb-5">
+          <h6 class="salsa">Misi : <br>Menyediakan Pendidikan Berkualitas Memberikan pendidikan anak usia dini yang berkualitas tinggi dengan metode pengajaran yang inovatif dan interaktif. Mengembangkan Lingkungan Belajar yang Aman dan Nyaman Menciptakan lingkungan belajar yang aman, bersih, dan mendukung perkembangan fisik, kognitif, sosial, dan emosional anak. Mengoptimalkan Potensi Anak Mengembangkan potensi unik setiap anak melalui program yang holistik dan menyeluruh, yang mencakup aspek kognitif, fisik, sosial, dan emosional.</h6>
+        </div>
+      </div>
+    </div>
+  </div>
     {{-- /PROFIL --}}
 
     {{-- GURU --}}

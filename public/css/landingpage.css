@@ -224,3 +224,11 @@
   transform: translateY(0);
   outline: none;
 }
+
+.profil {
+  background-image: url("/assets/landing/list-kids.png");
+  padding: 100px;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(30px);
+}
