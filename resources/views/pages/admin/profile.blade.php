@@ -26,27 +26,27 @@
       </div>
       </div>
     </div>
-    <div class="card-body mb-5">
+    <div class="card-body mb-5 poppins-regular">
       <div class="row mt-3 p-4">
         <div class="col-6">
-          <label for="name" class="form-label fw-bold poppins-regular">Nama Lengkap</label>
+          <label for="name" class="form-label fw-bold">Nama Lengkap</label>
           <input type="email" value="" name="email" class="form-control" placeholder="Mulfi Indra Gunawan" disabled>
 
-          <label for="name" class="form-label fw-bold mt-3 poppins-regular">Email</label>
+          <label for="name" class="form-label fw-bold mt-3">Email</label>
           <input type="email" value="" name="email" class="form-control" placeholder="mulfi@gmail.com" disabled>
           
-          <label for="name" class="form-label fw-bold mt-3 poppins-regular">Jenis Kelamin</label>
+          <label for="name" class="form-label fw-bold mt-3">Jenis Kelamin</label>
           <input type="text" value="" name="email" class="form-control" placeholder="Laki-laki" disabled>
         </div>
 
         <div class="col-6">
-          <label for="telp" class="form-label fw-bold poppins-regular">No. Telepon</label>
+          <label for="telp" class="form-label fw-bold">No. Telepon</label>
           <input type="number" value="" name="no_tlp" class="form-control" placeholder="0893761231923" disabled>
 
-          <label for="alamat" class="form-label fw-bold mt-3 poppins-regular">Alamat</label>
+          <label for="alamat" class="form-label fw-bold mt-3">Alamat</label>
           <input type="textarea" value="" name="alamat" class="form-control" placeholder="Jl. Jakarta" disabled>
           
-          <label for="bahasa" class="form-label fw-bold mt-3 poppins-regular">Bahasa</label>
+          <label for="bahasa" class="form-label fw-bold mt-3">Bahasa</label>
           <input type="text" value="" name="bahasa" class="form-control" placeholder="Indonesia" disabled>
         </div>
       </div>
@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="editProfil" tabindex="-1" aria-labelledby="editProfilLabel" aria-hidden="true">
+  <div class="modal fade poppins-regular" id="editProfil" tabindex="-1" aria-labelledby="editProfilLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-light" style="background-color: #1B96CE">

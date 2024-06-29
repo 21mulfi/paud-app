@@ -4,11 +4,11 @@
   @include('template.dashnavbar')
   
   <div class="bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-    <h5 class="text-center">Jadwal Mengajar</h5>
+    <h5 class="text-center poppins-regular fw-bold">Jadwal Mengajar</h5>
     <hr>
     <div class="row align-items-start">
       <div class="table-responsive">
-        <table class="table my-3">
+        <table class="table my-3 poppins-regular">
           <thead class="table-dark">
             <tr>
               <th scope="col" style="text-align: center">No.</th>

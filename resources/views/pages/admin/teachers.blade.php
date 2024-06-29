@@ -4,14 +4,14 @@
   @include('template.dashnavbar')
   
   <div class="bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-        <h5 class="text-center">Manajemen Guru</h5>
+        <h5 class="text-center poppins-regular fw-bold">Manajemen Guru</h5>
         <hr>
         <div class="row align-items-start">
           <div>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahGuru" title="Lihat Detail Data Guru">Tambah</button>
+            <button class="btn btn-primary poppins-regular" data-bs-toggle="modal" data-bs-target="#tambahGuru" title="Lihat Detail Data Guru">Tambah</button>
           </div>
         <div class="table-responsive">
-          <table class="table my-3">
+          <table class="table my-3 poppins-regular">
             <thead class="table-dark">
               <tr>
                 <th scope="col">No.</th>
@@ -38,7 +38,7 @@
     </div>
 
     {{-- TAMBAH GURU --}}
-    <div class="modal fade" id="tambahGuru" tabindex="-1" aria-labelledby="tambahGuruLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="tambahGuru" tabindex="-1" aria-labelledby="tambahGuruLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -80,7 +80,7 @@
     {{-- /TAMBAH GURU --}}
 
     {{-- DETAIL GURU --}}
-    <div class="modal fade" id="detailGuru" tabindex="-1" aria-labelledby="detailGuruLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="detailGuru" tabindex="-1" aria-labelledby="detailGuruLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -117,7 +117,7 @@
     {{-- /DETAIL GURU --}}
 
     {{-- EDIT GURU --}}
-    <div class="modal fade" id="editGuru" tabindex="-1" aria-labelledby="editGuruLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="editGuru" tabindex="-1" aria-labelledby="editGuruLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">

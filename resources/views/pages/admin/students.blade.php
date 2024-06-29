@@ -4,14 +4,14 @@
   @include('template.dashnavbar')
   
   <div class="bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-        <h5 class="text-center">Manajemen Siswa</h5>
+        <h5 class="text-center poppins-regular fw-bold">Manajemen Siswa</h5>
         <hr>
         <div class="row align-items-start">
           <div>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahSiswa">Tambah</button>
+            <button class="btn btn-primary poppins-regular" data-bs-toggle="modal" data-bs-target="#tambahSiswa">Tambah</button>
           </div>
         <div class="table-responsive">
-          <table class="table my-3">
+          <table class="table my-3 poppins-regular">
             <thead class="table-dark">
               <tr>
                 <th scope="col">No.</th>
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="tambahSiswa" tabindex="-1" aria-labelledby="tambahSiswaLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="tambahSiswa" tabindex="-1" aria-labelledby="tambahSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -98,7 +98,7 @@
   </div>
 
     {{-- DETAIL SISWA --}}
-    <div class="modal fade" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -139,7 +139,7 @@
     </div>
     {{-- /DETAIL SISWA --}}
 
-    <div class="modal fade" id="editSiswa" tabindex="-1" aria-labelledby="editSiswaLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="editSiswa" tabindex="-1" aria-labelledby="editSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">

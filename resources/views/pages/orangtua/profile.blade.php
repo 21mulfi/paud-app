@@ -1,133 +1,6 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>
-    @php
-      $role = Auth::user()->role;
-    @endphp
-    @if($role == 'orangtua')
-      siPAUD - {{ 'Orang Tua Murid' }}
-    @else
-      siPAUD - {{ ucfirst($role) }}
-    @endif</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="icon" href="{{ asset('logo_paud.png') }}">
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-</head>
-
+@include('template.master')
 <body>
-  @if(Auth::check())
-  <nav class="navbar navbar-expand-lg navbar-light bg-light border text-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold ms-3" href="{{ route('admin.index') }}">
-        <img src="{{ asset('logo_paud.png') }}" alt="Logo PAUD" width="60">&nbsp;&nbsp;
-        @php
-        $role = Auth::user()->role;
-        @endphp
-        @if($role == 'orangtua')
-          {{ 'Orang Tua' }}
-        @else
-          {{ ucfirst($role) }}
-        @endif
-        - siPAUD
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="welcome-message me-3">
-                <span class="fw-bold">{{ ucfirst(Auth::user()->name) }}</span>
-                <span id="time-now"></span>
-              </div>
-              <img src="{{ asset('user-3296.png') }}" alt="User Photo" width="40" height="40">
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li>
-                @if(Auth::user()->role == 'admin')
-                <a class="dropdown-item prof" href="{{ route('admin.profile') }}">Profil Saya</a>
-                @endif
-                @if(Auth::user()->role == 'guru')
-                <a class="dropdown-item prof" href="{{ route('guru.profile') }}">Profil Saya</a>
-                @endif
-                @if(Auth::user()->role == 'orangtua')
-                <a class="dropdown-item prof" href="{{ route('orangtua.profile') }}">Profil Saya</a>
-                @endif
-              </li>
-              <li>
-                <a class="dropdown-item logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-  </form>
-    <nav class="navbar navbar-expand-lg bg-dash p-1">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active text-light" aria-current="page" href="{{ route('admin.index') }}"><i class="fa fa-tachometer ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a>
-            </li>
-            <li class="nav-item dropdown text-light">
-              @if(Auth::user()->role == 'admin')
-              <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-th-list ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item prof" href="{{ route('admin.users') }}">Manajemen User</a></li>
-                <li><a class="dropdown-item prof" href="{{ route('admin.students') }}">Manajemen Data Siswa</a></li>
-                <li><a class="dropdown-item prof" href="{{ route('admin.teachers') }}">Manajemen Data Guru</a></li>
-                <li><a class="dropdown-item prof" href="{{ route('admin.classroom') }}">Manajemen Kelas</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('admin.registration') }}"><i class="fa fa-check-square-o ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Verifikasi Registrasi</a>
-            </li>
-            @endif
-  
-            @if(Auth::user()->role == 'guru')
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('guru.jadwal') }}"><i class="fa fa-calendar ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Jadwal Mengajar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('guru.kurikulum') }}"><i class="fa fa-pencil ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Penilaian</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('guru.report') }}"><i class="fa fa-book ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Laporan</a>
-            </li>
-            @endif
-  
-            @if(Auth::user()->role == 'orangtua')
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('orangtua.report') }}"><i class="fa fa-book ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Laporan Siswa</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="{{ route('orangtua.payment') }}"><i class="fa fa-money ms-3" aria-hidden="true"></i>&nbsp;&nbsp;History Pembayaran</a>
-            </li>
-            @endif
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+  @include('template.dashnavbar')
   <div class="container">
     <h4 class="text-center mt-4 poppins-regular fw-bold">Profil Pengguna</h4>
     <hr>
@@ -151,27 +24,27 @@
       </div>
       </div>
     </div>
-    <div class="card-body mb-5">
+    <div class="card-body mb-5 poppins-regular">
       <div class="row mt-3 p-4">
         <div class="col-6">
-          <label for="name" class="form-label fw-bold poppins-regular">Nama Lengkap</label>
+          <label for="name" class="form-label fw-bold">Nama Lengkap</label>
           <input type="email" value="" name="email" class="form-control" placeholder="Mulfi Indra Gunawan" disabled>
 
-          <label for="name" class="form-label fw-bold mt-3 poppins-regular">Email</label>
+          <label for="name" class="form-label fw-bold mt-3">Email</label>
           <input type="email" value="" name="email" class="form-control" placeholder="mulfi@gmail.com" disabled>
           
-          <label for="name" class="form-label fw-bold mt-3 poppins-regular">Jenis Kelamin</label>
+          <label for="name" class="form-label fw-bold mt-3">Jenis Kelamin</label>
           <input type="text" value="" name="email" class="form-control" placeholder="Laki-laki" disabled>
         </div>
 
         <div class="col-6">
-          <label for="telp" class="form-label fw-bold poppins-regular">No. Telepon</label>
+          <label for="telp" class="form-label fw-bold">No. Telepon</label>
           <input type="number" value="" name="no_tlp" class="form-control" placeholder="0893761231923" disabled>
 
-          <label for="alamat" class="form-label fw-bold mt-3 poppins-regular">Alamat</label>
+          <label for="alamat" class="form-label fw-bold mt-3">Alamat</label>
           <input type="textarea" value="" name="alamat" class="form-control" placeholder="Jl. Jakarta" disabled>
           
-          <label for="bahasa" class="form-label fw-bold mt-3 poppins-regular">Bahasa</label>
+          <label for="bahasa" class="form-label fw-bold mt-3">Bahasa</label>
           <input type="text" value="" name="bahasa" class="form-control" placeholder="Indonesia" disabled>
         </div>
       </div>
@@ -182,14 +55,8 @@
     </div>
   </div>
   <br>
-  <footer class="footer mt-auto py-3">
-    <div class="container">
-      <p class="m-0">&copy; 2024 <a href="#" class="text-decoration-none">Pendidikan Anak Usia Dini Nur Kids</a>, All rights reserved.</p>
-    </div>
-  </footer>
-  @endif
 
-  <div class="modal fade" id="editProfil" tabindex="-1" aria-labelledby="editProfilLabel" aria-hidden="true">
+  <div class="modal fade poppins-regular" id="editProfil" tabindex="-1" aria-labelledby="editProfilLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -244,23 +111,4 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script>
-    function updateTime() {
-      const now = new Date();
-      const day = now.getDate();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      const formattedTime = `${hours}:${minutes}:${seconds}`;
-      document.getElementById('time-now').textContent = formattedTime;
-    }
-
-    setInterval(updateTime, 1000); // Update every second
-    updateTime(); // Initial call to display the time immediately
-  </script>
-</body>
-
-</html>
+  @include('template.endmaster')

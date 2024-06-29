@@ -7,7 +7,7 @@
 
 
   <div class="content bg-white container-sm col-6 border my-5 rounded px-5 py-3 pb-5">
-        <h5 class="text-center">Selamat datang di halaman 
+        <h5 class="text-center poppins-regular fw-bold">Selamat datang di halaman 
         @php
           $role = Auth::user()->role;
         @endphp

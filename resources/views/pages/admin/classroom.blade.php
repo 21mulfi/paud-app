@@ -4,14 +4,14 @@
   @include('template.dashnavbar')
   
   <div class="bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-        <h5 class="text-center">Manajemen Kelas</h5>
+        <h5 class="text-center poppins-regular fw-bold">Manajemen Kelas</h5>
         <hr>
         <div class="row align-items-start">
           <div>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahKelas">Tambah</button>
+            <button class="btn btn-primary poppins-regular" data-bs-toggle="modal" data-bs-target="#tambahKelas">Tambah</button>
           </div>
         <div class="table-responsive">
-          <table class="table my-3">
+          <table class="table my-3 poppins-regular">
             <thead class="table-dark">
               <tr>
                 <th scope="col">No.</th>
@@ -41,7 +41,7 @@
 
     
     {{-- TAMBAH KELAS --}}
-    <div class="modal fade" id="tambahKelas" tabindex="-1" aria-labelledby="tambahKelasLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="tambahKelas" tabindex="-1" aria-labelledby="tambahKelasLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -77,7 +77,7 @@
     {{-- /TAMBAH KELAS --}}
 
     {{-- EDIT KELAS --}}
-    <div class="modal fade" id="editKelas" tabindex="-1" aria-labelledby="editKelasLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="editKelas" tabindex="-1" aria-labelledby="editKelasLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -113,7 +113,7 @@
     {{-- /EDIT KELAS --}}
 
     {{-- LIST SISWA --}}
-    <div class="modal fade" id="listSiswa" tabindex="-1" aria-labelledby="listSiswaLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="listSiswa" tabindex="-1" aria-labelledby="listSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">

@@ -4,11 +4,11 @@
   @include('template.dashnavbar')
   
 <div class="content bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-  <h5 class="text-center">Verifikasi Registrasi</h5>
+  <h5 class="text-center poppins-regular fw-bold">Verifikasi Registrasi</h5>
   <hr>
   <div class="row align-items-start">
   <div class="table-responsive">
-    <table class="table my-3">
+    <table class="table my-3 poppins-regular">
       <thead class="table-dark">
         <tr>
           <th scope="col">No.</th>
@@ -32,7 +32,7 @@
   </div>
 </div>
 
-  <div class="modal fade" id="detailRegistrasi" tabindex="-1" aria-labelledby="detailRegistrasiLabel" aria-hidden="true">
+  <div class="modal fade poppins-regular" id="detailRegistrasi" tabindex="-1" aria-labelledby="detailRegistrasiLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-light" style="background-color: #1B96CE">

@@ -8,6 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <title>siPAUD</title>
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         .btn-circle {
             width: 40px;
@@ -30,6 +34,21 @@
             -webkit-user-select: none;
             -ms-user-select: none;
         }
+        .poppins-regular {
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .source-sans-3 {
+            font-family: "Source Sans 3", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 350;
+            font-style: normal;
+        }
+        .bg-dash {
+            background-color: #1B96CE;
+        }
     </style>
 </head>
 <body>
@@ -39,19 +58,19 @@
       <div class="container py-5">
       <div class="card w-75 mx-auto">
         <div class="card-header">
-            <center><h4 class="fw-bold">siPAUD - Sistem Informasi Pendidikan Anak Usia Dini</h4></center>
+            <center><h4 class="fw-bold source-sans-3 my-auto">siPAUD - Sistem Informasi Pendidikan Anak Usia Dini</h4></center>
         </div>
         <div class="card-body mb-5">
             <div class="row">
                 @if($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-danger poppins-regular">
                     <ul>
                         @foreach($errors->all() as $item)
                         <li>{{ $item }}</li>
                         @endforeach
                 </div>
                 @endif
-                <center><h6>Silakan masuk menggunakan akun Anda</h6></center>
+                <center><h6 class="poppins-regular">Silakan masuk menggunakan akun Anda</h6></center>
                 </div>
                 <div class="row mt-5">
                 <div class="col-2 d-flex">
@@ -61,7 +80,7 @@
                 <img src="{{ asset('logo_paud.png') }}" alt="User Photo" class="img-responsive drag" width="120">       
                 </div>
                 <div class="col">    
-                <form action="" method="POST">
+                <form action="" method="POST" class="poppins-regular">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email">
@@ -73,16 +92,16 @@
                     </div>
                     <div class="mb-3">
                         <button name="submit" type="submit" class="btn btn-primary fw-bold">LOGIN</button>
-                        <a href="#" class="mx-3" style="text-decoration: none">Lupa Password?</a>
+                        {{-- <a href="#" class="mx-3" style="text-decoration: none">Lupa Password?</a> --}}
                     </div>
                     <hr>
                 </form>
                 </div>
                 </div> 
         </div>
-        <div class="card-footer text-light bg-primary text-center">
+        <div class="card-footer bg-dash text-light text-center source-sans-3 fw-bold">
           <div class="my-1">  
-          Copyright &copy; 2024 Sistem Informasi Reguler B1 - Universitas Widyatama
+            Copyright &copy; 2024 <a href="#" class="text-decoration-none text-light">Nur Kids PAUD</a>
           </div>
         </div>
       </div>

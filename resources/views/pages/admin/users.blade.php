@@ -4,22 +4,22 @@
   @include('template.dashnavbar')
   
   <div class="content bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-    <h5 class="text-center">Manajemen User</h5>
+    <h5 class="text-center poppins-regular fw-bold">Manajemen User</h5>
     <hr>
     
     <div class="row align-items-start">
       <div class="d-flex justify-content-between align-items-center">
         <div>
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah</button>
+          <button class="btn btn-primary poppins-regular" data-bs-toggle="modal" data-bs-target="#tambahUser">Tambah</button>
         </div>
         <form class="d-flex" action="{{ route('admin.users') }}" method="GET">
-          <input class="form-control me-2" type="search" name="search" placeholder="Cari Data..." aria-label="Search" value="{{ request()->query('search') }}">
-          <button class="btn btn-outline-success" type="submit">Cari</button>
+          <input class="form-control me-2 poppins-regular" type="search" name="search" placeholder="Cari Data..." aria-label="Search" value="{{ request()->query('search') }}">
+          <button class="btn btn-outline-success poppins-regular" type="submit">Cari</button>
         </form>
       </div>
       <span class="float-left">{{ session('msg') }}</span>
       <div class="table-responsive">
-        <table class="table my-3">
+        <table class="table my-3 poppins-regular">
           <thead class="table-dark">
             <tr>
               <th scope="col" style="text-align: center">No.</th>
@@ -94,7 +94,7 @@
     @endif
 
     {{-- TAMBAH USER MODAL --}}
-    <div class="modal fade" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -152,7 +152,7 @@
 
     {{-- EDIT USER MODAL --}}
     @foreach($users as $data)
-<div class="modal fade" id="editUser{{ $data->id }}" tabindex="-1" aria-labelledby="editUserLabel{{ $data->id }}" aria-hidden="true">
+<div class="modal fade poppins-regular" id="editUser{{ $data->id }}" tabindex="-1" aria-labelledby="editUserLabel{{ $data->id }}" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-light" style="background-color: #1B96CE">

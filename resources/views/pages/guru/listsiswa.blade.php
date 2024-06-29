@@ -2,11 +2,11 @@
 <body>
     @include('template.dashnavbar')
     <div class="bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-        <h5 class="text-center">Daftar Siswa</h5>
+        <h5 class="text-center poppins-regular fw-bold">Daftar Siswa</h5>
         <hr>
         <div class="row align-items-start">
             <div class="table-responsive">
-                <table class="table my-3">
+                <table class="table my-3 poppins-regular">
                   <thead class="table-dark">
                     <tr>
                       <th scope="col">No.</th>
@@ -32,7 +32,7 @@
     </div>
 
     {{-- DETAIL SISWA --}}
-    <div class="modal fade" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header text-light" style="background-color: #1B96CE">
