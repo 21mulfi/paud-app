@@ -4,11 +4,11 @@
   @include('template.dashnavbar')
   
 <div class="content bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-  <h5 class="text-center poppins-regular fw-bold">Verifikasi Registrasi</h5>
+  <h5 class="text-center">Verifikasi Registrasi</h5>
   <hr>
   <div class="row align-items-start">
   <div class="table-responsive">
-    <table class="table my-3 poppins-regular">
+    <table class="table my-3">
       <thead class="table-dark">
         <tr>
           <th scope="col">No.</th>
@@ -32,7 +32,7 @@
   </div>
 </div>
 
-  <div class="modal fade poppins-regular" id="detailRegistrasi" tabindex="-1" aria-labelledby="detailRegistrasiLabel" aria-hidden="true">
+  <div class="modal fade" id="detailRegistrasi" tabindex="-1" aria-labelledby="detailRegistrasiLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -56,21 +56,21 @@
               <p>Laki-laki</p>
           </div>
           <div class="mb-3">
-            <label for="tanggal_lahir" class="form-label fw-bold">Warga Negara</label>
+            <label for="alamat" class="form-label fw-bold">Alamat</label>
             <p>Indonesia</p>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="tanggal_lahir" class="form-label fw-bold">Bahasa Di Rumah</label>
             <p>Indonesia</p>
-          </div>
+          </div> -->
           <div class="mb-3">
-            <label for="tanggal_lahir" class="form-label fw-bold">Agama</label>
+            <label for="agama" class="form-label fw-bold">Agama</label>
             <p>Islam</p>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="tanggal_lahir" class="form-label fw-bold">Pas Foto</label>
             <button class="btn btn-primary"><a class="text-decoration-none text-light" href="#" target="_blank">Lihat Foto</a></button>
-          </div>
+          </div> -->
           <div class="row bg-secondary">
             <p class="fw-bold h5 text-light mt-2 mb-2">Data Ayah</p>
           </div>
@@ -78,22 +78,22 @@
             <label for="name" class="form-label fw-bold">Nama Lengkap</label>
             <p>Asep</p>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="name" class="form-label fw-bold">Alamat</label>
             <p>Jl. Garut No. 13 Bandung</p>
-          </div>
-          <div class="mb-3">
+          </div> -->
+          <!-- <div class="mb-3">
             <label for="name" class="form-label fw-bold">Email</label>
             <p>asep@gmail.com</p>
-          </div>
+          </div> -->
           <div class="mb-3">
-            <label for="name" class="form-label fw-bold">No. Telepon / HP</label>
+            <label for="name" class="form-label fw-bold">No. Telepon / WhatsApp</label>
             <p>0892310391023</p>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="name" class="form-label fw-bold">Aktif WhatsApp?</label>
             <p>Ya</p>
-          </div>
+          </div> -->
           <div class="row bg-secondary">
             <p class="fw-bold h5 text-light mt-2 mb-2">Data Ibu</p>
           </div>
@@ -101,22 +101,22 @@
             <label for="name" class="form-label fw-bold">Nama Lengkap</label>
             <p>Mayang</p>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="name" class="form-label fw-bold">Alamat</label>
             <p>Jl. Garut No. 13 Bandung</p>
-          </div>
-          <div class="mb-3">
+          </div> -->
+          <!-- <div class="mb-3">
             <label for="name" class="form-label fw-bold">Email</label>
             <p>mayang@gmail.com</p>
-          </div>
+          </div> -->
           <div class="mb-3">
-            <label for="name" class="form-label fw-bold">No. Telepon / HP</label>
+            <label for="name" class="form-label fw-bold">No. Telepon / WhatsApp</label>
             <p>0892310391024</p>
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="name" class="form-label fw-bold">Aktif WhatsApp?</label>
             <p>Tidak</p>
-          </div>
+          </div> -->
           <div class="row bg-secondary">
             <p class="fw-bold h5 text-light mt-2 mb-2">Informasi Pendaftaran</p>
           </div>

@@ -15,6 +15,7 @@ Route::post('/login', [SessionController::class, 'login']);
 
 // pendaftaran
 Route::get('/pendaftaran', [DaftarController::class, 'pendaftaran'])->name('pendaftaran');
+Route::post('/pendaftaran', [DaftarController::class, 'store'])->name('daftar');
 
 
 Route::middleware(['web'])->group(function () {
