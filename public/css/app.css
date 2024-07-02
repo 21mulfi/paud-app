@@ -1,0 +1,168 @@
+body {
+  background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+.content {
+  flex: 1;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.dropdown-menu-end {
+  left: auto !important;
+  right: 0;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .welcome-message {
+    text-align: center;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand img {
+  margin-right: 10px;
+}
+.navbar .nav-link img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.navbar .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.navbar .user-style {
+  margin-left: 5px;
+}
+.navbar .nav-link {
+  display: flex;
+  align-items: center;
+}
+.navbar .welcome-message {
+  display: flex;
+  flex-direction: column;
+}
+.navbar .welcome-message img {
+  margin-right: 10px;
+}
+
+.user-style {
+  padding-left: 10px;
+  white-space: nowrap;
+  max-width: 200px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.prof {
+  color: black;
+}
+
+.prof:hover {
+  color: white;
+  background-color: rgb(43, 41, 41);
+}
+
+.logout {
+  color: red;
+}
+
+.logout:hover {
+  background-color: red;
+  color: white;
+}
+
+.bg-dash {
+  background-color: #1B96CE;
+}
+
+.dash-card:hover {
+  background-color: #1b96ce;
+  color: white;
+  border-radius: 3%;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.page-link {
+  color: #007bff;
+}
+.page-link:hover {
+  color: #0056b3;
+}
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.source-sans-3 {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 350;
+  font-style: normal;
+}
+
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-toggler:active,
+.navbar-toggler:focus,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+#navbar2 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-item.dropdown .drop1 {
+  position: absolute;
+  z-index: 1050;
+}

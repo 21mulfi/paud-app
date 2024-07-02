@@ -1,0 +1,234 @@
+.open-sans-f {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.salsa {
+  font-family: "Salsa", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.footer {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 0;
+  /* text-align: center; */
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+.icon {
+  font-size: 50px;
+}
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.feature {
+  text-align: center;
+}
+.feature-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+.feature-description {
+  font-size: 16px;
+  color: #666;
+}
+.teachers-section {
+  position: relative;
+  color: white;
+  padding: 50px 0;
+}
+
+.teachers-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 63, 186, 0.6); /* Semi-transparent blue overlay */
+  z-index: 1;
+}
+
+.teachers-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/landing/section_guru.png");
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(30px);
+  z-index: 0;
+}
+
+.teachers-section .container {
+  position: relative;
+  z-index: 2;
+}
+.teacher-card {
+  text-align: center;
+  margin: 0 auto;
+}
+.teacher-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+}
+.teacher-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: white;
+}
+.teacher-title {
+  font-size: 16px;
+  color: white;
+}
+.learning-method {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px 0;
+  text-align: center;
+  position: relative;
+}
+.learning-method .icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto -30px;
+  position: relative;
+  top: -30px;
+  z-index: 1;
+}
+.learning-method .icon img {
+  width: 80px;
+  height: 80px;
+}
+.learning-method .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+.learning-method .description {
+  margin-top: 10px;
+  color: #fff;
+}
+.learning-method.play-based {
+  background-color: #ff6f61;
+}
+.learning-method.project-based {
+  background-color: #8bc34a;
+}
+.learning-method.technology-based {
+  background-color: #03a9f4;
+}
+.gallery-section {
+  padding: 50px 0;
+}
+.gallery-section h2 {
+  font-size: 2.5rem;
+  color: #6c4b18;
+}
+.gallery-section p {
+  color: #6c4b18;
+}
+.gallery-section .gallery-img {
+  margin-bottom: 20px;
+  object-fit: cover;
+  height: 200px;
+}
+.commit-section {
+  position: relative;
+  color: white;
+  padding: 50px 0;
+}
+
+.commit-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #00a1e4;
+  z-index: 1;
+}
+
+.commit-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/landing/kids2.png");
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(30px);
+  z-index: 0;
+}
+
+.commit-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.footer {
+  background-color: #00a1e4;
+  color: white;
+  padding: 40px 0;
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+.footer .logo img {
+  max-width: 100px;
+}
+
+.scrollToTopBtn {
+  background-color: #00a1e4;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 48px;
+  width: 48px;
+  outline: none;
+
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.5s ease;
+}
+
+.showBtn {
+  opacity: 1;
+  transform: translateY(0);
+  outline: none;
+}
+
+.profil {
+  background-image: url("/assets/landing/list-kids.png");
+  padding: 100px;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(30px);
+}
