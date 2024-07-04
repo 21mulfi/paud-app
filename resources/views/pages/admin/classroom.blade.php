@@ -16,7 +16,7 @@
               <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Nama Kelas</th>
-                <th scope="col">Guru</th>
+                <th scope="col">Kapasitas Kelas</th>
                 <!-- <th scope="col">Jadwal</th> -->
                 <th scope="col">Aksi</th>
               </tr>
@@ -59,7 +59,7 @@
               </div>
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Kapasitas Kelas</label>
-                  <input type="text" class="form-control" id="kapasitas" name="kapasitas" required>
+                  <input type="text" class="form-control" id="kapasitas_maks" name="kapasitas_maks" required>
               </div>
               <!-- <div class="mb-3">
                 <label for="guru" class="form-label fw-bold">Guru</label>

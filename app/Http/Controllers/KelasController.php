@@ -25,8 +25,8 @@ class KelasController extends Controller
 
     public function store(Request $request){
         $kelas = new Kelas();
-        $kelas->nama_kelas = $request->nama_siswa;
-        $kelas->kapasitas_maks = $request->kapasitas;
+        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->kapasitas_maks = $request->kapasitas_maks;
 
         $kelas->save();
         return redirect()->back()->with(['success' => 'Data Berhasil disimpan.']);

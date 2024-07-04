@@ -40,10 +40,13 @@ Route::middleware(['web'])->group(function () {
     Route::delete('classroom/{id}', [KelasController::class, 'delete'])->name('admin.classroom.delete');
 
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    
     Route::get('/admin/registrasi', [AdminController::class, 'registration'])->name('admin.registration');
     Route::post('/admin/users', [AdminController::class, 'store'])->name('admin.users.store');
     Route::put('/admin/users/{id}', [AdminController::class, 'update'])->name('admin.users.update');
     Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+
+    Route::get('/admin/data_orangtua', [AdminController::class, 'parent'])->name('admin.parent');
     });
 
     //menu guru

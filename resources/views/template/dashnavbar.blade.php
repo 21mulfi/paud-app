@@ -85,6 +85,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.users') }}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen User</a></li>
                 <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.students') }}"><i class="fa fa-child" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen Data Siswa</a></li>
+                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.parent') }}"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen Data Orang Tua Siswa</a></li>
                 <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.teachers') }}"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Manajemen Data Guru</a></li>
                 <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.classroom') }}"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen Kelas</a></li>
               </ul>

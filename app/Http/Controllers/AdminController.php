@@ -8,6 +8,7 @@ use \App\Models\Guru;
 use \App\Models\Kelas;
 use \App\Models\Siswa;
 use \App\Http\Controllers\DaftarController;
+use \App\Http\Controllers\KelasController;
 use App\Models\Orangtua;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,10 +60,11 @@ class AdminController extends Controller
         return view('/pages/admin/teachers');
     }
 
-    // function classroom()
-    // {
-    //     return view('/pages/admin/classroom');
-    // }
+    function classroom()
+    {
+        $kelas = Kelas::all();
+        return view('/pages/admin/classroom', compact('classroom'));
+    }
 
     function profile()
     {
@@ -73,6 +75,12 @@ class AdminController extends Controller
     {
         $pendaftaran = Pendaftaran::all(); 
         return view('/pages/admin/registration', compact('pendaftaran'));
+    }
+
+    function parent()
+    {
+        $parent = Orangtua::all(); 
+        return view('/pages/admin/parent', compact('parent'));
     }
 
     public function create()
@@ -157,7 +165,7 @@ class AdminController extends Controller
         return Guru::find($id);
     }
 
-    // Update Guru
+    // Update Guru`
     public function updateGuru(Request $request, $id)
     {
         $request->validate([
