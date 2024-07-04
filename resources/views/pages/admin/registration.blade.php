@@ -12,21 +12,39 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">No.</th>
-          <th scope="col">No. Pendaftaran</th>
+          <th scope="col">Nama Siswa</th>
+          <th scope="col">Tempat Tanggal Lahir</th>
+          <th scope="col">L/P</th>
+          <th scope="col">Alamat</th>
+          <th scope="col">Agama</th>
+          <th scope="col">Nama Ayah / Telp Ayah</th>
+          <th scope="col">Nama Ibu / Telp Ibu</th>
+          <th scope="col">Sumber Informasi</th>
+          <th scope="col">Catatan</th>
           <th scope="col">Status</th>
-          <th scope="col">Detail Registrasi</th>
+          <!-- <th scope="col">Detail Registrasi</th> -->
         </tr>
       </thead>
       
       <tbody>
+      @foreach ($pendaftaran as $daftar)
         <tr>
-          <td>1</td>
-          <td>REG-001</td>
-          <td>Belum Diverifikasi</td>
-          <td>
+          <td>{{ $daftar->id_pendaftaran }}</td>
+          <td>{{ $daftar->nama_siswa }}</td>
+          <td>{{ $daftar->tempat_lahir }}, {{ $daftar->tgl_lahir }}</td>
+          <td>{{ $daftar->jenis_kelamin }}</td>
+          <td>{{ $daftar->alamat }}</td>
+          <td>{{ $daftar->agama }}</td>
+          <td>{{ $daftar->nama_ayah }} / {{ $daftar->telp_ayah }}</td>
+          <td>{{ $daftar->nama_ibu }} / {{ $daftar->telp_ibu }}</td>
+          <td>{{ $daftar->sumber_info }}</td>
+          <td>{{ $daftar->catatan }}</td>
+          <td>{{ $daftar->approve }}</td>
+          <!-- <td>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailRegistrasi" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
-          </td>
+          </td> -->
         </tr>
+        @endforeach
       </tbody>
     </table>
   </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\KelasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,8 +25,20 @@ Route::middleware(['web'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
     Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
+    Route::post('/admin/registrasi', [AdminController::class, 'storeSiswa'])->name('admin.students.store');
+    Route::put('/admin/students/{id}', [AdminController::class, 'updateSiswa'])->name('admin.students.update');
+    Route::delete('students/{id}', [AdminController::class, 'deleteSiswa'])->name('admin.students.delete');
+
     Route::get('/admin/teachers', [AdminController::class, 'teachers'])->name('admin.teachers');
-    Route::get('/admin/classroom', [AdminController::class, 'classroom'])->name('admin.classroom');
+    Route::post('/admin/teachers', [AdminController::class, 'storeGuru'])->name('admin.teachers.store');
+    Route::put('/admin/teachers/{id}', [AdminController::class, 'updateGuru'])->name('admin.teachers.update');
+    Route::delete('teachers/{id}', [AdminController::class, 'deleteGuru'])->name('admin.teachers.delete');
+
+    Route::get('/admin/classroom', [KelasController::class, 'classroom'])->name('admin.classroom');
+    Route::post('/admin/classroom', [KelasController::class, 'store'])->name('admin.classroom.store');
+    Route::put('/admin/classroom/{id}', [KelasController::class, 'update'])->name('admin.classroom.update');
+    Route::delete('classroom/{id}', [KelasController::class, 'delete'])->name('admin.classroom.delete');
+
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/admin/registrasi', [AdminController::class, 'registration'])->name('admin.registration');
     Route::post('/admin/users', [AdminController::class, 'store'])->name('admin.users.store');

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use \App\Models\User;
+use \App\Models\Pendaftaran;
+use \App\Models\Guru;
+use \App\Models\Kelas;
+use \App\Models\Siswa;
+use \App\Http\Controllers\DaftarController;
+use App\Models\Orangtua;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -53,10 +59,10 @@ class AdminController extends Controller
         return view('/pages/admin/teachers');
     }
 
-    function classroom()
-    {
-        return view('/pages/admin/classroom');
-    }
+    // function classroom()
+    // {
+    //     return view('/pages/admin/classroom');
+    // }
 
     function profile()
     {
@@ -65,7 +71,8 @@ class AdminController extends Controller
 
     function registration()
     {
-        return view('/pages/admin/registration');
+        $pendaftaran = Pendaftaran::all(); 
+        return view('/pages/admin/registration', compact('pendaftaran'));
     }
 
     public function create()
@@ -124,5 +131,114 @@ class AdminController extends Controller
         $users->delete();
 
         return redirect()->route('admin.users')->with('success', 'User deleted successfully.');
+    }
+
+    // Tambah Guru
+    public function storeGuru(Request $request)
+    {
+        $guru = new Guru;
+        $guru->nama = $request->nama;
+        $guru->tanggal_lahir = $request->tgl_lahir;
+        $guru->alamat = $request->alamat;
+        $guru->no_hp = $request->no_hp;
+        $guru->save();
+
+        if($request->kelas){
+
+            $kelas = Kelas::whereId($request->kelas)->first();
+
+            $guru->kelas()->attach($kelas);
+        }
+        return redirect()->back()->with('success', 'Data Guru created successfully.');
+    }
+
+    public function showGuru($id)
+    {
+        return Guru::find($id);
+    }
+
+    // Update Guru
+    public function updateGuru(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'id_kelas' => 'required|exists:kelas,id_kelas',
+            'tanggal_lahir' => 'required|date',
+            'alamat' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:100'
+        ]);
+
+        $guru = Guru::findOrFail($id);
+        $guru->update($request->only('nama', 'id_kelas', 'tanggal_lahir', 'alamat', 'no_hp'));
+
+        return redirect()->back()->with('success', 'Data guru berhasil di update.');
+    }
+
+    // Delete Guru
+    public function deleteGuru($id)
+    {
+        $guru = Guru::findOrFail($id);
+        $guru->delete();
+
+        return redirect()->route('admin.teachers')->with('success', 'Data guru berhasil terhapus.');
+    }
+
+   // Tambah Siswa
+    public function storeSiswa(Request $request)
+    {
+        $siswa = new Siswa;
+        $siswa->nama = $request->nama;
+        $siswa->tanggal_lahir = $request->tgl_lahir;
+        $siswa->alamat = $request->alamat;
+        // $siswa->orang_tua = $request->orang_tua;
+        // $siswa->kelas = $request->kelas;
+        $siswa->save();
+
+        if($request->orang_tua){
+
+            $orang_tua = Orangtua::whereId($request->orang_tua)->first();
+
+            $siswa->orang_tua()->attach($orang_tua);
+        }
+
+        if($request->kelas){
+
+            $kelas = Kelas::whereId($request->kelas)->first();
+
+            $siswa->kelas()->attach($kelas);
+        }
+
+        return redirect()->back()->with('success', 'Data Siswa created successfully.');
+    }
+
+    public function showSiswa($id)
+    {
+        return Siswa::find($id);
+    }
+
+    // Update Siswa
+    public function updateSiswa(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'tanggal_lahir' => 'required|date',
+            'alamat' => 'required|string|max:255',
+            'orang_tua' => 'required|exists:kelas,id_orangtua',
+            'kelas' => 'required|exists:kelas,id_kelas',
+        ]);
+
+        $siswa = Siswa::findOrFail($id);
+        $siswa->update($request->only('nama', 'tanggal_lahir', 'alamat', 'orang_tua', 'kelas',));
+
+        return redirect()->back()->with('success', 'Data siswa berhasil di update.');
+    }
+
+    // Delete Siswa
+    public function deleteSiswa($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+        $siswa->delete();
+
+        return redirect()->route('admin.students')->with('success', 'Data siswa berhasil terhapus.');
     }
 }
