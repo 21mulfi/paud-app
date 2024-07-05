@@ -14,4 +14,6 @@ class Siswa extends Model
     protected $fillable = [
         'id_siswa', 'nama', 'tanggal_lahir', 'alamat', 'orang_tua', 'kelas'
     ];
+
+    public $timestamps = false;
 }

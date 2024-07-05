@@ -39,10 +39,23 @@
               <td>{{ $daftar->nama_ibu }} / {{ $daftar->telp_ibu }}</td>
               <td>{{ $daftar->sumber_info }}</td>
               <td>{{ $daftar->catatan }}</td>
-              <td>{{ $daftar->approve }}</td>
-              <!-- <td>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailRegistrasi" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
-              </td> -->
+              <form method="POST" action="{{ route('admin.registration.store') }}" enctype="multipart/form-data">
+                @csrf
+                    <input type="hidden" name="id_pendaftaran" value="{{ $daftar->id_pendaftaran }}">
+                    <input type="hidden" name="nama_siswa" value="{{ $daftar->nama_siswa }}">
+                    <input type="hidden" name="tempat_lahir" value="{{ $daftar->tempat_lahir }}">
+                    <input type="hidden" name="tgl_lahir" value="{{ $daftar->tgl_lahir }}">
+                    <input type="hidden" name="jenis_kelamin" value="{{ $daftar->jenis_kelamin }}">
+                    <input type="hidden" name="alamat" value="{{ $daftar->alamat }}">
+                    <input type="hidden" name="agama" value="{{ $daftar->agama }}">
+                    <input type="hidden" name="nama_ayah" value="{{ $daftar->nama_ayah }}">
+                    <input type="hidden" name="telp_ayah" value="{{ $daftar->telp_ayah }}">
+                    <input type="hidden" name="nama_ibu" value="{{ $daftar->nama_ibu }}">
+                    <input type="hidden" name="telp_ibu" value="{{ $daftar->telp_ibu }}">
+                    <input type="hidden" name="sumber_info" value="{{ $daftar->sumber_info }}">
+                    <input type="hidden" name="catatan" value="{{ $daftar->catatan }}">
+              <td><button class="btn btn-primary" data-bs-toggle="modal"  title="Submit Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+              </form>
             </tr>
           @endforeach
           </tbody>

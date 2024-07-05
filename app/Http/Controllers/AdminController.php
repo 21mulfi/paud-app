@@ -52,12 +52,14 @@ class AdminController extends Controller
 
     function students()
     {
-        return view('/pages/admin/students');
+        $siswa = Siswa::all();
+        return view('/pages/admin/students', compact('siswa'));
     }
 
     function teachers()
     {
-        return view('/pages/admin/teachers');
+        $guru = Guru::all();
+        return view('/pages/admin/teachers', compact('guru'));
     }
 
     function classroom()
@@ -248,5 +250,33 @@ class AdminController extends Controller
         $siswa->delete();
 
         return redirect()->route('admin.students')->with('success', 'Data siswa berhasil terhapus.');
+    }
+
+    public function storeOrtuSiswa(Request $request)
+    {
+
+        $ortu = new Orangtua;
+        $ortu->nama = $request->nama_siswa;
+        $ortu->alamat = $request->alamat;
+        $ortu->nama_ayah = $request->nama_ayah;
+        $ortu->no_telp_ayah = $request->telp_ayah;
+        $ortu->nama_ibu = $request->nama_ibu;
+        $ortu->no_telp_ibu = $request->telp_ibu;
+        $ortu->save();
+
+        $siswa = new Siswa();
+        $siswa->nama = $request->nama_siswa;
+        $siswa->tanggal_lahir = $request->tgl_lahir;
+        $siswa->alamat = $request->alamat;
+        $siswa->jenis_kelamin = $request->jenis_kelamin;
+        $siswa->agama = $request->agama;
+        $siswa->catatan = $request->catatan;
+        $siswa->save();
+        return redirect()->back()->with('success', 'Data telah dikirimkan');
+    }
+
+    public function showOrtuSiswa($id)
+    {
+        return Orangtua::find($id);
     }
 }

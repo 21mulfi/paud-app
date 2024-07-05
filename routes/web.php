@@ -42,7 +42,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
     
     Route::get('/admin/registrasi', [AdminController::class, 'registration'])->name('admin.registration');
-    Route::post('/admin/users', [AdminController::class, 'store'])->name('admin.users.store');
+    Route::post('/admin/registrasi', [AdminController::class, 'storeOrtuSiswa'])->name('admin.registration.store');
     Route::put('/admin/users/{id}', [AdminController::class, 'update'])->name('admin.users.update');
     Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 

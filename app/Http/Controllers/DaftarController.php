@@ -24,7 +24,7 @@ class DaftarController extends Controller
         ]);
     }
 
-    // Tambah User
+    // Tambah Pendaftaran
     public function store(Request $request)
     {
         $daftar = new Pendaftaran();

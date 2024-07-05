@@ -24,17 +24,19 @@
             </thead>
             
             <tbody>
+              @foreach ($parent as $ortu)
               <tr>
-                <td>1</td>
-                <td>Hasbulloh / Neneng</td>
-                <td>Switzerland</td>
-                <td>08101293012931</td>
+                <td>{{ $ortu->id_ortu }}</td>
+                <td>{{ $ortu->nama_ayah }} / {{ $ortu->nama_ibu }}</td>
+                <td>{{ $ortu->alamat }}</td>
+                <td>{{ $ortu->no_telp_ayah }} / {{ $ortu->no_telp_ibu }}</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <button class="btn btn-danger" title="Hapus Data Siswa"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

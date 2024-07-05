@@ -14,4 +14,6 @@ class Orangtua extends Model
     protected $fillable = [
         'id_orangtua', 'nama', 'alamat', 'no_tlp', 'group_orang_tua'
     ];
+
+    public $timestamps = false;
 }

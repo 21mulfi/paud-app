@@ -22,16 +22,18 @@
             </thead>
             
             <tbody>
+              @foreach ($siswa as $s)
               <tr>
-                <td>1</td>
-                <td>Hasan</td>
-                <td>Mawar 1</td>
+                <td>{{ $s->id_siswa }}</td>
+                <td>{{ $s->nama_siswa }}</td>
+                <td>{{ $s->kelas }}</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <button class="btn btn-danger" title="Hapus Data Siswa"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
