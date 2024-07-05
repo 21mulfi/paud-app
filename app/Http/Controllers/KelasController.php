@@ -24,6 +24,7 @@ class KelasController extends Controller
     }
 
     public function store(Request $request){
+  
         $kelas = new Kelas();
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->kapasitas_maks = $request->kapasitas_maks;
@@ -35,5 +36,13 @@ class KelasController extends Controller
     public function show($id)
     {
         return Kelas::find($id);
+    }
+
+    public function delete($id)
+    {
+        $kelas = Kelas::findOrFail($id);
+        $kelas->delete();
+
+        return redirect()->route('admin.classroom')->with('success', 'Data kelas berhasil terhapus.');
     }
 }

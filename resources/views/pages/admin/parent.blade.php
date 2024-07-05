@@ -16,7 +16,9 @@
               <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Nama Ayah / Ibu</th>
-                <th scope="col">Nama Peserta Didik</th>
+                {{-- <th scope="col">Nama Peserta Didik</th> --}}
+                <th scope="col">Alamat</th>
+                <th scope="col">No. Telepon</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
@@ -24,8 +26,9 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td>Hasbulloh</td>
-                <td>Mamat</td>
+                <td>Hasbulloh / Neneng</td>
+                <td>Switzerland</td>
+                <td>08101293012931</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>

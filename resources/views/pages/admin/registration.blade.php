@@ -3,52 +3,53 @@
 <body>
   @include('template.dashnavbar')
   
-<div class="content bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
-  <h5 class="text-center">Verifikasi Registrasi</h5>
-  <hr>
-  <div class="row align-items-start">
-  <div class="table-responsive">
-    <table class="table my-3">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">No.</th>
-          <th scope="col">Nama Siswa</th>
-          <th scope="col">Tempat Tanggal Lahir</th>
-          <th scope="col">L/P</th>
-          <th scope="col">Alamat</th>
-          <th scope="col">Agama</th>
-          <th scope="col">Nama Ayah / Telp Ayah</th>
-          <th scope="col">Nama Ibu / Telp Ibu</th>
-          <th scope="col">Sumber Informasi</th>
-          <th scope="col">Catatan</th>
-          <th scope="col">Status</th>
-          <!-- <th scope="col">Detail Registrasi</th> -->
-        </tr>
-      </thead>
-      
-      <tbody>
-      @foreach ($pendaftaran as $daftar)
-        <tr>
-          <td>{{ $daftar->id_pendaftaran }}</td>
-          <td>{{ $daftar->nama_siswa }}</td>
-          <td>{{ $daftar->tempat_lahir }}, {{ $daftar->tgl_lahir }}</td>
-          <td>{{ $daftar->jenis_kelamin }}</td>
-          <td>{{ $daftar->alamat }}</td>
-          <td>{{ $daftar->agama }}</td>
-          <td>{{ $daftar->nama_ayah }} / {{ $daftar->telp_ayah }}</td>
-          <td>{{ $daftar->nama_ibu }} / {{ $daftar->telp_ibu }}</td>
-          <td>{{ $daftar->sumber_info }}</td>
-          <td>{{ $daftar->catatan }}</td>
-          <td>{{ $daftar->approve }}</td>
-          <!-- <td>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailRegistrasi" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
-          </td> -->
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+  <div class="content bg-white container-sm border my-5 rounded px-5 py-3 pb-5">
+    <h5 class="text-center">Verifikasi Registrasi</h5>
+    <hr>
+    <div class="row align-items-start">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped my-3 w-100">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Nama Siswa</th>
+              <th scope="col">Tempat Tanggal Lahir</th>
+              <th scope="col">L/P</th>
+              <th scope="col">Alamat</th>
+              <th scope="col">Agama</th>
+              <th scope="col">Nama Ayah / Telp Ayah</th>
+              <th scope="col">Nama Ibu / Telp Ibu</th>
+              <th scope="col">Sumber Informasi</th>
+              <th scope="col">Catatan</th>
+              <th scope="col">Status</th>
+              <!-- <th scope="col">Detail Registrasi</th> -->
+            </tr>
+          </thead>
+          
+          <tbody>
+          @foreach ($pendaftaran as $daftar)
+            <tr>
+              <td>{{ $daftar->id_pendaftaran }}</td>
+              <td>{{ $daftar->nama_siswa }}</td>
+              <td>{{ $daftar->tempat_lahir }}, {{ $daftar->tgl_lahir }}</td>
+              <td>{{ $daftar->jenis_kelamin }}</td>
+              <td>{{ $daftar->alamat }}</td>
+              <td>{{ $daftar->agama }}</td>
+              <td>{{ $daftar->nama_ayah }} / {{ $daftar->telp_ayah }}</td>
+              <td>{{ $daftar->nama_ibu }} / {{ $daftar->telp_ibu }}</td>
+              <td>{{ $daftar->sumber_info }}</td>
+              <td>{{ $daftar->catatan }}</td>
+              <td>{{ $daftar->approve }}</td>
+              <!-- <td>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailRegistrasi" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
+              </td> -->
+            </tr>
+          @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
   <div class="modal fade" id="detailRegistrasi" tabindex="-1" aria-labelledby="detailRegistrasiLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -155,6 +156,5 @@
       </div>
     </div>
   </div>
-</div>
 
 @include('template.endmaster')

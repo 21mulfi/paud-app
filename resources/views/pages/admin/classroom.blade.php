@@ -31,8 +31,13 @@
                 <!-- <td>Motorik - 1</td> -->
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listSiswa" title="List Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editKelas" title="Perbarui Data Guru"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                  <button class="btn btn-danger" title="Hapus Data Guru"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editKelas" title="Perbarui Data Kelas"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <form action="{{ route('admin.classroom.delete', $kelas->id_kelas) }}" method="POST" style="display:inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" title="Hapus Data Kelas" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  </form>
+                  {{-- <button class="btn btn-danger" title="Hapus Data Kelas"><i class="fa fa-trash-o" aria-hidden="true"></i></button> --}}
                 </td>
               </tr>
               @endforeach
@@ -54,29 +59,15 @@
             <form action="{{ route('admin.classroom.store') }}" method="POST">
               @csrf
               <div class="mb-3">
-                  <label for="name" class="form-label fw-bold">Nama Kelas</label>
-                  <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" required>
+                <label for="nama_kelas" class="form-label fw-bold">Nama Kelas</label>
+                <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" required>
               </div>
               <div class="mb-3">
-                  <label for="name" class="form-label fw-bold">Kapasitas Kelas</label>
-                  <input type="text" class="form-control" id="kapasitas_maks" name="kapasitas_maks" required>
+                <label for="kapasitas_maks" class="form-label fw-bold">Kapasitas Kelas</label>
+                <input type="text" class="form-control" id="kapasitas_maks" name="kapasitas_maks" required>
               </div>
-              <!-- <div class="mb-3">
-                <label for="guru" class="form-label fw-bold">Guru</label>
-                <select name="guru" class="form-control">
-                  <option>Test 1</option>
-                </select>
-              </div> -->
-              <!-- <div class="mb-3">
-                <label for="jadwal" class="form-label fw-bold">Jadwal</label>
-                <select name="jadwal" class="form-control">
-                  <option>Test 1</option>
-                </select>
-              </div> -->
-          </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
+              <button class="btn btn-primary w-100" type="submit">Simpan</button>
+            </form>
           </div>
         </div>
       </div>
