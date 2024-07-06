@@ -59,7 +59,8 @@ class AdminController extends Controller
     function teachers()
     {
         $guru = Guru::all();
-        return view('/pages/admin/teachers', compact('guru'));
+        $kelas = Kelas::all();
+        return view('/pages/admin/teachers', compact('guru', 'kelas'));
     }
 
     function classroom()
@@ -148,17 +149,12 @@ class AdminController extends Controller
     {
         $guru = new Guru;
         $guru->nama = $request->nama;
+        $guru->id_kelas = $request->id_kelas;
         $guru->tanggal_lahir = $request->tgl_lahir;
         $guru->alamat = $request->alamat;
         $guru->no_hp = $request->no_hp;
         $guru->save();
 
-        if($request->kelas){
-
-            $kelas = Kelas::whereId($request->kelas)->first();
-
-            $guru->kelas()->attach($kelas);
-        }
         return redirect()->back()->with('success', 'Data Guru created successfully.');
     }
 
@@ -235,10 +231,11 @@ class AdminController extends Controller
             'alamat' => 'required|string|max:255',
             'orang_tua' => 'required|exists:kelas,id_orangtua',
             'kelas' => 'required|exists:kelas,id_kelas',
+            'catatan' => 'required|string|max:255',
         ]);
 
         $siswa = Siswa::findOrFail($id);
-        $siswa->update($request->only('nama', 'tanggal_lahir', 'alamat', 'orang_tua', 'kelas',));
+        $siswa->update($request->only('nama', 'tanggal_lahir', 'alamat', 'orang_tua', 'kelas', 'catatan'));
 
         return redirect()->back()->with('success', 'Data siswa berhasil di update.');
     }

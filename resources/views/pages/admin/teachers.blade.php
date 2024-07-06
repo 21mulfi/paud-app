@@ -16,22 +16,24 @@
               <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Nama Lengkap</th>
-                <th scope="col">Email</th>
+                <th scope="col">Kelas</th>
                 <th scope="col">Aksi</th>
               </tr>
             </thead>
             
             <tbody>
+              @foreach($guru as $g)
               <tr>
-                <td>1</td>
-                <td>Harun Mubarok S.Kus,</td>
-                <td>harun@gmail.com</td>
+                <td>{{ $g->id_guru }}</td>
+                <td>{{ $g->nama }}</td>
+                <td>{{ $g->id_kelas->nama_kelas }}</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailGuru" title="Lihat Detail Data Guru"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editGuru" title="Perbarui Data Guru"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <button class="btn btn-danger" title="Hapus Data Guru"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                 </td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -46,34 +48,38 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="{{ route('admin.teachers.store') }}" method="POST">
+              @csrf
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                  <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap">
+                  <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Lengkap" required>
               </div>
               <div class="mb-3">
                 <label for="kelas" class="form-label fw-bold">Kelas</label>
-                <select name="kelas" class="form-control">
-                  <option>Test 1</option>
+                <select id="id_kelas" name="id_kelas" class="form-control">
+                @foreach($kelas as $kelas)
+                    <option value="{{ $kelas->id_kelas }}">{{ $kelas->nama_kelas }}</option>
+                @endforeach
                 </select>
               </div>
               <div class="mb-3">
                 <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" class="form-control">
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control">
               </div>
               <div class="mb-3">
                 <label for="alamat" class="form-label fw-bold">Alamat</label>
-                <textarea name="alamat" class="form-control"></textarea>
+                <textarea id="alamat" name="alamat" class="form-control"></textarea>
               </div>
             <div class="mb-3">
-              <label for="jadwal_mengajar" class="form-label fw-bold">Jadwal Mengajar</label>
-              <input type="text" value="" name="jadwal_mengajar" class="form-control" placeholder="Jadwal Mengajar">
+              <label for="no_hp" class="form-label fw-bold">Nomor HP</label>
+              <input type="text" id="no_hp" name="no_hp" class="form-control" placeholder="Nomor HP">
             </div>
+            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
           </form>
           </div>
-          <div class="modal-footer">
+          <!-- <div class="modal-footer">
             <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

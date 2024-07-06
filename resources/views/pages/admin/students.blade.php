@@ -25,7 +25,7 @@
               @foreach ($siswa as $s)
               <tr>
                 <td>{{ $s->id_siswa }}</td>
-                <td>{{ $s->nama_siswa }}</td>
+                <td>{{ $s->nama }}</td>
                 <td>{{ $s->kelas }}</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>

@@ -14,4 +14,9 @@ class Guru extends Model
     protected $fillable = [
         'id_guru', 'nama', 'id_kelas', 'tanggal_lahir', 'alamat', 'jadwal_mengajar'
     ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'id_kelas');
+    }
 }

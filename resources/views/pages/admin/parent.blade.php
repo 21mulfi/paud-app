@@ -16,7 +16,7 @@
               <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Nama Ayah / Ibu</th>
-                {{-- <th scope="col">Nama Peserta Didik</th> --}}
+                <th scope="col">Nama Peserta Didik</th>
                 <th scope="col">Alamat</th>
                 <th scope="col">No. Telepon</th>
                 <th scope="col">Aksi</th>
@@ -26,8 +26,9 @@
             <tbody>
               @foreach ($parent as $ortu)
               <tr>
-                <td>{{ $ortu->id_ortu }}</td>
+                <td>{{ $ortu->id_orangtua }}</td>
                 <td>{{ $ortu->nama_ayah }} / {{ $ortu->nama_ibu }}</td>
+                <td>{{ $ortu->nama }}</td>
                 <td>{{ $ortu->alamat }}</td>
                 <td>{{ $ortu->no_telp_ayah }} / {{ $ortu->no_telp_ibu }}</td>
                 <td>

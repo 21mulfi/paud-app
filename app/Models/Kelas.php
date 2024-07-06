@@ -17,4 +17,9 @@ class Kelas extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'id_kelas';
+
+    public function gurus()
+    {
+        return $this->hasMany(Guru::class, 'id_kelas');
+    }
 }
