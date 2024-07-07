@@ -45,4 +45,17 @@ class KelasController extends Controller
 
         return redirect()->route('admin.classroom')->with('success', 'Data kelas berhasil terhapus.');
     }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_kelas' => 'required|string|max:255',
+            'kapasitas_maks' => 'required|string|max:255'
+        ]);
+
+        $kelas = Kelas::findOrFail($id);
+        $kelas->update($request->only('nama_kelas', 'kapasitas_maks'));
+
+        return redirect()->back()->with('success', 'Data kelas berhasil di update.');
+    }
 }

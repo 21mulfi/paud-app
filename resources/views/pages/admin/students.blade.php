@@ -28,9 +28,13 @@
                 <td>{{ $s->nama }}</td>
                 <td>{{ $s->kelas }}</td>
                 <td>
-                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa{{ $s->id_siswa }}" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                  <button class="btn btn-danger" title="Hapus Data Siswa"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  <form action="{{ route('admin.students.delete', $s->id_siswa) }}" method="POST" style="display:inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" title="Hapus Data Siswa" onclick="return confirm('Apakah Anda yakin?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  </form>
                 </td>
               </tr>
               @endforeach
@@ -39,6 +43,7 @@
         </div>
     </div>
 
+    {{-- TAMBAH SISWA --}}
     <div class="modal fade poppins-regular" id="tambahSiswa" tabindex="-1" aria-labelledby="tambahSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -85,10 +90,10 @@
               <label for="kelas" class="form-label fw-bold">Kelas</label>
               <input type="text" value="" name="kelas" class="form-control" placeholder="Kelas">
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
               <label for="riwayat_kesehatan" class="form-label fw-bold">Riwayat Kesehatan</label>
               <input type="text" value="" name="riwayat_kesehatan" class="form-control" placeholder="Riwayat Kesehatan">
-            </div>
+            </div> --}}
           </form>
           </div>
           <div class="modal-footer">
@@ -98,9 +103,11 @@
       </div>
     </div>
   </div>
+  {{-- /TAMBAH SISWA --}}
 
     {{-- DETAIL SISWA --}}
-    <div class="modal fade poppins-regular" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
+    @foreach($siswa as $s)
+    <div class="modal fade poppins-regular" id="detailSiswa{{ $s->id_siswa }}" tabindex="-1" aria-labelledby="detailSiswaLabel{{ $s->id_siswa }}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -111,19 +118,15 @@
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Lengkap</label>
                   {{-- <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap"> --}}
-                  <p>Hasan</p>
+                  <p>{{ $s->nama }}</p>
               </div>
-              <div class="mb-3">
-                <label for="tempat_lahir" class="form-label fw-bold">Tempat Lahir</label>
-                <p>Bandung</p>
-            </div>
             <div class="mb-3">
                 <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
-                <p>2 Juni 2020</p>
+                <p>{{ $s->tanggal_lahir }}</p>
             </div>
             <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
-            <p>Laki-laki</p>
-            <div class="mb-3">
+            <p>{{ $s->jenis_kelamin }}</p>
+            {{-- <div class="mb-3">
               <label for="nama_orang_tua" class="form-label fw-bold">Nama Orang Tua</label>
               <p>Yana Rayana S.Kus,</p>
             </div>
@@ -134,11 +137,12 @@
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Riwayat Kesehatan</label>
               <p>Alhamdulillah sehat</p>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
     </div>
+    @endforeach
     {{-- /DETAIL SISWA --}}
 
     <div class="modal fade poppins-regular" id="editSiswa" tabindex="-1" aria-labelledby="editSiswaLabel" aria-hidden="true">

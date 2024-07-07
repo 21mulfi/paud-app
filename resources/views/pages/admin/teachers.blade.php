@@ -26,11 +26,17 @@
               <tr>
                 <td>{{ $g->id_guru }}</td>
                 <td>{{ $g->nama }}</td>
-                <td>{{ $g->id_kelas->nama_kelas }}</td>
+                <td>{{ $g->kelas->nama_kelas }}</td>
                 <td>
-                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailGuru" title="Lihat Detail Data Guru"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editGuru" title="Perbarui Data Guru"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                  <button class="btn btn-danger" title="Hapus Data Guru"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailGuru{{ $g->id_guru }}" title="Lihat Detail Data Guru"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editGuru{{ $g->id_guru }}" title="Perbarui Data Guru">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </button>
+                  <form action="{{ route('admin.teachers.delete', $g->id_guru) }}" method="POST" style="display:inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  </form>
                 </td>
               </tr>
               @endforeach
@@ -74,19 +80,17 @@
               <label for="no_hp" class="form-label fw-bold">Nomor HP</label>
               <input type="text" id="no_hp" name="no_hp" class="form-control" placeholder="Nomor HP">
             </div>
-            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
+            <button type="submit" class="btn btn-primary w-100">Simpan</button>
           </form>
           </div>
-          <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
-          </div> -->
         </div>
       </div>
     </div>
     {{-- /TAMBAH GURU --}}
 
     {{-- DETAIL GURU --}}
-    <div class="modal fade poppins-regular" id="detailGuru" tabindex="-1" aria-labelledby="detailGuruLabel" aria-hidden="true">
+    @foreach($guru as $g)
+    <div class="modal fade poppins-regular" id="detailGuru{{ $g->id_guru }}" tabindex="-1" aria-labelledby="detailGuruLabel{{ $g->id_guru }}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -97,33 +101,37 @@
             <form action="" method="POST">
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                  <p>Harun Mubarok S.Kus,</p>
+                  <p>{{ $g->nama }}</p>
               </div>
               <div class="mb-3">
                 <label for="kelas" class="form-label fw-bold">Kelas</label>
-                <p>Mawar 1</p>
+                <p>
+                  @if ($g->kelas)
+                  {{ $g->kelas->nama_kelas }}
+                  @else
+                  -
+                  @endif
+                </p>
               </div>
               <div class="mb-3">
                 <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
-                <p>1 Januari 2002</p>
+                <p>{{ $g->tanggal_lahir }}</p>
               </div>
               <div class="mb-3">
                 <label for="alamat" class="form-label fw-bold">Alamat</label>
-                <p>Cileunyi</p>
+                <p>{{ $g->alamat }}</p>
               </div>
-            <div class="mb-3">
-              <label for="jadwal_mengajar" class="form-label fw-bold">Jadwal Mengajar</label>
-              <p>Motorik 1 - Senin & Kamis - 09:00 s.d. 10:00</p>
-            </div>
           </form>
           </div>
         </div>
       </div>
     </div>
+    @endforeach
     {{-- /DETAIL GURU --}}
 
     {{-- EDIT GURU --}}
-    <div class="modal fade poppins-regular" id="editGuru" tabindex="-1" aria-labelledby="editGuruLabel" aria-hidden="true">
+    @foreach($guru as $g)
+    <div class="modal fade poppins-regular" id="editGuru{{ $g->id_guru }}" tabindex="-1" aria-labelledby="editGuruLabel{{ $g->id_guru }}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -131,37 +139,37 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="{{ route('admin.teachers.update', $g->id_guru) }}" method="POST">
+              @csrf
+              @method('PUT')
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                  <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap">
+                  <input type="text" name="nama" class="form-control" value="{{ $g->nama }}" required>
               </div>
               <div class="mb-3">
                 <label for="kelas" class="form-label fw-bold">Kelas</label>
-                <select name="kelas" class="form-control">
-                  <option>Test 1</option>
-                </select>
+                  <select id="id_kelas" name="id_kelas" class="form-control">
+                    <option value="{{ $g->id_kelas}}" {{ $g->id_kelas ? 'selected' : '' }}>{{ $g->id_kelas }}</option>
+                    {{-- @foreach($kelas as $kelas)
+                    <option value="{{ $kelas->id_kelas }}" {{ $g->id_kelas == $kelas->id_kelas ? 'selected' : '' }}>{{ $kelas->nama_kelas }}</option>
+                @endforeach --}}
+                  </select>
               </div>
               <div class="mb-3">
                 <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" class="form-control">
+                <input type="date" name="tanggal_lahir" class="form-control" value="{{ $g->tanggal_lahir }}" required>
               </div>
               <div class="mb-3">
                 <label for="alamat" class="form-label fw-bold">Alamat</label>
-                <textarea name="alamat" class="form-control"></textarea>
+                <textarea name="alamat" class="form-control">{{ $g->alamat }}</textarea>
               </div>
-            <div class="mb-3">
-              <label for="jadwal_mengajar" class="form-label fw-bold">Jadwal Mengajar</label>
-              <input type="text" value="" name="jadwal_mengajar" class="form-control" placeholder="Jadwal Mengajar">
-            </div>
+              <button class="btn btn-primary w-100" type="submit">Simpan</button>
           </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
           </div>
         </div>
       </div>
     </div>
+    @endforeach
     {{-- /EDIT GURU --}}
   </div>
     @include('template.endmaster')

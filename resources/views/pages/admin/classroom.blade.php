@@ -23,16 +23,18 @@
             </thead>
             
             <tbody>
-            @foreach ($kelas as $kelas)
+            @foreach ($kelas as $k)
               <tr>
-                <td>{{ $kelas->id_kelas }}</td>
-                <td>{{ $kelas->nama_kelas }}</td>
-                <td>{{ $kelas->kapasitas_maks }}</td>
+                <td>{{ $k->id_kelas }}</td>
+                <td>{{ $k->nama_kelas }}</td>
+                <td>{{ $k->kapasitas_maks }}</td>
                 <!-- <td>Motorik - 1</td> -->
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listSiswa" title="List Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editKelas" title="Perbarui Data Kelas"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                  <form action="{{ route('admin.classroom.delete', $kelas->id_kelas) }}" method="POST" style="display:inline-block;">
+                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editKelas{{ $k->id_kelas }}" title="Perbarui Data Kelas">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </button>
+                  <form action="{{ route('admin.classroom.delete', $k->id_kelas) }}" method="POST" style="display:inline-block;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" title="Hapus Data Kelas" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
@@ -75,7 +77,8 @@
     {{-- /TAMBAH KELAS --}}
 
     {{-- EDIT KELAS --}}
-    <div class="modal fade poppins-regular" id="editKelas" tabindex="-1" aria-labelledby="editKelasLabel" aria-hidden="true">
+    @foreach ($kelas as $k)
+    <div class="modal fade poppins-regular" id="editKelas{{ $k->id_kelas }}" tabindex="-1" aria-labelledby="editKelasLabel{{ $k->id_kelas }}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -83,31 +86,24 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="{{ route('admin.classroom.update', $k->id_kelas) }}" method="POST">
+              @csrf
+              @method('PUT')
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Kelas</label>
-                  <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap">
+                  <input type="text" value="{{ $k->nama_kelas}}" name="nama_kelas" class="form-control" required>
               </div>
               <div class="mb-3">
-                <label for="guru" class="form-label fw-bold">Guru</label>
-                <select name="guru" class="form-control">
-                  <option>Test 1</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="jadwal" class="form-label fw-bold">Jadwal</label>
-                <select name="jadwal" class="form-control">
-                  <option>Test 1</option>
-                </select>
-              </div>
+                <label for="kapasitas_maks" class="form-label fw-bold">Nama Kelas</label>
+                <input type="text" value="{{ $k->kapasitas_maks }}" name="kapasitas_maks" class="form-control" required>
+            </div>
+              <button class="btn btn-primary w-100" type="submit">Simpan</button>
           </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
           </div>
         </div>
       </div>
     </div>
+    @endforeach
     {{-- /EDIT KELAS --}}
 
     {{-- LIST SISWA --}}

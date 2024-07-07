@@ -58,7 +58,7 @@ class AdminController extends Controller
 
     function teachers()
     {
-        $guru = Guru::all();
+        $guru = Guru::with('kelas')->get();
         $kelas = Kelas::all();
         return view('/pages/admin/teachers', compact('guru', 'kelas'));
     }
@@ -66,7 +66,7 @@ class AdminController extends Controller
     function classroom()
     {
         $kelas = Kelas::all();
-        return view('/pages/admin/classroom', compact('classroom'));
+        return view('/pages/admin/classroom', compact('kelas'));
     }
 
     function profile()
@@ -150,7 +150,7 @@ class AdminController extends Controller
         $guru = new Guru;
         $guru->nama = $request->nama;
         $guru->id_kelas = $request->id_kelas;
-        $guru->tanggal_lahir = $request->tgl_lahir;
+        $guru->tanggal_lahir = $request->tanggal_lahir;
         $guru->alamat = $request->alamat;
         $guru->no_hp = $request->no_hp;
         $guru->save();
