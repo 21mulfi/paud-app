@@ -41,6 +41,8 @@ class KelasController extends Controller
     public function delete($id)
     {
         $kelas = Kelas::findOrFail($id);
+        // $kelas = Kelas::gurus();
+        $kelas->gurus()->delete();
         $kelas->delete();
 
         return redirect()->route('admin.classroom')->with('success', 'Data kelas berhasil terhapus.');

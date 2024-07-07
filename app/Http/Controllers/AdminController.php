@@ -255,7 +255,6 @@ class AdminController extends Controller
     {
 
         $ortu = new Orangtua;
-        $ortu->nama = $request->nama_siswa;
         $ortu->alamat = $request->alamat;
         $ortu->nama_ayah = $request->nama_ayah;
         $ortu->no_telp_ayah = $request->telp_ayah;
