@@ -12,8 +12,18 @@ class Siswa extends Model
     protected $table = 'siswa';
 
     protected $fillable = [
-        'id_siswa', 'nama', 'tanggal_lahir', 'alamat', 'orang_tua', 'kelas'
+        'id_siswa', 'nama', 'tanggal_lahir', 'alamat', 'id_orangtua', 'id_kelas'
     ];
 
     public $timestamps = false;
+
+    public function ortu()
+    {
+        return $this->belongsTo(Orangtua::class, 'id_orangtua', 'id_orangtua');
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'id_kelas', 'id_kelas');
+    }
 }

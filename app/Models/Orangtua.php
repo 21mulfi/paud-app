@@ -12,8 +12,13 @@ class Orangtua extends Model
     protected $table = 'orangtua';
 
     protected $fillable = [
-        'id_orangtua', 'nama', 'alamat', 'no_tlp', 'group_orang_tua'
+        'id_orangtua', 'alamat', 'nama_ayah', 'no_tlp_ayah', 'nama_ibu', 'no_tlp_ibu', 'group_orang_tua'
     ];
 
     public $timestamps = false;
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'id_orangtua', 'id_orangtua');
+    }
 }

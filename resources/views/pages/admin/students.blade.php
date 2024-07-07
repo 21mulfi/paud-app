@@ -126,18 +126,18 @@
             </div>
             <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
             <p>{{ $s->jenis_kelamin }}</p>
-            {{-- <div class="mb-3">
+            <div class="mb-3">
               <label for="nama_orang_tua" class="form-label fw-bold">Nama Orang Tua</label>
-              <p>Yana Rayana S.Kus,</p>
+              <p>{{ $s->orang_tua }}</p>
             </div>
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Kelas</label>
-              <p>Mawar 1</p>
+              <p>{{ $s->kelas }}</p>
             </div>
             <div class="mb-3">
-              <label for="kelas" class="form-label fw-bold">Riwayat Kesehatan</label>
-              <p>Alhamdulillah sehat</p>
-            </div> --}}
+              <label for="kelas" class="form-label fw-bold">Catatan</label>
+              <p>{{ $s->catatan }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -145,6 +145,7 @@
     @endforeach
     {{-- /DETAIL SISWA --}}
 
+    @foreach($siswa as $s)
     <div class="modal fade poppins-regular" id="editSiswa" tabindex="-1" aria-labelledby="editSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -153,18 +154,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="{{ route('admin.students.update', $s->id_siswa) }}" method="POST">
+            @csrf
+            @method('PUT')
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                  <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap">
+                  <input type="text" name="nama" class="form-control" value="{{ $s->nama }}" required>
               </div>
-              <div class="mb-3">
+              <!-- <div class="mb-3">
                 <label for="tempat_lahir" class="form-label fw-bold">Tempat Lahir</label>
-                <input type="text" value="" name="tempat_lahir" class="form-control" placeholder="Tempat Lahir">
-            </div>
+                <input type="date" name="tanggal_lahir" class="form-control" value="{{ $s->tanggal_lahir }}" required>
+            </div> -->
             <div class="mb-3">
                 <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" class="form-control">
+                <input type="date" name="tanggal_lahir" class="form-control" value="{{ $s->tanggal_lahir }}" required>
             </div>
             <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
             <div class="d-flex mb-3">
@@ -183,25 +186,35 @@
             </div>
             <div class="mb-3">
               <label for="nama_orang_tua" class="form-label fw-bold">Nama Orang Tua</label>
-              <select name="orang_tua" class="form-control">
-                <option>Test 1</option>
+              <select id="id_orangtua" name="id_orangtua" class="form-control">
+              @foreach($ortu as $o)
+                      <option value="{{ $o->id_orangtua }}" {{ $s->id_orangtua == $o->id_orangtua ? 'selected' : '' }}>{{ $o->nama_ibu }}</option>
+                    @endforeach
               </select>
             </div>
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Kelas</label>
-              <input type="text" value="" name="kelas" class="form-control" placeholder="Kelas">
+              <select id="id_kelas" name="id_kelas" class="form-control">
+                    @foreach($kelas as $k)
+                      <option value="{{ $k->id_kelas }}" {{ $s->id_kelas == $k->id_kelas ? 'selected' : '' }}>{{ $k->nama_kelas }}</option>
+                    @endforeach
+                  </select>
             </div>
             <div class="mb-3">
-              <label for="riwayat_kesehatan" class="form-label fw-bold">Riwayat Kesehatan</label>
-              <input type="text" value="" name="riwayat_kesehatan" class="form-control" placeholder="Riwayat Kesehatan">
+              <label for="catatan" class="form-label fw-bold">Catatan</label>
+              <input type="text" name="catatan" class="form-control" value="{{ $s->catatan }}" required>
             </div>
+            <div class="modal-footer">
+            <button class="btn btn-primary w-100" type="submit">Simpan</button>
+          </div>
           </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
-          </div>
+          <!-- <div class="modal-footer">
+            <button class="btn btn-primary w-100" type="submit">Simpan</button>
+          </div> -->
         </div>
       </div>
+      @endforeach
     </div>
 
     @include('template.endmaster')

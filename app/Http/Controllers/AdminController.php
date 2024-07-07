@@ -53,7 +53,9 @@ class AdminController extends Controller
     function students()
     {
         $siswa = Siswa::all();
-        return view('/pages/admin/students', compact('siswa'));
+        $ortu = Orangtua::with('siswa')->get();
+        $kelas = Kelas::with('siswa')->get();
+        return view('/pages/admin/students', compact('siswa', 'ortu', 'kelas'));
     }
 
     function teachers()
@@ -229,13 +231,13 @@ class AdminController extends Controller
             'nama' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
-            'orang_tua' => 'required|exists:kelas,id_orangtua',
-            'kelas' => 'required|exists:kelas,id_kelas',
+            'id_orangtua' => 'required|exists:orangtua,id_orangtua',
+            'id_kelas' => 'required|exists:kelas,id_kelas',
             'catatan' => 'required|string|max:255',
         ]);
 
         $siswa = Siswa::findOrFail($id);
-        $siswa->update($request->only('nama', 'tanggal_lahir', 'alamat', 'orang_tua', 'kelas', 'catatan'));
+        $siswa->update($request->only('nama', 'tanggal_lahir', 'alamat', 'id_orangtua', 'id_kelas', 'catatan'));
 
         return redirect()->back()->with('success', 'Data siswa berhasil di update.');
     }
