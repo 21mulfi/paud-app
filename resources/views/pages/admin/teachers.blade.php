@@ -63,8 +63,8 @@
               <div class="mb-3">
                 <label for="kelas" class="form-label fw-bold">Kelas</label>
                 <select id="id_kelas" name="id_kelas" class="form-control">
-                @foreach($kelas as $kelas)
-                    <option value="{{ $kelas->id_kelas }}">{{ $kelas->nama_kelas }}</option>
+                @foreach($kelas as $k)
+                    <option value="{{ $k->id_kelas }}">{{ $k->nama_kelas }}</option>
                 @endforeach
                 </select>
               </div>
@@ -149,10 +149,9 @@
               <div class="mb-3">
                 <label for="kelas" class="form-label fw-bold">Kelas</label>
                   <select id="id_kelas" name="id_kelas" class="form-control">
-                    <option value="{{ $g->id_kelas}}" {{ $g->id_kelas ? 'selected' : '' }}>{{ $g->id_kelas }}</option>
-                    {{-- @foreach($kelas as $kelas)
-                    <option value="{{ $kelas->id_kelas }}" {{ $g->id_kelas == $kelas->id_kelas ? 'selected' : '' }}>{{ $kelas->nama_kelas }}</option>
-                @endforeach --}}
+                    @foreach($kelas as $k)
+                      <option value="{{ $k->id_kelas }}" {{ $g->id_kelas == $k->id_kelas ? 'selected' : '' }}>{{ $k->nama_kelas }}</option>
+                    @endforeach
                   </select>
               </div>
               <div class="mb-3">
@@ -163,6 +162,10 @@
                 <label for="alamat" class="form-label fw-bold">Alamat</label>
                 <textarea name="alamat" class="form-control">{{ $g->alamat }}</textarea>
               </div>
+              <div class="mb-3">
+                <label for="name" class="form-label fw-bold">No. HP</label>
+                <input type="number" name="no_hp" class="form-control" value="{{ $g->no_hp }}" required>
+            </div>
               <button class="btn btn-primary w-100" type="submit">Simpan</button>
           </form>
           </div>

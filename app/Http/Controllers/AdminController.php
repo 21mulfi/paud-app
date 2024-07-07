@@ -173,7 +173,7 @@ class AdminController extends Controller
             'alamat' => 'required|string|max:255',
             'no_hp' => 'required|string|max:100'
         ]);
-
+        
         $guru = Guru::findOrFail($id);
         $guru->update($request->only('nama', 'id_kelas', 'tanggal_lahir', 'alamat', 'no_hp'));
 
