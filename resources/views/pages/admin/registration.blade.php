@@ -21,7 +21,7 @@
               <th scope="col">Nama Ibu / Telp Ibu</th>
               <th scope="col">Sumber Informasi</th>
               <th scope="col">Catatan</th>
-              <th scope="col">Status</th>
+              <th scope="col">Verifikasi</th>
               <!-- <th scope="col">Detail Registrasi</th> -->
             </tr>
           </thead>
@@ -54,7 +54,7 @@
                     <input type="hidden" name="telp_ibu" value="{{ $daftar->telp_ibu }}">
                     <input type="hidden" name="sumber_info" value="{{ $daftar->sumber_info }}">
                     <input type="hidden" name="catatan" value="{{ $daftar->catatan }}">
-              <td><button class="btn btn-primary" data-bs-toggle="modal"  title="Submit Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+              <td><button class="btn btn-primary" data-bs-toggle="modal"  title="Submit Data Siswa"><i class="fa fa-check" aria-hidden="true"></i></button></td>
               </form>
             </tr>
           @endforeach

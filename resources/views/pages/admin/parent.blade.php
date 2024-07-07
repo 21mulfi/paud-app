@@ -7,9 +7,9 @@
         <h5 class="text-center poppins-regular fw-bold">Manajemen Data Orang Tua Siswa</h5>
         <hr>
         <div class="row align-items-start">
-          <div>
+          {{-- <div>
             <button class="btn btn-primary poppins-regular" data-bs-toggle="modal" data-bs-target="#tambahSiswa">Tambah</button>
-          </div>
+          </div> --}}
         <div class="table-responsive">
           <table class="table my-3 poppins-regular">
             <thead class="table-dark">
@@ -34,7 +34,11 @@
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                  <button class="btn btn-danger" title="Hapus Data Siswa"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  <form action="{{ route('admin.parent.delete', $ortu->id_orangtua) }}" method="POST" style="display:inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" title="Hapus Data Siswa" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                  </form>
                 </td>
               </tr>
               @endforeach

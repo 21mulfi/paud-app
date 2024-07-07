@@ -26,7 +26,7 @@
               <tr>
                 <td>{{ $s->id_siswa }}</td>
                 <td>{{ $s->nama }}</td>
-                <td>{{ $s->kelas }}</td>
+                <td>{{ $s->kelas->nama_kelas }}</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa{{ $s->id_siswa }}" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
@@ -127,12 +127,20 @@
             <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
             <p>{{ $s->jenis_kelamin }}</p>
             <div class="mb-3">
-              <label for="nama_orang_tua" class="form-label fw-bold">Nama Orang Tua</label>
-              <p>{{ $s->orang_tua }}</p>
+              <label for="alamat" class="form-label fw-bold">Alamat</label>
+              <p>{{ $s->alamat }}</p>
+            </div>
+            <div class="mb-3">
+              <label for="nama_orang_tua" class="form-label fw-bold">Nama Ayah</label>
+              <p>{{ $s->ortu->nama_ayah }}</p>
+            </div>
+            <div class="mb-3">
+              <label for="nama_orang_tua" class="form-label fw-bold">Nama Ibu</label>
+              <p>{{ $s->ortu->nama_ibu }}</p>
             </div>
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Kelas</label>
-              <p>{{ $s->kelas }}</p>
+              <p>{{ $s->kelas->nama_kelas }}</p>
             </div>
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Catatan</label>
@@ -172,13 +180,13 @@
             <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
             <div class="d-flex mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Laki-laki" value="Laki-laki" checked>
+                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Laki-laki" value="Laki-laki" {{ $s->jenis_kelamin == 'Laki-laki' ? 'checked' : '' }}>
                   <label class="form-check-label" for="Laki-laki">
                     Laki-laki
                   </label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Perempuan" value="Perempuan">
+                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Perempuan" value="Perempuan" {{ $s->jenis_kelamin == 'Perempuan' ? 'checked' : '' }}>
                   <label class="form-check-label" for="Perempuan">
                     Perempuan
                   </label>
@@ -188,9 +196,13 @@
               <label for="nama_orang_tua" class="form-label fw-bold">Nama Orang Tua</label>
               <select id="id_orangtua" name="id_orangtua" class="form-control">
               @foreach($ortu as $o)
-                      <option value="{{ $o->id_orangtua }}" {{ $s->id_orangtua == $o->id_orangtua ? 'selected' : '' }}>{{ $o->nama_ibu }}</option>
+                      <option value="{{ $o->id_orangtua }}" {{ $s->id_orangtua == $o->id_orangtua ? 'selected' : '' }}>{{ $o->nama_ayah }} / {{ $o->nama_ibu }}</option>
                     @endforeach
               </select>
+            </div>
+            <div class="mb-3">
+              <label for="alamat" class="form-label fw-bold">Alamat</label>
+              <textarea name="alamat" class="form-control">{{ $s->alamat }}</textarea>
             </div>
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Kelas</label>

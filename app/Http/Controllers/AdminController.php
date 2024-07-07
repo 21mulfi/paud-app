@@ -227,9 +227,11 @@ class AdminController extends Controller
     // Update Siswa
     public function updateSiswa(Request $request, $id)
     {
+        // dd($request->all());
         $request->validate([
             'nama' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
             'id_orangtua' => 'required|exists:orangtua,id_orangtua',
             'id_kelas' => 'required|exists:kelas,id_kelas',
@@ -237,7 +239,7 @@ class AdminController extends Controller
         ]);
 
         $siswa = Siswa::findOrFail($id);
-        $siswa->update($request->only('nama', 'tanggal_lahir', 'alamat', 'id_orangtua', 'id_kelas', 'catatan'));
+        $siswa->update($request->only('nama', 'tanggal_lahir', 'jenis_kelamin', 'alamat', 'id_orangtua', 'id_kelas', 'catatan'));
 
         return redirect()->back()->with('success', 'Data siswa berhasil di update.');
     }
@@ -276,5 +278,13 @@ class AdminController extends Controller
     public function showOrtuSiswa($id)
     {
         return Orangtua::find($id);
+    }
+
+    public function deleteParent($id)
+    {
+        $ortu = Orangtua::findOrFail($id);
+        $ortu->delete();
+
+        return redirect()->route('admin.parent')->with('success', 'Data orang tua berhasil terhapus.');
     }
 }

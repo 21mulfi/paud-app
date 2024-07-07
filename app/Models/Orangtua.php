@@ -10,12 +10,12 @@ class Orangtua extends Model
     use HasFactory;
 
     protected $table = 'orangtua';
+    protected $primaryKey = 'id_orangtua';
+    public $timestamps = false;
 
     protected $fillable = [
         'id_orangtua', 'alamat', 'nama_ayah', 'no_tlp_ayah', 'nama_ibu', 'no_tlp_ibu', 'group_orang_tua'
     ];
-
-    public $timestamps = false;
 
     public function siswa()
     {

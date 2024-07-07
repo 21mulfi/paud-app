@@ -49,6 +49,7 @@ Route::middleware(['web'])->group(function () {
     Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
     Route::get('/admin/data_orangtua', [AdminController::class, 'parent'])->name('admin.parent');
+    Route::delete('/parent/{id}', [AdminController::class, 'deleteParent'])->name('admin.parent.delete');
     });
 
     //menu guru
