@@ -94,61 +94,99 @@
     @endif
 
     {{-- TAMBAH USER MODAL --}}
-    <div class="modal fade poppins-regular" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header text-light" style="background-color: #1B96CE">
-            <h5 class="modal-title" id="tambahUserLabel">Tambah User Baru</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade poppins-regular" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-light" style="background-color: #1B96CE">
+        <h5 class="modal-title" id="tambahUserLabel">Tambah User Baru</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ route('admin.users.store') }}" method="POST">
+          @csrf
+          <!-- <div class="mb-3">
+            <label for="name" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div> -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
           </div>
-          <div class="modal-body">
-            <form action="{{ route('admin.users.store') }}" method="POST">
-              @csrf
-              <div class="mb-3">
-                <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-              </div>
-              <div class="mb-3">
-              <label for="gender" class="form-label">Jenis Kelamin</label>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="laki-laki" value="laki-laki" required>
-                <label class="form-check-label" for="laki-laki">
-                  Laki-laki
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="perempuan" value="perempuan" required>
-                <label class="form-check-label" for="perempuan">
-                  Perempuan
-                </label>
-              </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Jenis Kelamin</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" id="laki-laki" value="laki-laki" required>
+              <label class="form-check-label" for="laki-laki">
+                Laki-laki
+              </label>
             </div>
-            <div class="form-group mb-3">
-              <label for="role" class="form-label fw-bold">Role</label>
-              <select class="form-select" name="role" aria-label="Default select role" required>
-                <option value="admin" selected>Admin</option>
-                <option value="guru">Guru</option>
-                <option value="orangtua">Orang tua</option>
-              </select>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" id="perempuan" value="perempuan" required>
+              <label class="form-check-label" for="perempuan">
+                Perempuan
+              </label>
             </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-              </div>
-              <!-- <div class="mb-3">
-                <label for="password_confirmation" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
-              </div> -->
-              <button type="submit" class="btn btn-primary w-100">Simpan</button>
-            </form>
           </div>
-        </div>
+          <div class="form-group mb-3">
+            <label for="role" class="form-label fw-bold">Role</label>
+            <select class="form-select" id="role" name="role" aria-label="Default select role" required>
+              <option value="admin" selected>Admin</option>
+              <option value="guru">Guru</option>
+              <option value="orangtua">Orang tua</option>
+            </select>
+          </div>
+          <div class="mb-3" id="nameInput">
+            <label for="name" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3 d-none" id="guruSelect">
+            <label for="guru_name" class="form-label">Nama Guru</label>
+            <select class="form-select" name="guru_nama" aria-label="Default select guru">
+              @foreach($gurus as $guru)
+                <option value="{{ $guru->nama }}">{{ $guru->nama }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="mb-3 d-none" id="orangtuaSelect">
+            <label for="orangtua_name" class="form-label">Nama Orang Tua</label>
+            <select class="form-select" name="nama_ibu" aria-label="Default select orangtua">
+              @foreach($orangtuas as $orangtua)
+                <option value="{{ $orangtua->nama_ibu }}">{{ $orangtua->nama_ibu }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Simpan</button>
+        </form>
       </div>
     </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('role').addEventListener('change', function() {
+    var role = this.value;
+    var nameInput = document.getElementById('nameInput');
+    var guruSelect = document.getElementById('guruSelect');
+    var orangtuaSelect = document.getElementById('orangtuaSelect');
+
+    nameInput.classList.add('d-none');
+    guruSelect.classList.add('d-none');
+    orangtuaSelect.classList.add('d-none');
+
+    if (role === 'guru') {
+      guruSelect.classList.remove('d-none');
+    } else if (role === 'orangtua') {
+      orangtuaSelect.classList.remove('d-none');
+    } else {
+      nameInput.classList.remove('d-none');
+    }
+  });
+</script>
+
 
     {{-- EDIT USER MODAL --}}
     @foreach($users as $data)

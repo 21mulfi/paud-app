@@ -11,7 +11,7 @@
               <thead class="table-dark">
                 <tr>
                   <th scope="col" style="text-align: center">No.</th>
-                  <th scope="col">Kelas</th>
+                  <th scope="col">Nama Siswa</th>
                   <th scope="col">Aksi</th>
                 </tr>
               </thead>
@@ -19,9 +19,9 @@
               <tbody>
                 <tr>
                   <td align="center">1</td>
-                  <td>MTR-001</td>
+                  <td>Hasan</td>
                   <td>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listSiswa" title="List Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button class="btn btn-warning" title="Nilai Siswa"><a href="{{ route('guru.form_penilaian') }}" target="_blank" class="text=decoration-none text-dark"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button>
                   </td>
                 </tr>
               </tbody>

@@ -47,7 +47,10 @@ class AdminController extends Controller
 
     $users = $users->paginate(20); // pagination
 
-    return view('/pages/admin/users', compact('users', 'sortField', 'sortOrder'));
+    $gurus = Guru::all();
+    $orangtuas = Orangtua::all();
+
+    return view('/pages/admin/users', compact('users', 'sortField', 'sortOrder', 'gurus', 'orangtuas'));
     }
 
     function students()
@@ -106,6 +109,15 @@ class AdminController extends Controller
         $user->password = $request->password;
         $user->gender = $request->gender;
         $user->role = $request->role;
+
+        if ($request->role == 'guru') {
+            $user->name = $request->guru_nama;
+        } elseif ($request->role == 'orangtua') {
+            $user->name = $request->nama_ibu;
+        } else {
+            $user->name = $request->name;
+        }
+
         $user->save();
         return redirect()->back()->with('success', 'User created successfully.');
     }
@@ -198,23 +210,9 @@ class AdminController extends Controller
         $siswa->nama = $request->nama;
         $siswa->tanggal_lahir = $request->tgl_lahir;
         $siswa->alamat = $request->alamat;
-        // $siswa->orang_tua = $request->orang_tua;
-        // $siswa->kelas = $request->kelas;
+        $siswa->id_orangtua = $request->id_orangtua;
+        $siswa->id_kelas = $request->id_kelas;
         $siswa->save();
-
-        if($request->orang_tua){
-
-            $orang_tua = Orangtua::whereId($request->orang_tua)->first();
-
-            $siswa->orang_tua()->attach($orang_tua);
-        }
-
-        if($request->kelas){
-
-            $kelas = Kelas::whereId($request->kelas)->first();
-
-            $siswa->kelas()->attach($kelas);
-        }
 
         return redirect()->back()->with('success', 'Data Siswa created successfully.');
     }
