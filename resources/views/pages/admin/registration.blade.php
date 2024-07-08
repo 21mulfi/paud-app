@@ -8,7 +8,7 @@
     <hr>
     <div class="row align-items-start">
       <div class="table-responsive">
-        <table class="table table-bordered table-striped my-3 w-100">
+        <table class="table my-3 w-100">
           <thead class="table-dark">
             <tr>
               <th scope="col">No.</th>

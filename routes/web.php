@@ -40,6 +40,7 @@ Route::middleware(['web'])->group(function () {
     Route::delete('classroom/{id}', [KelasController::class, 'delete'])->name('admin.classroom.delete');
 
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::put('/admin/profile/{id}', [AdminController::class, 'updateProfile'])->name('admin.profile.update');
     
     Route::get('/admin/registrasi', [AdminController::class, 'registration'])->name('admin.registration');
     Route::post('/admin/registrasi', [AdminController::class, 'storeOrtuSiswa'])->name('admin.registration.store');

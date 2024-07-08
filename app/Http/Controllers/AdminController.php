@@ -287,4 +287,29 @@ class AdminController extends Controller
 
         return redirect()->route('admin.parent')->with('success', 'Data orang tua berhasil terhapus.');
     }
+
+    public function updateProfile(Request $request, $id)
+    {
+
+        if (Auth::user()->id != $id) {
+            return redirect()->back()->withErrors(['msg' => 'Anda tidak memiliki izin untuk mengubah data ini.']);
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'gender' => 'required|string'
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->update($request->only('name', 'email', 'gender'));
+
+        if ($request->filled('password')) {
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Data User berhasil di update.');
+    }
 }

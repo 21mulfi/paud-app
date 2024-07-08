@@ -26,7 +26,7 @@
               <tr>
                 <td>{{ $s->id_siswa }}</td>
                 <td>{{ $s->nama }}</td>
-                <td>{{ $s->kelas->nama_kelas }}</td>
+                <td>{{ $s->kelas ? $s->kelas->nama_kelas : 'Kelas tidak ditemukan' }}</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa{{ $s->id_siswa }}" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
@@ -132,15 +132,15 @@
             </div>
             <div class="mb-3">
               <label for="nama_orang_tua" class="form-label fw-bold">Nama Ayah</label>
-              <p>{{ $s->ortu->nama_ayah }}</p>
+              <p>{{ $s->ortu ? $s->ortu->nama_ayah : 'Ayah tidak ditemukan' }}</p>
             </div>
             <div class="mb-3">
               <label for="nama_orang_tua" class="form-label fw-bold">Nama Ibu</label>
-              <p>{{ $s->ortu->nama_ibu }}</p>
+              <p>{{ $s->ortu ? $s->ortu->nama_ibu : 'Ibu tidak ditemukan' }}</p>
             </div>
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Kelas</label>
-              <p>{{ $s->kelas->nama_kelas }}</p>
+              <p>{{ $s->kelas ? $s->kelas->nama_kelas : 'Kelas tidak ditemukan' }}</p>
             </div>
             <div class="mb-3">
               <label for="kelas" class="form-label fw-bold">Catatan</label>

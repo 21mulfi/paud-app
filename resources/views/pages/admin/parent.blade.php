@@ -90,12 +90,12 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="kelas" class="form-label fw-bold">Kelas</label>
-              <input type="text" value="" name="kelas" class="form-control" placeholder="Kelas">
+              <label for="email" class="form-label fw-bold">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email">
             </div>
             <div class="mb-3">
-              <label for="riwayat_kesehatan" class="form-label fw-bold">Riwayat Kesehatan</label>
-              <input type="text" value="" name="riwayat_kesehatan" class="form-control" placeholder="Riwayat Kesehatan">
+              <label for="password" class="form-label fw-bold">Password</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Password">
             </div>
           </form>
           </div>
