@@ -126,31 +126,31 @@
           <div class="form-group mb-3">
             <label for="role" class="form-label fw-bold">Role</label>
             <select class="form-select" id="role" name="role" aria-label="Default select role" required>
-              <option value="admin" selected>Admin</option>
-              <option value="guru">Guru</option>
-              <option value="orangtua">Orang tua</option>
+                <option value="admin" selected>Admin</option>
+                <option value="guru">Guru</option>
+                <option value="orangtua">Orang tua</option>
             </select>
-          </div>
-          <div class="mb-3" id="nameInput">
+        </div>
+        <div class="mb-3 d-none" id="guruSelect">
+            <label for="guru_name" class="form-label">Nama Guru</label>
+            <select class="form-select" name="guru_nama" id="guru_name" aria-label="Default select guru">
+                @foreach($gurus as $guru)
+                    <option value="{{ $guru->nama }}">{{ $guru->nama }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3 d-none" id="orangtuaSelect">
+            <label for="orangtua_name" class="form-label">Nama Orang Tua</label>
+            <select class="form-select" name="nama_ibu" id="orangtua_name" aria-label="Default select orangtua">
+                @foreach($orangtuas as $orangtua)
+                    <option value="{{ $orangtua->nama_ibu }}">{{ $orangtua->nama_ibu }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3" id="nameInput">
             <label for="name" class="form-label">Nama Lengkap</label>
             <input type="text" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="mb-3 d-none" id="guruSelect">
-            <label for="guru_name" class="form-label">Nama Guru</label>
-            <select class="form-select" name="guru_nama" aria-label="Default select guru">
-              @foreach($gurus as $guru)
-                <option value="{{ $guru->nama }}">{{ $guru->nama }}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="mb-3 d-none" id="orangtuaSelect">
-            <label for="orangtua_name" class="form-label">Nama Orang Tua</label>
-            <select class="form-select" name="nama_ibu" aria-label="Default select orangtua">
-              @foreach($orangtuas as $orangtua)
-                <option value="{{ $orangtua->nama_ibu }}">{{ $orangtua->nama_ibu }}</option>
-              @endforeach
-            </select>
-          </div>
+        </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
@@ -251,4 +251,30 @@
 @endforeach
 
   </div>
+
+<script>
+  document.getElementById('role').addEventListener('change', function() {
+    var role = this.value;
+    var nameInput = document.getElementById('nameInput');
+    var guruSelect = document.getElementById('guruSelect');
+    var orangtuaSelect = document.getElementById('orangtuaSelect');
+
+    nameInput.classList.add('d-none');
+    guruSelect.classList.add('d-none');
+    orangtuaSelect.classList.add('d-none');
+
+    if (role === 'guru') {
+        guruSelect.classList.remove('d-none');
+        document.getElementById('guru_name').setAttribute('required', 'required');
+        document.getElementById('name').removeAttribute('required');
+    } else if (role === 'orangtua') {
+        orangtuaSelect.classList.remove('d-none');
+        document.getElementById('orangtua_name').setAttribute('required', 'required');
+        document.getElementById('name').removeAttribute('required');
+    } else {
+        nameInput.classList.remove('d-none');
+        document.getElementById('name').setAttribute('required', 'required');
+    }
+});
+</script>
   @include('template.endmaster')

@@ -14,7 +14,7 @@ class Orangtua extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id_orangtua', 'alamat', 'nama_ayah', 'no_tlp_ayah', 'nama_ibu', 'no_tlp_ibu', 'group_orang_tua'
+        'id_orangtua', 'alamat', 'nama_ayah', 'no_telp_ayah', 'nama_ibu', 'no_telp_ibu', 'group_orang_tua'
     ];
 
     public function siswa()
