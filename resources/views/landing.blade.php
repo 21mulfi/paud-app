@@ -82,7 +82,7 @@
     {{-- /GAMBAR BOCIL --}}
 
     {{-- PROFIL --}}
-    <section id="profil">
+    <section>
     <div class="container">
         <h2 class="text-center my-5 salsa">Kenapa Nur Kids?</h2>
         <div class="row mb-5">
@@ -117,23 +117,25 @@
         </div>
       </div>
     </section>
-    
-    <div class="profil">
-    <div class="container">
-      <div class="row">
-        <h5 class="salsa">PAUD Nur Kids memiliki berbagai program pembelajaran yang mencakup Program Kognitif, yang berfokus pada pengembangan kemampuan berpikir anak melalui kegiatan yang merangsang otak, seperti pemecahan masalah, permainan logika, dan aktivitas eksplorasi.</h5>
-      </div>
 
-      <div class="row">
-        <div class="col-md-6 mb-5">
-          <h6 class="salsa">Visi: <br>Mencerdaskan anak bangsa dengan mengembangkan potensi unik setiap anak melalui pendidikan yang holistik, menyenangkan, dan berkelanjutan, serta menciptakan generasi muda yang cerdas, kreatif, dan berkarakter.</h6>
+    <div class="profil" id="profil">
+      <div class="container">
+        <div class="row">
+          <h4 class="salsa text-center mt-4">Profil Sekolah</h4>
         </div>
-        <div class="col-md-6 mb-5">
-          <h6 class="salsa">Misi : <br>Menyediakan Pendidikan Berkualitas Memberikan pendidikan anak usia dini yang berkualitas tinggi dengan metode pengajaran yang inovatif dan interaktif. Mengembangkan Lingkungan Belajar yang Aman dan Nyaman Menciptakan lingkungan belajar yang aman, bersih, dan mendukung perkembangan fisik, kognitif, sosial, dan emosional anak. Mengoptimalkan Potensi Anak Mengembangkan potensi unik setiap anak melalui program yang holistik dan menyeluruh, yang mencakup aspek kognitif, fisik, sosial, dan emosional.</h6>
+        <div class="row">
+          <h6 class="salsa text-center my-5">PAUD Nur Kids memiliki berbagai program pembelajaran yang mencakup Program Kognitif, yang berfokus pada pengembangan kemampuan berpikir anak melalui kegiatan yang merangsang otak, seperti pemecahan masalah, permainan logika, dan aktivitas eksplorasi.</h6>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-5">
+            <h6 class="salsa">Visi: <br>Mencerdaskan anak bangsa dengan mengembangkan potensi unik setiap anak melalui pendidikan yang holistik, menyenangkan, dan berkelanjutan, serta menciptakan generasi muda yang cerdas, kreatif, dan berkarakter.</h6>
+          </div>
+          <div class="col-md-6 mb-5">
+            <h6 class="salsa">Misi : <br>1. Menyediakan Pendidikan Berkualitas Memberikan pendidikan anak usia dini yang berkualitas tinggi dengan metode pengajaran yang inovatif dan interaktif. <br>2. Mengembangkan Lingkungan Belajar yang Aman dan Nyaman Menciptakan lingkungan belajar yang aman, bersih, dan mendukung perkembangan fisik, kognitif, sosial, dan emosional anak. <br>3. Mengoptimalkan Potensi Anak Mengembangkan potensi unik setiap anak melalui program yang holistik dan menyeluruh, yang mencakup aspek kognitif, fisik, sosial, dan emosional.</h6>
+          </div>
         </div>
       </div>
     </div>
-  </div>
     {{-- /PROFIL --}}
 
     {{-- GURU --}}
@@ -141,7 +143,7 @@
       <div class="commit-section text-center">
         <div class="container">
           <h2 class="salsa">Guru Pengajar</h2>
-          <p>Pendidik profesional yang berdedikasi tinggi dan berpengalaman dalam pendidikan anak usia dini <br>untuk mengembangkan potensi setiap anak.</p>
+          <p class="my-4">Pendidik profesional yang berdedikasi tinggi dan berpengalaman dalam pendidikan anak usia dini <br>untuk mengembangkan potensi setiap anak.</p>
           <div class="row mt-4">
             <div class="col-lg-3 col-md-6 mb-4">
               <div class="teacher-card">
@@ -181,7 +183,7 @@
     <section id="metode">
       <div class="container my-5">
         <h2 class="text-center salsa">Metode Pembelajaran</h2>
-        <p class="text-center">Metode pembelajaran PAUD Nur Kids bermain menyenangkan, proyek kreatif, dan teknologi interaktif. Anak-anak belajar sambil bermain, mengeksplorasi, dan berkembang dalam lingkungan aman dan mendukung.</p>
+        <p class="text-center my-4">Metode pembelajaran PAUD Nur Kids bermain menyenangkan, proyek kreatif, dan teknologi interaktif. Anak-anak belajar<br> sambil bermain, mengeksplorasi, dan berkembang dalam lingkungan aman dan mendukung.</p>
         <div class="row justify-content-center">
           <div class="col-md-2">
             <div class="learning-method play-based">
@@ -228,8 +230,8 @@
     {{-- GALERI --}}
     <section id="galeri">
       <div class="container gallery-section justify-content-center">
-        <h2 class="text-center salsa">Our Gallery</h2>
-        <p class="text-center">Sapere scriptorem at duo. Erat maiorum quo ut. Te est sint pertinacia. Nec ceteros corpora no, mundi blandit ullamcorper ex pri. Aperiam abhorreant mei te, has dicta fierent eu.</p>
+        <h2 class="text-center salsa">Galeri</h2>
+        <p class="text-center my-5">Selamat datang di galeri kegiatan kami, di mana keceriaan dan pembelajaran bertemu dalam harmoni. Di sini, Anda dapat<br> melihat momen-momen berharga anak-anak yang penuh dengan tawa, kreativitas, dan pengetahuan.</p>
         <div class="row justify-content-center">
           <div class="col-md-2 d-flex justify-content-center">
             <img src="{{ asset('assets/landing/bocil1.png') }}" class="img-fluid gallery-img" alt="Gallery Image 1">
@@ -274,55 +276,31 @@
     <section id="kegiatan">
       <div class="container mt-5">
         <h2 class="text-center mb-3 salsa">Kegiatan Kami</h2>
-        <div class="row justify-content-center">
-          <div class="card m-3" style="width: 18rem;">
-            <p class="text-muted">January 14, 2020</p>
+        <div class="row justify-content-center mb-6">
+          <div class="m-3" style="width: 18rem;">
+            <p class="text-muted">January 14, 2024</p>
             <img src="{{ asset('assets/landing/bocil9.png') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-center">New Friends Everyday at Kiddie</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-footer d-flex justify-content-between align-items-center">
-              <small class="text-muted">
-                <i class="bi bi-person-fill"></i> John Doe
-              </small>
-              <small class="text-muted">
-                <i class="bi bi-tags-fill"></i> Fun, Games
-              </small>
+              <h5 class="card-title text-center">Bermain Mini Games</h5>
+              <p class="card-text">Kegiatan ini melibatkan anak-anak dalam permainan kelompok dan sesi interaktif untuk menjalin persahabatan baru. Kegiatan termasuk permainan icebreaker, proyek seni kolaboratif, dan cerita berkelompok.</p>
             </div>
           </div>
 
-          <div class="card m-3" style="width: 18rem;">
-            <p class="text-muted">January 14, 2020</p>
-            <img src="{{ asset('assets/landing/bocil10.png') }}" class="card-img-top" alt="...">
+          <div class="m-3" style="width: 18rem;">
+            <p class="text-muted">January 13, 2024</p>
+            <img src="{{ asset('assets/landing/bocil12.png') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-center">Swimming Lessons at the New Pool</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-footer d-flex justify-content-between align-items-center">
-              <small class="text-muted">
-                <i class="bi bi-person-fill"></i> John Doe
-              </small>
-              <small class="text-muted">
-                <i class="bi bi-tags-fill"></i> Fun, Games
-              </small>
+              <h5 class="card-title text-center">Merangsang perkembangan kognitif dan kreativitas.</h5>
+              <p class="card-text">Sesi ini berfokus pada pembelajaran melalui permainan.</p>
             </div>
           </div>
 
-          <div class="card m-3" style="width: 18rem;">
-            <p class="text-muted">January 14, 2020</p>
+          <div class="m-3" style="width: 18rem;">
+            <p class="text-muted">January 12, 2024</p>
             <img src="{{ asset('assets/landing/bocil11.png') }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title text-center">Play is Our Brain's Favorite Way of Learning</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-footer d-flex justify-content-between align-items-center">
-              <small class="text-muted">
-                <i class="bi bi-person-fill"></i> John Doe
-              </small>
-              <small class="text-muted">
-                <i class="bi bi-tags-fill"></i> Fun, Games
-              </small>
+              <h5 class="card-title text-center">Mengekspresikan kreativitas mereka melalui menggambar.</h5>
+              <p class="card-text">Anak-anak akan diberikan berbagai alat gambar dan diminta untuk membuat karya seni mereka sendiri, baik secara individu maupun dalam kelompok.</p>
             </div>
           </div>
         </div>

@@ -115,14 +115,14 @@
           <div class="mb-3">
             <label for="gender" class="form-label">Jenis Kelamin</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gender" id="laki-laki" value="laki-laki" required>
-              <label class="form-check-label" for="laki-laki">
+              <input class="form-check-input" type="radio" name="gender" id="Laki-laki" value="Laki-laki" required>
+              <label class="form-check-label" for="Laki-laki">
                 Laki-laki
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gender" id="perempuan" value="perempuan" required>
-              <label class="form-check-label" for="perempuan">
+              <input class="form-check-input" type="radio" name="gender" id="Perempuan" value="Perempuan" required>
+              <label class="form-check-label" for="Perempuan">
                 Perempuan
               </label>
             </div>
@@ -217,13 +217,13 @@
             <label for="gender" class="form-label fw-bold">Jenis Kelamin</label>
             <div class="d-flex">
               <div class="form-check me-3">
-                <input class="form-check-input" type="radio" name="gender" id="Laki-laki{{ $data->id }}" value="Laki-laki" @if($data->gender == 'laki-laki') checked @endif required>
+                <input class="form-check-input" type="radio" name="gender" id="Laki-laki{{ $data->id }}" value="Laki-laki" @if($data->gender == 'Laki-laki') checked @endif required>
                 <label class="form-check-label" for="Laki-laki{{ $data->id }}">
                   Laki-laki
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="Perempuan{{ $data->id }}" value="Perempuan" @if($data->gender == 'perempuan') checked @endif required>
+                <input class="form-check-input" type="radio" name="gender" id="Perempuan{{ $data->id }}" value="Perempuan" @if($data->gender == 'Perempuan') checked @endif required>
                 <label class="form-check-label" for="Perempuan{{ $data->id }}">
                   Perempuan
                 </label>

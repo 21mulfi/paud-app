@@ -81,6 +81,7 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 0 -14px;
   border: 5px solid white;
 }
 .teacher-name {
@@ -227,8 +228,27 @@
 
 .profil {
   background-image: url("/assets/landing/list-kids.png");
-  padding: 100px;
-  background-size: cover;
+  padding: 100px 0;
+  background-size: contain;
   background-position: center;
-  backdrop-filter: blur(30px);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  color: black;
+}
+
+.profil::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(233, 231, 231, 0.5); /* Adjust the color and opacity as needed */
+  backdrop-filter: blur(4px); /* Adjust the blur effect as needed */
+}
+
+.profil .container {
+  position: relative;
+  z-index: 1;
 }
