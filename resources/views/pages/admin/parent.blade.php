@@ -26,14 +26,14 @@
             <tbody>
               @foreach ($parent as $ortu)
               <tr>
-                <td>{{ $ortu->id_orangtua }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $ortu->nama_ayah }} / {{ $ortu->nama_ibu }}</td>
                 <!-- <td>{{ $ortu->nama }}</td> -->
                 <td>{{ $ortu->alamat }}</td>
                 <td>{{ $ortu->no_telp_ayah }} / {{ $ortu->no_telp_ibu }}</td>
                 <td>
                   {{-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button> --}}
-                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editOrtu" title="Perbarui Data Orang Tua"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editOrtu{{ $ortu->id_orangtua }}" title="Perbarui Data Orang Tua"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <form action="{{ route('admin.parent.delete', $ortu->id_orangtua) }}" method="POST" style="display:inline-block;">
                     @csrf
                     @method('DELETE')
@@ -46,8 +46,8 @@
           </table>
         </div>
     </div>
-
-    <div class="modal fade poppins-regular" id="tambahSiswa" tabindex="-1" aria-labelledby="tambahSiswaLabel" aria-hidden="true">
+  </div>
+    {{-- <div class="modal fade poppins-regular" id="tambahSiswa" tabindex="-1" aria-labelledby="tambahSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -105,7 +105,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
     {{-- DETAIL SISWA --}}
     {{-- <div class="modal fade poppins-regular" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
@@ -151,11 +151,11 @@
 
     {{-- EDIT ORANG TUA SISWA --}}
     @foreach($parent as $ortu)
-    <div class="modal fade poppins-regular" id="editOrtu" tabindex="-1" aria-labelledby="editOrtuLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="editOrtu{{ $ortu->id_orangtua }}" tabindex="-1" aria-labelledby="editOrtuLabel{{ $ortu->id_orangtua }}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
-            <h1 class="modal-title fs-5" id="editOrtuLabel">Perbarui Data Siswa</h1>
+            <h1 class="modal-title fs-5" id="editOrtuLabel{{ $ortu->id_orangtua }}">Perbarui Data Siswa</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -175,11 +175,11 @@
               <textarea name="alamat" class="form-control">{{ $ortu->alamat }}</textarea>
             </div>
             <div class="mb-3">
-              <label for="name" class="form-label fw-bold">No. Telepon Ayah</label>
+              <label for="no_telp_ayah" class="form-label fw-bold">No. Telepon Ayah</label>
               <input type="number" value="{{ $ortu->no_telp_ayah }}" name="no_telp_ayah" class="form-control" placeholder="Nama Lengkap">
           </div>
             <div class="mb-3">
-              <label for="name" class="form-label fw-bold">No. Telepon Ibu</label>
+              <label for="no_telp_ibu" class="form-label fw-bold">No. Telepon Ibu</label>
               <input type="number" value="{{ $ortu->no_telp_ibu }}" name="no_telp_ibu" class="form-control" placeholder="Nama Lengkap">
           </div>
           <button class="btn btn-primary w-100" type="submit">Simpan</button>
@@ -189,5 +189,6 @@
       </div>
     </div>
     @endforeach
+
 
     @include('template.endmaster')

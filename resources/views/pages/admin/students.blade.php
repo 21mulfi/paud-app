@@ -7,9 +7,9 @@
         <h5 class="text-center poppins-regular fw-bold">Manajemen Siswa</h5>
         <hr>
         <div class="row align-items-start">
-          <div>
+          {{-- <div>
             <button class="btn btn-primary poppins-regular" data-bs-toggle="modal" data-bs-target="#tambahSiswa">Tambah</button>
-          </div>
+          </div> --}}
         <div class="table-responsive">
           <table class="table my-3 poppins-regular">
             <thead class="table-dark">
@@ -24,12 +24,12 @@
             <tbody>
               @foreach ($siswa as $s)
               <tr>
-                <td>{{ $s->id_siswa }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $s->nama }}</td>
                 <td>{{ $s->kelas ? $s->kelas->nama_kelas : 'Kelas tidak ditemukan' }}</td>
                 <td>
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa{{ $s->id_siswa }}" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa{{ $s->id_siswa }}" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <form action="{{ route('admin.students.delete', $s->id_siswa) }}" method="POST" style="display:inline-block;">
                     @csrf
                     @method('DELETE')
@@ -90,10 +90,6 @@
               <label for="kelas" class="form-label fw-bold">Kelas</label>
               <input type="text" value="" name="kelas" class="form-control" placeholder="Kelas">
             </div>
-            {{-- <div class="mb-3">
-              <label for="riwayat_kesehatan" class="form-label fw-bold">Riwayat Kesehatan</label>
-              <input type="text" value="" name="riwayat_kesehatan" class="form-control" placeholder="Riwayat Kesehatan">
-            </div> --}}
           </form>
           </div>
           <div class="modal-footer">
@@ -153,8 +149,9 @@
     @endforeach
     {{-- /DETAIL SISWA --}}
 
+    {{-- EDIT SISWA --}}
     @foreach($siswa as $s)
-    <div class="modal fade poppins-regular" id="editSiswa" tabindex="-1" aria-labelledby="editSiswaLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="editSiswa{{ $s->id_siswa }}" tabindex="-1" aria-labelledby="editSiswaLabel{{ $s->id_siswa }}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -163,17 +160,13 @@
           </div>
           <div class="modal-body">
             <form action="{{ route('admin.students.update', $s->id_siswa) }}" method="POST">
-            @csrf
-            @method('PUT')
+              @csrf
+              @method('PUT')
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                  <input type="text" name="nama" class="form-control" value="{{ $s->nama }}" required>
+                  <input type="text" value="{{ $s->nama }}" name="nama" class="form-control" placeholder="Nama Lengkap">
               </div>
-              <!-- <div class="mb-3">
-                <label for="tempat_lahir" class="form-label fw-bold">Tempat Lahir</label>
-                <input type="date" name="tanggal_lahir" class="form-control" value="{{ $s->tanggal_lahir }}" required>
-            </div> -->
-            <div class="mb-3">
+              <div class="mb-3">
                 <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
                 <input type="date" name="tanggal_lahir" class="form-control" value="{{ $s->tanggal_lahir }}" required>
             </div>
@@ -216,17 +209,14 @@
               <label for="catatan" class="form-label fw-bold">Catatan</label>
               <input type="text" name="catatan" class="form-control" value="{{ $s->catatan }}" required>
             </div>
-            <div class="modal-footer">
             <button class="btn btn-primary w-100" type="submit">Simpan</button>
-          </div>
           </form>
           </div>
-          <!-- <div class="modal-footer">
-            <button class="btn btn-primary w-100" type="submit">Simpan</button>
-          </div> -->
         </div>
       </div>
-      @endforeach
     </div>
+  </div>
+  @endforeach
+  {{-- /EDIT SISWA --}}
 
     @include('template.endmaster')

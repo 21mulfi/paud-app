@@ -25,12 +25,13 @@
             <tbody>
             @foreach ($kelas as $k)
               <tr>
-                <td>{{ $k->id_kelas }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $k->nama_kelas }}</td>
                 <td>{{ $k->kapasitas_maks }}</td>
-                <!-- <td>Motorik - 1</td> -->
                 <td>
-                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listSiswa" title="List Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#listSiswa{{ $k->id }}" title="List Siswa">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </button>
                   <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editKelas{{ $k->id_kelas }}" title="Perbarui Data Kelas">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </button>
@@ -39,7 +40,6 @@
                     @method('DELETE')
                     <button type="submit" title="Hapus Data Kelas" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                   </form>
-                  {{-- <button class="btn btn-danger" title="Hapus Data Kelas"><i class="fa fa-trash-o" aria-hidden="true"></i></button> --}}
                 </td>
               </tr>
               @endforeach
@@ -96,7 +96,7 @@
               <div class="mb-3">
                 <label for="kapasitas_maks" class="form-label fw-bold">Nama Kelas</label>
                 <input type="text" value="{{ $k->kapasitas_maks }}" name="kapasitas_maks" class="form-control" required>
-            </div>
+              </div>
               <button class="btn btn-primary w-100" type="submit">Simpan</button>
           </form>
           </div>
@@ -107,40 +107,59 @@
     {{-- /EDIT KELAS --}}
 
     {{-- LIST SISWA --}}
-    <div class="modal fade poppins-regular" id="listSiswa" tabindex="-1" aria-labelledby="listSiswaLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="listSiswa{{ $k->id }}" tabindex="-1" aria-labelledby="listSiswaLabel{{ $k->id }}" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="listSiswaLabel">List Siswa</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="listSiswaLabel{{ $k->id }}">List Siswa</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  {{-- <p>Guru Pengajar: {{ $k->guru ? $k->guru->nama : 'Guru tidak ditemukan' }}</p> --}}
+                  <div class="table-responsive">
+                      <table class="table my-3">
+                          <thead class="table-dark">
+                              <tr>
+                                  <th scope="col">No.</th>
+                                  <th scope="col">Nama</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach($k->siswa as $index => $s)
+                              <tr>
+                                  <td>{{ $index + 1 }}</td>
+                                  <td>{{ $s->nama }}</td>
+                              </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
           </div>
-          <div class="modal-body">
-            <p>Guru Pengajar : Harun Mubarok S.Kus,</p>
-            <div class="table-responsive">
-              <table class="table my-3">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Nama</th>
-                  </tr>
-                </thead>
-                
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Ujang</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Steven</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+  </div>
     {{-- /LIST SISWA --}}
   </div>
+
+  <script>
+    $(document).ready(function() {
+    $('.view-students').click(function() {
+        var guru = $(this).data('guru');
+        var siswa = $(this).data('siswa');
+
+        // Set guru pengajar
+        $('#guruPengajar').text(guru);
+
+        // Muat data siswa ke tabel
+        var siswaHtml = '';
+        $.each(siswa, function(classroom, students) {
+            siswaHtml += '<tr>';
+            siswaHtml += '<td>' + (index + 1) + '</td>';
+            siswaHtml += '<td>' + siswa.nama + '</td>';
+            siswaHtml += '</tr>';
+        });
+        $('#listSiswaBody').html(siswaHtml);
+    });
+});
+  </script>
 @include('template.endmaster')

@@ -79,7 +79,7 @@ class AdminController extends Controller
     // show data kelas
     function classroom()
     {
-        $kelas = Kelas::all();
+        $kelas = Kelas::with(['siswa', 'gurus'])->get();
         return view('/pages/admin/classroom', compact('kelas'));
     }
 
@@ -108,8 +108,7 @@ class AdminController extends Controller
     {
         $user = new User;
         $user->email = $request->email;
-        $user->name = $request->name;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->gender = $request->gender;
         $user->role = $request->role;
 
