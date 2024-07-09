@@ -22,6 +22,7 @@ class AdminController extends Controller
         return view('dashboard');
     }
 
+    // show data user
     public function users(Request $request)
     {
     $users = User::query();
@@ -53,6 +54,7 @@ class AdminController extends Controller
     return view('/pages/admin/users', compact('users', 'sortField', 'sortOrder', 'gurus', 'orangtuas'));
     }
 
+    // show data siswa
     function students()
     {
         $siswa = Siswa::all();
@@ -61,6 +63,7 @@ class AdminController extends Controller
         return view('/pages/admin/students', compact('siswa', 'ortu', 'kelas'));
     }
 
+    // show data guru
     function teachers()
     {
         $guru = Guru::with('kelas')->get();
@@ -68,36 +71,31 @@ class AdminController extends Controller
         return view('/pages/admin/teachers', compact('guru', 'kelas'));
     }
 
+    // show data kelas
     function classroom()
     {
         $kelas = Kelas::all();
         return view('/pages/admin/classroom', compact('kelas'));
     }
 
+    // show profile
     function profile()
     {
         return view('/pages/admin/profile');
     }
 
+    // show data verifikasi registrasi
     function registration()
     {
         $pendaftaran = Pendaftaran::all(); 
         return view('/pages/admin/registration', compact('pendaftaran'));
     }
 
+    // show data orang tua
     function parent()
     {
         $parent = Orangtua::all(); 
         return view('/pages/admin/parent', compact('parent'));
-    }
-
-    public function create()
-    {
-        return view('admin.users', [
-            'title' => 'Tambah',
-            'method' => 'POST',
-            'action' => 'user'
-        ]);
     }
 
     // Tambah User
@@ -251,6 +249,7 @@ class AdminController extends Controller
         return redirect()->route('admin.students')->with('success', 'Data siswa berhasil terhapus.');
     }
 
+    // tambah ortu
     public function storeOrtuSiswa(Request $request)
     {
 
@@ -278,6 +277,7 @@ class AdminController extends Controller
         return Orangtua::find($id);
     }
 
+    // delete ortu
     public function deleteParent($id)
     {
         $ortu = Orangtua::findOrFail($id);
@@ -286,6 +286,25 @@ class AdminController extends Controller
         return redirect()->route('admin.parent')->with('success', 'Data orang tua berhasil terhapus.');
     }
 
+    // update guru
+    public function updateParent(Request $request, $id)
+    {
+        // dd($request->all());
+        $request->validate([
+            'nama_ayah' => 'required|string|max:255',
+            'nama_ibu' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+            'no_telp_ayah' => 'required|string|max:255',
+            'no_telp_ibu' => 'required|string|max:255'
+        ]);
+
+        $siswa = Orangtua::findOrFail($id);
+        $siswa->update($request->only('nama_ayah', 'nama_ibu', 'alamat', 'no_telp_ayah', 'no_telp_ibu'));
+
+        return redirect()->back()->with('success', 'Data siswa berhasil di update.');
+    }
+
+    // update profile
     public function updateProfile(Request $request, $id)
     {
 

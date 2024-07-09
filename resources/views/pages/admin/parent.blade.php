@@ -32,12 +32,12 @@
                 <td>{{ $ortu->alamat }}</td>
                 <td>{{ $ortu->no_telp_ayah }} / {{ $ortu->no_telp_ibu }}</td>
                 <td>
-                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
-                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editSiswa" title="Perbarui Data Siswa"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  {{-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button> --}}
+                  <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editOrtu" title="Perbarui Data Orang Tua"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                   <form action="{{ route('admin.parent.delete', $ortu->id_orangtua) }}" method="POST" style="display:inline-block;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger" title="Hapus Data Siswa" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    <button type="submit" class="btn btn-danger" title="Hapus Data Orang Tua" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                   </form>
                 </td>
               </tr>
@@ -108,7 +108,7 @@
   </div>
 
     {{-- DETAIL SISWA --}}
-    <div class="modal fade poppins-regular" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
+    {{-- <div class="modal fade poppins-regular" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -118,7 +118,7 @@
           <div class="modal-body">
               <div class="mb-3">
                   <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                  {{-- <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap"> --}}
+                  <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap">
                   <p>Hasan</p>
               </div>
               <div class="mb-3">
@@ -146,66 +146,48 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
     {{-- /DETAIL SISWA --}}
 
-    <div class="modal fade poppins-regular" id="editSiswa" tabindex="-1" aria-labelledby="editSiswaLabel" aria-hidden="true">
+    {{-- EDIT ORANG TUA SISWA --}}
+    @foreach($parent as $ortu)
+    <div class="modal fade poppins-regular" id="editOrtu" tabindex="-1" aria-labelledby="editOrtuLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-light" style="background-color: #1B96CE">
-            <h1 class="modal-title fs-5" id="editSiswaLabel">Perbarui Data Siswa</h1>
+            <h1 class="modal-title fs-5" id="editOrtuLabel">Perbarui Data Siswa</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="" method="POST">
+            <form action="{{ route('admin.parent.update', $ortu->id_orangtua) }}" method="POST">
+              @csrf
+              @method('PUT')
               <div class="mb-3">
-                  <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                  <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap">
+                  <label for="name" class="form-label fw-bold">Nama Ayah</label>
+                  <input type="text" value="{{ $ortu->nama_ayah }}" name="nama_ayah" class="form-control" placeholder="Nama Lengkap">
               </div>
               <div class="mb-3">
-                <label for="tempat_lahir" class="form-label fw-bold">Tempat Lahir</label>
-                <input type="text" value="" name="tempat_lahir" class="form-control" placeholder="Tempat Lahir">
+                <label for="name" class="form-label fw-bold">Nama Ibu</label>
+                <input type="text" value="{{ $ortu->nama_ibu }}" name="nama_ibu" class="form-control" placeholder="Nama Lengkap">
             </div>
             <div class="mb-3">
-                <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" class="form-control">
-            </div>
-            <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
-            <div class="d-flex mb-3">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Laki-laki" value="Laki-laki" checked>
-                  <label class="form-check-label" for="Laki-laki">
-                    Laki-laki
-                  </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="jenis_kelamin" id="Perempuan" value="Perempuan">
-                  <label class="form-check-label" for="Perempuan">
-                    Perempuan
-                  </label>
-              </div>
+              <label for="alamat" class="form-label fw-bold">Alamat</label>
+              <textarea name="alamat" class="form-control">{{ $ortu->alamat }}</textarea>
             </div>
             <div class="mb-3">
-              <label for="nama_orang_tua" class="form-label fw-bold">Nama Orang Tua</label>
-              <select name="orang_tua" class="form-control">
-                <option>Test 1</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="kelas" class="form-label fw-bold">Kelas</label>
-              <input type="text" value="" name="kelas" class="form-control" placeholder="Kelas">
-            </div>
-            <div class="mb-3">
-              <label for="riwayat_kesehatan" class="form-label fw-bold">Riwayat Kesehatan</label>
-              <input type="text" value="" name="riwayat_kesehatan" class="form-control" placeholder="Riwayat Kesehatan">
-            </div>
-          </form>
+              <label for="name" class="form-label fw-bold">No. Telepon Ayah</label>
+              <input type="number" value="{{ $ortu->no_telp_ayah }}" name="no_telp_ayah" class="form-control" placeholder="Nama Lengkap">
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary w-100" type="submit">Simpan</button>
+            <div class="mb-3">
+              <label for="name" class="form-label fw-bold">No. Telepon Ibu</label>
+              <input type="number" value="{{ $ortu->no_telp_ibu }}" name="no_telp_ibu" class="form-control" placeholder="Nama Lengkap">
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Simpan</button>
+          </form>
           </div>
         </div>
       </div>
     </div>
+    @endforeach
 
     @include('template.endmaster')

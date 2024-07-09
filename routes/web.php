@@ -51,6 +51,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/admin/data_orangtua', [AdminController::class, 'parent'])->name('admin.parent');
     Route::delete('/parent/{id}', [AdminController::class, 'deleteParent'])->name('admin.parent.delete');
+    Route::put('/admin/data_orangtua/{id}', [AdminController::class, 'updateParent'])->name('admin.parent.update');
     });
 
     //menu guru

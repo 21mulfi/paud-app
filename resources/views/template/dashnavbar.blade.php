@@ -83,11 +83,11 @@
                 <i class="fa fa-th-list ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen&nbsp;
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.users') }}"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Data User</a></li>
-                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.students') }}"><i class="fa fa-child" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Data Siswa</a></li>
-                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.parent') }}"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;Data Orang Tua Siswa</a></li>
-                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.teachers') }}"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;Data Guru</a></li>
-                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.classroom') }}"><i class="fa fa-building-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Data Kelas</a></li>
+                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.users') }}">Data User</a></li>
+                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.students') }}">Data Siswa</a></li>
+                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.parent') }}">Data Orang Tua Siswa</a></li>
+                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.teachers') }}">Data Guru</a></li>
+                <li><a class="dropdown-item prof poppins-regular" href="{{ route('admin.classroom') }}">Data Kelas</a></li>
               </ul>
             </li>
             <li class="nav-item">
