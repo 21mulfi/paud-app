@@ -23,6 +23,11 @@ class Kelas extends Model
         return $this->hasMany(Guru::class, 'id_kelas', 'id_kelas');
     }
 
+    public function guru()
+    {
+        return $this->hasOne(Guru::class, 'id_kelas');
+    }
+
     public function siswa()
     {
         return $this->hasMany(Siswa::class, 'id_kelas', 'id_kelas');

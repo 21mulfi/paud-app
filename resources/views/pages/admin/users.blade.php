@@ -94,7 +94,7 @@
     @endif
 
     {{-- TAMBAH USER MODAL --}}
-<div class="modal fade poppins-regular" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
+    <div class="modal fade poppins-regular" id="tambahUser" tabindex="-1" aria-labelledby="tambahUserLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-light" style="background-color: #1B96CE">
@@ -104,10 +104,6 @@
       <div class="modal-body">
         <form action="{{ route('admin.users.store') }}" method="POST">
           @csrf
-          <!-- <div class="mb-3">
-            <label for="name" class="form-label">Nama Lengkap</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-          </div> -->
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" required>
@@ -170,22 +166,28 @@
   document.getElementById('role').addEventListener('change', function() {
     var role = this.value;
     var nameInput = document.getElementById('nameInput');
+    var nameInputField = nameInput.querySelector('input');
     var guruSelect = document.getElementById('guruSelect');
     var orangtuaSelect = document.getElementById('orangtuaSelect');
 
     nameInput.classList.add('d-none');
+    nameInputField.required = false;
     guruSelect.classList.add('d-none');
     orangtuaSelect.classList.add('d-none');
 
     if (role === 'guru') {
       guruSelect.classList.remove('d-none');
+      guruSelect.querySelector('select').required = true;
     } else if (role === 'orangtua') {
       orangtuaSelect.classList.remove('d-none');
+      orangtuaSelect.querySelector('select').required = true;
     } else {
       nameInput.classList.remove('d-none');
+      nameInputField.required = true;
     }
   });
 </script>
+
 
 
     {{-- EDIT USER MODAL --}}

@@ -20,4 +20,14 @@ class Guru extends Model
     {
         return $this->belongsTo(Kelas::class, 'id_kelas', 'id_kelas');
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function kelass()
+    {
+        return $this->hasOne(Kelas::class, 'id_kelas', 'id_kelas'); // Sesuaikan dengan struktur tabel Anda
+    }
 }

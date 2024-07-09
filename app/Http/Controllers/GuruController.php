@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GuruController extends Controller
 {
@@ -34,7 +35,28 @@ class GuruController extends Controller
 
     function listsiswa()
     {
-        return view('/pages/guru/listsiswa');
+        $user = Auth::user();
+        $gurus = Guru::all();
+        $guruName = $user->name;
+
+        // Cari objek Guru yang sesuai dengan nama pengguna yang sedang login
+        $guru = $gurus->firstWhere('nama', $guruName);
+
+        if ($guru) {
+            $kelass = $guru->kelass; // Pastikan relasi kelas terdefinisi di model Guru
+            $siswa = $kelass->siswa; // Pastikan relasi siswa terdefinisi di model Kelas
+        } else {
+            $siswa = collect(); // Kembalikan koleksi kosong jika tidak ada guru yang cocok
+            $kelass = null; // Tidak ada kelas jika tidak ada guru yang cocok
+        }
+
+        return view('/pages/guru/listsiswa', compact('siswa', 'guru'));
     }
+
+    // public function show($id)
+    // {
+    //     $guru = Guru::with('kelas.siswa')->findOrFail($id);
+    //     return view('/pages/guru/listsiswa', compact('guru'));
+    // }
     
 }

@@ -4,27 +4,33 @@
     <div class="bg-white container-sm border my-5 rounded px-4 py-3 pb-5">
         <h5 class="text-center poppins-regular fw-bold">Daftar Siswa</h5>
         <hr>
+        @if($guru && $guru->kelass)
+            <h6>Kelas: {{ $guru->kelass->nama_kelas }}</h6>
+        @else
+            <h6>Kelas: Tidak ditemukan</h6>
+        @endif
         <div class="row align-items-start">
             <div class="table-responsive">
                 <table class="table my-3 poppins-regular">
                   <thead class="table-dark">
                     <tr>
-                      <th scope="col">No.</th>
                       <th scope="col">Nama Lengkap</th>
-                      <th scope="col">Kelas</th>
+                      <th scope="col">Jenis Kelamin</th>
                       <th scope="col">Aksi</th>
                     </tr>
                   </thead>
                   
                   <tbody>
+                  @foreach ($siswa as $s)
                     <tr>
-                      <td>1</td>
-                      <td>Hasan</td>
+                      <td>{{ $s->nama }}</td>
+                      <td>{{ $s->jenis_kelamin }}</td>
                       <td>Mawar 1</td>
                       <td>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                       </td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
