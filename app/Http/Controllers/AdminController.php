@@ -19,7 +19,12 @@ class AdminController extends Controller
 {
     function index()
     {
-        return view('dashboard');
+        $userCount = User::count();
+        $classCount = Kelas::count();
+        $parentCount = Orangtua::count();
+        $studentCount = Siswa::count();
+        $teacherCount = Guru::count();
+        return view('dashboard', compact('userCount', 'classCount', 'parentCount', 'studentCount', 'teacherCount'));
     }
 
     // show data user

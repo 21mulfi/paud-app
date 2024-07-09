@@ -244,11 +244,15 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(233, 231, 231, 0.5); /* Adjust the color and opacity as needed */
-  backdrop-filter: blur(4px); /* Adjust the blur effect as needed */
+  background-color: rgba(233, 231, 231, 0.5);
+  backdrop-filter: blur(4px);
 }
 
 .profil .container {
   position: relative;
   z-index: 1;
 }
+
+ .text-visimisi {
+  line-height: 2.0;
+ }

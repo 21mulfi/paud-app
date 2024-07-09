@@ -19,7 +19,39 @@
         <hr>
     <div class="container my-3">
       <div class="row">
-        
+        @if(Auth::user()->role == 'admin')
+        <table>
+          <tr>
+            <td width="40%"><p class="poppins-regular">User Terdaftar</p></td>
+            <td><p class="poppins-regular">:</p></td>
+            <td><p class="poppins-regular">{{ $userCount }} User</p></td>
+          </tr>
+
+          <tr>
+            <td><p class="poppins-regular">Kelas Terdaftar</p></td>
+            <td><p class="poppins-regular">:</p></td>
+            <td><p class="poppins-regular">{{ $classCount }} Kelas</p></td>
+          </tr>
+
+          <tr>
+            <td><p class="poppins-regular">Guru Terdaftar</p></td>
+            <td><p class="poppins-regular">:</p></td>
+            <td><p class="poppins-regular">{{ $teacherCount }} Guru</p></td>
+          </tr>
+          
+          <tr>
+            <td><p class="poppins-regular">Siswa Terdaftar</p></td>
+            <td><p class="poppins-regular">:</p></td>
+            <td><p class="poppins-regular">{{ $studentCount }} Siswa</p></td>
+          </tr>
+          
+          <tr>
+            <td><p class="poppins-regular">Orang Tua Siswa Terdaftar</p></td>
+            <td><p class="poppins-regular">:</p></td>
+            <td><p class="poppins-regular">{{ $parentCount }} Orang Tua Siswa</p></td>
+          </tr>
+        </table>
+        @endif
       </div>   
     </div>
   </div>

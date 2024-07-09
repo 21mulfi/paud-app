@@ -77,7 +77,7 @@
                 <a class="nav-link active text-light poppins-regular" aria-current="page" href="{{ route('orangtua.index') }}"><i class="fa fa-tachometer ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a>
                 @endif
             </li>
-            <li class="nav-item dropdown text-light">
+            <li class="nav-item dropdown manaj text-light">
               @if(Auth::user()->role == 'admin')
               <a class="nav-link dropdown-toggle text-light poppins-regular" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-th-list ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Manajemen&nbsp;

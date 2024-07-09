@@ -128,10 +128,10 @@
         </div>
         <div class="row">
           <div class="col-md-6 mb-5">
-            <h6 class="salsa">Visi: <br>Mencerdaskan anak bangsa dengan mengembangkan potensi unik setiap anak melalui pendidikan yang holistik, menyenangkan, dan berkelanjutan, serta menciptakan generasi muda yang cerdas, kreatif, dan berkarakter.</h6>
+            <h6 class="salsa text-visimisi">Visi: <br>Mencerdaskan anak bangsa dengan mengembangkan potensi unik setiap anak melalui pendidikan yang holistik, menyenangkan, dan berkelanjutan, serta menciptakan generasi muda yang cerdas, kreatif, dan berkarakter.</h6>
           </div>
           <div class="col-md-6 mb-5">
-            <h6 class="salsa">Misi : <br>1. Menyediakan Pendidikan Berkualitas Memberikan pendidikan anak usia dini yang berkualitas tinggi dengan metode pengajaran yang inovatif dan interaktif. <br>2. Mengembangkan Lingkungan Belajar yang Aman dan Nyaman Menciptakan lingkungan belajar yang aman, bersih, dan mendukung perkembangan fisik, kognitif, sosial, dan emosional anak. <br>3. Mengoptimalkan Potensi Anak Mengembangkan potensi unik setiap anak melalui program yang holistik dan menyeluruh, yang mencakup aspek kognitif, fisik, sosial, dan emosional.</h6>
+            <h6 class="salsa text-visimisi">Misi : <br>1. Menyediakan Pendidikan Berkualitas Memberikan pendidikan anak usia dini yang berkualitas tinggi dengan metode pengajaran yang inovatif dan interaktif. <br>2. Mengembangkan Lingkungan Belajar yang Aman dan Nyaman Menciptakan lingkungan belajar yang aman, bersih, dan mendukung perkembangan fisik, kognitif, sosial, dan emosional anak. <br>3. Mengoptimalkan Potensi Anak Mengembangkan potensi unik setiap anak melalui program yang holistik dan menyeluruh, yang mencakup aspek kognitif, fisik, sosial, dan emosional.</h6>
           </div>
         </div>
       </div>
