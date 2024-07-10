@@ -170,3 +170,13 @@ body {
 .nav-item.dropdown.manaj:hover .dropdown-menu {
   display: block;
 }
+
+.dashboard-card {
+  padding: 20px;
+  color: white;
+  border-radius: 15px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+.bg-orange { background-color: #FFA500; }
+.bg-green { background-color: #32CD32; }
