@@ -163,6 +163,27 @@
     </div>
     </div>
     @endif
+
+    @if(Auth::user()->role == 'orangtua')
+    <div class="row">
+      <div class="col-md-6 mb-1">
+          <div class="dashboard-card bg-ortu shadow">
+              <div class="row">
+                  <div class="col-8 text-dark">
+                      <div class="card-title poppins-regular">Peserta Didik</div>
+                      @foreach($siswa as $s)
+                      <div class="card-number">{{ ucfirst($s->nama) }}</div>
+                      @endforeach
+                  </div>
+                  <div class="col-4 text-right mt-3">
+                    <div class="card-icon"><img class="img-fluid d-none d-xl-block" width="50" src="{{ asset('assets/kelas.png') }}" alt="User"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div>
+    @endif
   </div>
   @if(Auth::user()->role == 'admin')
   <script>
