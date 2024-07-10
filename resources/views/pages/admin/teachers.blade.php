@@ -176,3 +176,33 @@
     {{-- /EDIT GURU --}}
   </div>
     @include('template.endmaster')
+
+    
+<script>
+  toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+        "opacity": "1.9"
+    };
+
+  @if(session()->has('success'))
+      toastr.success('{{ session('success') }}');
+  @endif
+
+  @if(session()->has('error'))
+      toastr.error('{{ session('error') }}');
+  @endif
+  </script>

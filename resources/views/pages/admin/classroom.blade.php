@@ -140,26 +140,33 @@
   </div>
     {{-- /LIST SISWA --}}
   </div>
-
-  <script>
-    $(document).ready(function() {
-    $('.view-students').click(function() {
-        var guru = $(this).data('guru');
-        var siswa = $(this).data('siswa');
-
-        // Set guru pengajar
-        $('#guruPengajar').text(guru);
-
-        // Muat data siswa ke tabel
-        var siswaHtml = '';
-        $.each(siswa, function(classroom, students) {
-            siswaHtml += '<tr>';
-            siswaHtml += '<td>' + (index + 1) + '</td>';
-            siswaHtml += '<td>' + siswa.nama + '</td>';
-            siswaHtml += '</tr>';
-        });
-        $('#listSiswaBody').html(siswaHtml);
-    });
-});
-  </script>
 @include('template.endmaster')
+
+<script>
+  toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+        "opacity": "1.9"
+    };
+
+  @if(session()->has('success'))
+      toastr.success('{{ session('success') }}');
+  @endif
+
+  @if(session()->has('error'))
+      toastr.error('{{ session('error') }}');
+  @endif
+</script>

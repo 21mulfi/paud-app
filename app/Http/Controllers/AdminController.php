@@ -121,7 +121,7 @@ class AdminController extends Controller
         }
 
         $user->save();
-        return redirect()->back()->with('success', 'User created successfully.');
+        return redirect()->back()->with('success', 'Data User berhasil ditambahkan.');
     }
 
     public function show($id)
@@ -148,7 +148,7 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'User berhasil di update.');
+        return redirect()->back()->with('success', 'Data User berhasil di update.');
     }
 
     // Delete User
@@ -157,7 +157,7 @@ class AdminController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
 
-        return redirect()->route('admin.users')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.users')->with('success', 'Data User berhasil dihapus.');
     }
 
     // Tambah Guru
@@ -171,7 +171,7 @@ class AdminController extends Controller
         $guru->no_hp = $request->no_hp;
         $guru->save();
 
-        return redirect()->back()->with('success', 'Data Guru created successfully.');
+        return redirect()->back()->with('success', 'Data Guru berhasil ditambahkan.');
     }
 
     public function showGuru($id)
@@ -216,7 +216,7 @@ class AdminController extends Controller
         $siswa->id_kelas = $request->id_kelas;
         $siswa->save();
 
-        return redirect()->back()->with('success', 'Data Siswa created successfully.');
+        return redirect()->back()->with('success', 'Data Siswa berhasil ditambahkan.');
     }
 
     public function showSiswa($id)
@@ -250,7 +250,7 @@ class AdminController extends Controller
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
 
-        return redirect()->route('admin.students')->with('success', 'Data siswa berhasil terhapus.');
+        return redirect()->route('admin.students')->with('success', 'Data siswa berhasil dihapus.');
     }
 
     // tambah ortu
@@ -273,7 +273,7 @@ class AdminController extends Controller
         $siswa->agama = $request->agama;
         $siswa->catatan = $request->catatan;
         $siswa->save();
-        return redirect()->back()->with('success', 'Data telah dikirimkan');
+        return redirect()->back()->with('success', 'Data registrasi berhasil di verifikasi');
     }
 
     public function showOrtuSiswa($id)
@@ -287,7 +287,7 @@ class AdminController extends Controller
         $ortu = Orangtua::findOrFail($id);
         $ortu->delete();
 
-        return redirect()->route('admin.parent')->with('success', 'Data orang tua berhasil terhapus.');
+        return redirect()->route('admin.parent')->with('success', 'Data orang tua berhasil dihapus.');
     }
 
     // update guru
@@ -331,6 +331,6 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Data User berhasil di update.');
+        return redirect()->back()->with('success', 'Data profil berhasil di update.');
     }
 }
