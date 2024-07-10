@@ -62,6 +62,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/guru/penilaian/form', [GuruController::class, 'form_penilaian'])->name('guru.form_penilaian');
         Route::get('/guru/listsiswa/', [GuruController::class, 'listsiswa'])->name('guru.listsiswa');
         Route::get('/guru/profile', [GuruController::class, 'profile'])->name('guru.profile');
+        Route::put('/guru/profile/{id}', [GuruController::class, 'updateProfile'])->name('guru.profile.update');
     });
 
     //menu orang tua

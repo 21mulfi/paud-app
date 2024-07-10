@@ -28,32 +28,21 @@
     </div>
     <div class="card-body mb-5 poppins-regular">
       <div class="row mt-3 p-4">
-        <div class="col-6">
+        <div class="col-12">
           <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-          <input type="email" value="" name="email" class="form-control" placeholder="Mulfi Indra Gunawan" disabled>
+          <input type="name" value="{{ Auth::user()->name }}" name="email" class="form-control" placeholder="Mulfi Indra Gunawan" disabled>
 
-          <label for="name" class="form-label fw-bold mt-3">Email</label>
-          <input type="email" value="" name="email" class="form-control" placeholder="mulfi@gmail.com" disabled>
+          <label for="email" class="form-label fw-bold mt-3">Email</label>
+          <input type="email" value="{{ Auth::user()->email }}" name="email" class="form-control" placeholder="mulfi@gmail.com" disabled>
           
           <label for="name" class="form-label fw-bold mt-3">Jenis Kelamin</label>
-          <input type="text" value="" name="email" class="form-control" placeholder="Laki-laki" disabled>
-        </div>
-
-        <div class="col-6">
-          <label for="telp" class="form-label fw-bold">No. Telepon</label>
-          <input type="number" value="" name="no_tlp" class="form-control" placeholder="0893761231923" disabled>
-
-          <label for="alamat" class="form-label fw-bold mt-3">Alamat</label>
-          <input type="textarea" value="" name="alamat" class="form-control" placeholder="Jl. Jakarta" disabled>
-          
-          <label for="bahasa" class="form-label fw-bold mt-3">Bahasa</label>
-          <input type="text" value="" name="bahasa" class="form-control" placeholder="Indonesia" disabled>
+          <input type="text" value="{{ Auth::user()->gender }}" name="jenis_kelamin" class="form-control" disabled>
         </div>
       </div>
 
-      <div class="text-center mt-3">
+      {{-- <div class="text-center mt-3">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfil">Perbarui Profil</button>
-      </div>
+      </div> --}}
     </div>
   </div>
 
@@ -65,51 +54,70 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="{{ route('admin.users.store') }}" method="POST">
+          <form action="{{ route('guru.profile.update', Auth::user()->id) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="mb-3">
               <label for="name" class="form-label">Nama Lengkap</label>
-              <input type="text" class="form-control" id="name" name="name" required>
+              <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required>
+              <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}">
             </div>
             <div class="mb-3">
-            <label for="gender" class="form-label">Jenis Kelamin</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gender" id="laki-laki" value="laki-laki" required>
-              <label class="form-check-label" for="laki-laki">
-                Laki-laki
-              </label>
+              <label for="gender" class="form-label">Jenis Kelamin</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="Laki-laki" value="Laki-laki" {{ Auth::user()->gender == 'Laki-laki' ? 'checked' : '' }}>
+                <label class="form-check-label" for="laki-laki">
+                  Laki-laki
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="Perempuan" value="Perempuan" {{ Auth::user()->gender == 'Perempuan' ? 'checked' : '' }}>
+                <label class="form-check-label" for="Perempuan">
+                  Perempuan
+                </label>
+              </div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gender" id="perempuan" value="perempuan" required>
-              <label class="form-check-label" for="perempuan">
-                Perempuan
-              </label>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password">
+              <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah password</small>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="name" class="form-label">No. Telepon</label>
-            <input type="number" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="name" class="form-label">Alamat</label>
-            <textarea class="form-control" id="name" name="name"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="name" class="form-label">Bahasa</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-          </div>
             <button type="submit" class="btn btn-primary w-100">Simpan</button>
           </form>
         </div>
       </div>
     </div>
-  </div>
+  </div><br><br>
 @include('template.endmaster')
+
+<script>
+  toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut",
+        "opacity": "1.9"
+    };
+
+  @if(session()->has('success'))
+      toastr.success('{{ session('success') }}');
+  @endif
+
+  @if(session()->has('error'))
+      toastr.error('{{ session('error') }}');
+  @endif
+  </script>

@@ -5,9 +5,9 @@
         <h5 class="text-center poppins-regular fw-bold">Daftar Siswa</h5>
         <hr>
         @if($guru && $guru->kelass)
-            <h6>Kelas: {{ $guru->kelass->nama_kelas }}</h6>
+            <h6 class="poppins-regular fw-bold">Kelas : {{ $guru->kelass->nama_kelas }}</h6>
         @else
-            <h6>Kelas: Tidak ditemukan</h6>
+            <h6 class="poppins-regular fw-bold">Kelas: Tidak ditemukan</h6>
         @endif
         <div class="row align-items-start">
             <div class="table-responsive">
@@ -25,9 +25,8 @@
                     <tr>
                       <td>{{ $s->nama }}</td>
                       <td>{{ $s->jenis_kelamin }}</td>
-                      <td>Mawar 1</td>
                       <td>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailSiswa{{ $s->id_siswa }}" title="Lihat Detail Data Siswa"><i class="fa fa-eye" aria-hidden="true"></i></button>
                       </td>
                     </tr>
                     @endforeach
@@ -38,44 +37,50 @@
     </div>
 
     {{-- DETAIL SISWA --}}
-    <div class="modal fade poppins-regular" id="detailSiswa" tabindex="-1" aria-labelledby="detailSiswaLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header text-light" style="background-color: #1B96CE">
-              <h1 class="modal-title fs-5" id="detailSiswaLabel">Detail Data Siswa</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    @foreach ($siswa as $s)
+    <div class="modal fade poppins-regular" id="detailSiswa{{ $s->id_siswa }}" tabindex="-1" aria-labelledby="detailSiswaLabel{{ $s->id_siswa }}" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-light" style="background-color: #1B96CE">
+            <h1 class="modal-title fs-5" id="detailSiswaLabel">Detail Data Siswa</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="mb-3">
+                  <label for="name" class="form-label fw-bold">Nama Lengkap</label>
+                  {{-- <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap"> --}}
+                  <p>{{ $s->nama }}</p>
+              </div>
+            <div class="mb-3">
+                <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
+                <p>{{ $s->tanggal_lahir }}</p>
             </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="name" class="form-label fw-bold">Nama Lengkap</label>
-                    {{-- <input type="text" value="" name="email" class="form-control" placeholder="Nama Lengkap"> --}}
-                    <p>Hasan</p>
-                </div>
-                <div class="mb-3">
-                  <label for="tempat_lahir" class="form-label fw-bold">Tempat Lahir</label>
-                  <p>Bandung</p>
-              </div>
-              <div class="mb-3">
-                  <label for="tanggal_lahir" class="form-label fw-bold">Tanggal Lahir</label>
-                  <p>2 Juni 2020</p>
-              </div>
-              <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
-              <p>Laki-laki</p>
-              <div class="mb-3">
-                <label for="nama_orang_tua" class="form-label fw-bold">Nama Orang Tua</label>
-                <p>Yana Rayana S.Kus,</p>
-              </div>
-              <div class="mb-3">
-                <label for="kelas" class="form-label fw-bold">Kelas</label>
-                <p>Mawar 1</p>
-              </div>
-              <div class="mb-3">
-                <label for="kelas" class="form-label fw-bold">Riwayat Kesehatan</label>
-                <p>Alhamdulillah sehat</p>
-              </div>
+            <label for="jenis_kelamin" class="form-label fw-bold">Jenis Kelamin</label>
+            <p>{{ $s->jenis_kelamin }}</p>
+            <div class="mb-3">
+              <label for="alamat" class="form-label fw-bold">Alamat</label>
+              <p>{{ $s->alamat }}</p>
+            </div>
+            <div class="mb-3">
+              <label for="nama_orang_tua" class="form-label fw-bold">Nama Ayah</label>
+              <p>{{ $s->ortu ? $s->ortu->nama_ayah : 'Ayah tidak ditemukan' }}</p>
+            </div>
+            <div class="mb-3">
+              <label for="nama_orang_tua" class="form-label fw-bold">Nama Ibu</label>
+              <p>{{ $s->ortu ? $s->ortu->nama_ibu : 'Ibu tidak ditemukan' }}</p>
+            </div>
+            <div class="mb-3">
+              <label for="kelas" class="form-label fw-bold">Kelas</label>
+              <p>{{ $s->kelas ? $s->kelas->nama_kelas : 'Kelas tidak ditemukan' }}</p>
+            </div>
+            <div class="mb-3">
+              <label for="kelas" class="form-label fw-bold">Catatan</label>
+              <p>{{ $s->catatan }}</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+      @endforeach
       {{-- /DETAIL SISWA --}}
 @include('template.endmaster')

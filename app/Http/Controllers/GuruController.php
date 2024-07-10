@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use \App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class GuruController extends Controller
 {
@@ -58,5 +60,28 @@ class GuruController extends Controller
     //     $guru = Guru::with('kelas.siswa')->findOrFail($id);
     //     return view('/pages/guru/listsiswa', compact('guru'));
     // }
-    
+    public function updateProfile(Request $request, $id)
+    {
+
+        if (Auth::user()->id != $id) {
+            return redirect()->back()->withErrors(['msg' => 'Anda tidak memiliki izin untuk mengubah data ini.']);
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'gender' => 'required|string'
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->update($request->only('name', 'email', 'gender'));
+
+        if ($request->filled('password')) {
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Data profil berhasil di update.');
+    }
 }
