@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aktivitas;
 use App\Models\Guru;
-use \App\Models\User;
+use App\Models\User;
+use \App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,12 +29,29 @@ class GuruController extends Controller
 
     function penilaian()
     {
-        return view('/pages/guru/penilaian');
+        $user = Auth::user();
+        $gurus = Guru::all();
+        $guruName = $user->name;
+
+        // Cari objek Guru yang sesuai dengan nama pengguna yang sedang login
+        $guru = $gurus->firstWhere('nama', $guruName);
+
+        if ($guru) {
+            $kelass = $guru->kelass; // Pastikan relasi kelas terdefinisi di model Guru
+            $siswa = $kelass->siswa; // Pastikan relasi siswa terdefinisi di model Kelas
+        } else {
+            $siswa = collect(); // Kembalikan koleksi kosong jika tidak ada guru yang cocok
+            $kelass = null; // Tidak ada kelas jika tidak ada guru yang cocok
+        }
+
+        return view('/pages/guru/penilaian', compact('siswa', 'guru'));
     }
 
-    function form_penilaian()
+    function form_penilaian($id_siswa)
     {
-        return view('/pages/guru/form_penilaian');
+        $siswa = Siswa::findOrFail($id_siswa);
+
+        return view('/pages/guru/form_penilaian', compact('siswa'));
     }
 
     function listsiswa()
@@ -83,5 +102,22 @@ class GuruController extends Controller
         }
 
         return redirect()->back()->with('success', 'Data profil berhasil di update.');
+    }
+
+    public function formPenilaian($id_siswa)
+    {
+        $siswa = Siswa::findOrFail($id_siswa);
+        return view('guru.form_penilaian', compact('siswa'));
+    }
+
+    public function nilai(Request $request)
+    {
+        $nilai = new Aktivitas();
+        $nilai->siswa = $request->id_siswa;
+        $nilai->tanggal = $request->tanggal;
+        $nilai->aktivitas_siswa = $request->aktivitas_siswa;
+        $nilai->save();
+
+        return redirect()->back()->with('success', 'Data aktivitas berhasil disimpan.');
     }
 }

@@ -59,10 +59,12 @@ Route::middleware(['web'])->group(function () {
         Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
         Route::get('/guru/jadwal', [GuruController::class, 'jadwal'])->name('guru.jadwal');
         Route::get('/guru/penilaian', [GuruController::class, 'penilaian'])->name('guru.penilaian');
-        Route::get('/guru/penilaian/form', [GuruController::class, 'form_penilaian'])->name('guru.form_penilaian');
+        Route::get('/guru/penilaian/form/{id}', [GuruController::class, 'form_penilaian'])->name('guru.form_penilaian');
         Route::get('/guru/listsiswa/', [GuruController::class, 'listsiswa'])->name('guru.listsiswa');
         Route::get('/guru/profile', [GuruController::class, 'profile'])->name('guru.profile');
         Route::put('/guru/profile/{id}', [GuruController::class, 'updateProfile'])->name('guru.profile.update');
+        // Route::get('/guru/form_penilaian/{id}', [GuruController::class, 'formPenilaian'])->name('guru.form_penilaian');
+        Route::post('/guru/form_penilaian', [GuruController::class, 'nilai'])->name('guru.nilai');
     });
 
     //menu orang tua
