@@ -6,7 +6,7 @@
       border-radius: 5px;
   }
   .card-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
   }
   .card-number {
@@ -127,6 +127,42 @@
     </div>
     @endif
     </div>
+
+    @if(Auth::user()->role == 'guru')
+    <div class="row">
+      <div class="col-md-6 mb-1">
+          <div class="dashboard-card bg-kelas shadow">
+              <div class="row">
+                  <div class="col-8 text-dark">
+                      <div class="card-title poppins-regular">Kelas yang diampu</div>
+                      @if($guru && $guru->kelass)
+                      <div class="card-number">{{ ucfirst($guru->kelass->nama_kelas) }}</div>
+                      @else
+                      <div class="card-number">0</div>
+                      @endif
+                  </div>
+                  <div class="col-4 text-right mt-3">
+                    <div class="card-icon"><img class="img-fluid d-none d-xl-block" width="50" src="{{ asset('assets/kelas.png') }}" alt="User"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-6 mb-1">
+        <div class="dashboard-card bg-siswa shadow">
+            <div class="row">
+                <div class="col-8 text-dark">
+                    <div class="card-title poppins-regular">Jumlah Siswa</div>
+                    <div class="card-number" id="counter"></div>
+                </div>
+                <div class="col-4 text-right mt-3">
+                  <div class="card-icon"><img class="img-fluid d-none d-xl-block" width="50" src="{{ asset('assets/siswa.png') }}" alt="User"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    @endif
   </div>
   @if(Auth::user()->role == 'admin')
   <script>
@@ -151,6 +187,26 @@
         for (const [id, value] of Object.entries(counters)) {
             animateCounter(id, value);
         }
+</script>
+@endif
+@if(Auth::user()->role == 'guru')
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+            let countSiswa = {{ count($siswa) }};
+            let upto = 0;
+
+            function updated() {
+                let count = document.getElementById("counter");
+                if (count) {
+                    count.innerHTML = ++upto;
+                    if (upto === countSiswa) {
+                        clearInterval(counts);
+                    }
+                }
+            }
+
+            let counts = setInterval(updated, 120);
+        });
 </script>
 @endif
 @include('template.endmaster')

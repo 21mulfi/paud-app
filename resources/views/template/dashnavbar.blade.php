@@ -103,7 +103,7 @@
               <a class="nav-link text-light poppins-regular" href="{{ route('guru.jadwal') }}"><i class="fa fa-calendar ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Jadwal Mengajar</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link text-light poppins-regular" href="{{ route('guru.penilaian') }}"><i class="fa fa-pencil ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Penilaian</a>
+              <a class="nav-link text-light poppins-regular" href="{{ route('guru.penilaian') }}"><i class="fa fa-pencil ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Pelaporan Aktivitas</a>
             </li>
             @endif
   

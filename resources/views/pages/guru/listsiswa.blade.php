@@ -5,7 +5,7 @@
         <h5 class="text-center poppins-regular fw-bold">Daftar Siswa</h5>
         <hr>
         @if($guru && $guru->kelass)
-            <h6 class="poppins-regular fw-bold">Kelas : {{ $guru->kelass->nama_kelas }}</h6>
+            <h6 class="poppins-regular fw-bold">Kelas : {{ ucfirst($guru->kelass->nama_kelas) }}</h6>
         @else
             <h6 class="poppins-regular fw-bold">Kelas: Tidak ditemukan</h6>
         @endif
@@ -14,6 +14,7 @@
                 <table class="table my-3 poppins-regular">
                   <thead class="table-dark">
                     <tr>
+                      <th scope="col">No.</th>
                       <th scope="col">Nama Lengkap</th>
                       <th scope="col">Jenis Kelamin</th>
                       <th scope="col">Aksi</th>
@@ -23,6 +24,7 @@
                   <tbody>
                   @foreach ($siswa as $s)
                     <tr>
+                      <td>{{ $loop->iteration }}</td>
                       <td>{{ $s->nama }}</td>
                       <td>{{ $s->jenis_kelamin }}</td>
                       <td>

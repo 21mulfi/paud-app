@@ -6,6 +6,7 @@ use App\Models\Aktivitas;
 use App\Models\Guru;
 use App\Models\User;
 use \App\Models\Siswa;
+use \App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +15,21 @@ class GuruController extends Controller
 {
     function index()
     {
-        return view('dashboard');
+        $user = Auth::user();
+        $gurus = Guru::all();
+        $guruName = $user->name;
+
+        $guru = $gurus->firstWhere('nama', $guruName);
+
+        if ($guru) {
+            $kelass = $guru->kelass;
+            $siswa = $kelass->siswa;
+        } else {
+            $siswa = collect();
+            $kelass = null;
+        }
+
+        return view('dashboard', compact('siswa', 'guru'));
     }
 
     function profile()
