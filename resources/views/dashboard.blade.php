@@ -128,6 +128,7 @@
     @endif
     </div>
   </div>
+  @if(Auth::user()->role == 'admin')
   <script>
     const counters = {
             userCount: {{ $userCount }},
@@ -151,4 +152,5 @@
             animateCounter(id, value);
         }
 </script>
+@endif
 @include('template.endmaster')
