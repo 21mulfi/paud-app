@@ -166,28 +166,25 @@
   document.getElementById('role').addEventListener('change', function() {
     var role = this.value;
     var nameInput = document.getElementById('nameInput');
-    var nameInputField = nameInput.querySelector('input');
     var guruSelect = document.getElementById('guruSelect');
     var orangtuaSelect = document.getElementById('orangtuaSelect');
-
     nameInput.classList.add('d-none');
-    nameInputField.required = false;
     guruSelect.classList.add('d-none');
     orangtuaSelect.classList.add('d-none');
-
     if (role === 'guru') {
-      guruSelect.classList.remove('d-none');
-      guruSelect.querySelector('select').required = true;
+        guruSelect.classList.remove('d-none');
+        document.getElementById('guru_name').setAttribute('required', 'required');
+        document.getElementById('name').removeAttribute('required');
     } else if (role === 'orangtua') {
-      orangtuaSelect.classList.remove('d-none');
-      orangtuaSelect.querySelector('select').required = true;
+        orangtuaSelect.classList.remove('d-none');
+        document.getElementById('orangtua_name').setAttribute('required', 'required');
+        document.getElementById('name').removeAttribute('required');
     } else {
-      nameInput.classList.remove('d-none');
-      nameInputField.required = true;
+        nameInput.classList.remove('d-none');
+        document.getElementById('name').setAttribute('required', 'required');
     }
-  });
+});
 </script>
-
 
 
     {{-- EDIT USER MODAL --}}
