@@ -27,4 +27,9 @@ class Siswa extends Model
     {
         return $this->belongsTo(Kelas::class, 'id_kelas', 'id_kelas');
     }
+
+    public function aktivitas()
+    {
+        return $this->hasMany(Aktivitas::class, 'siswa');
+    }
 }

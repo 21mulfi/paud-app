@@ -34,7 +34,22 @@ class OrtuController extends Controller
 
     function report()
     {
-        return view('/pages/orangtua/report');
+        $user = Auth::user();
+        $orangtua = Orangtua::where('nama_ibu', $user->name)->first();
+
+        if ($orangtua) {
+            $siswa = $orangtua->siswa;
+            $aktivitas = collect();
+
+        foreach ($siswa as $s) {
+            $aktivitasSiswa = $s->aktivitas;
+            $aktivitas = $aktivitas->merge($aktivitasSiswa);
+        }
+        } else {
+            $siswa = collect();
+            $aktivitas = collect();
+    }
+        return view('/pages/orangtua/report', compact('siswa', 'orangtua', 'aktivitas'));
     }
 
     function payment()
