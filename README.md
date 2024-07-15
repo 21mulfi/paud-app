@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/21mulfi/paud-app/master/public/logo_paud.png?token=GHSAT0AAAAAACOSOPWOKGBVZYLE2IAIUWYUZUVFOTQ" width="400" alt="Logo PAUD Nur Kids"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/21mulfi/paud-app/master/public/logo_paud.png?token=GHSAT0AAAAAACOSOPWOKGBVZYLE2IAIUWYUZUVFOTQ" width="100" alt="Logo PAUD Nur Kids"></p>
 
 ## siPAUD - Sistem Informasi Pendidikan Anak Usia Dini
 
