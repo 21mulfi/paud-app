@@ -20,3 +20,14 @@ Role Guru memungkinkan pengguna untuk melakukan penginputan laporan aktivitas ya
 ## Role Orang Tua
 
 Role Orang Tua memungkinkan pengguna untuk memantau laporan aktivitas yang sebelumnya telah di input oleh guru pengajar secara real-time.
+
+## 
+##
+
+
+## Kontributor :
+
+- Mulfi Indra Gunawan - Frontend Web & Project Coordinator. https://github.com/21mulfi / https://github.com/mulfiindra
+- Azimah Arifanida - Backend Web. [https://github.com/rifazimah](https://github.com/rifazimah)
+- Harun Mubarok - UI/UX Designer. [https://github.com/harunmubarok30](https://github.com/harunmubarok30)
+- Yana Rayana - Database Designer. [https://github.com/Rayana1922](https://github.com/Rayana1922)
