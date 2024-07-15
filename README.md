@@ -27,7 +27,7 @@ Role Orang Tua memungkinkan pengguna untuk memantau laporan aktivitas yang sebel
 
 ## Kontributor :
 
-- Mulfi Indra Gunawan - Frontend Web & Project Coordinator. https://github.com/21mulfi / https://github.com/mulfiindra
-- Azimah Arifanida - Backend Web. [https://github.com/rifazimah](https://github.com/rifazimah)
+- Mulfi Indra Gunawan - Frontend Web Developer & Project Coordinator. https://github.com/21mulfi / https://github.com/mulfiindra
+- Azimah Arifanida - Backend Web Developer. [https://github.com/rifazimah](https://github.com/rifazimah)
 - Harun Mubarok - UI/UX Designer. [https://github.com/harunmubarok30](https://github.com/harunmubarok30)
 - Yana Rayana - Database Designer. [https://github.com/Rayana1922](https://github.com/Rayana1922)
