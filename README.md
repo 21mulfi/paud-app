@@ -2,7 +2,7 @@
 
 ## siPAUD - Sistem Informasi Pendidikan Anak Usia Dini
 
-Aplikasi ini bertujuan untuk memudahkan manajemen instansi pendidikan anak usia dini dalam mengelola data guru, siswa, orang tua, dan kelas.
+Aplikasi ini bertujuan untuk memudahkan manajemen instansi pendidikan anak usia dini dalam mengelola data guru, siswa, orang tua, dan kelas. Dibangun menggunakan framework php Laravel dan Database MySQL.
 
 Terdapat 3 role utama dalam aplikasi ini, antara lain :
 - Admin
