@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
+    // show dashboard admin
     function index()
     {
         $userCount = User::count();
@@ -32,7 +33,7 @@ class AdminController extends Controller
     {
     $users = User::query();
 
-    // query search
+    // query search user
     if ($request->filled('search')) {
         $search = $request->search;
         $users->where(function($query) use ($search) {
@@ -41,7 +42,7 @@ class AdminController extends Controller
         });
     }
 
-     // query sorting
+     // query sorting user
      $sortField = $request->query('sort', 'name');
      $sortOrder = $request->query('order', 'asc');
  

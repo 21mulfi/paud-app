@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
+    // show data kelas
     function classroom()
     {
         $kelas = Kelas::all();
@@ -23,6 +24,7 @@ class KelasController extends Controller
         ]);
     }
 
+    // tambah data kelas
     public function store(Request $request){
   
         $kelas = new Kelas();
@@ -38,6 +40,7 @@ class KelasController extends Controller
         return Kelas::find($id);
     }
 
+    // delete data kelas
     public function delete($id)
     {
         $kelas = Kelas::findOrFail($id);
@@ -48,6 +51,7 @@ class KelasController extends Controller
         return redirect()->route('admin.classroom')->with('success', 'Data kelas berhasil terhapus.');
     }
 
+    // update data kelas
     public function update(Request $request, $id)
     {
         $request->validate([

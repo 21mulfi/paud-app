@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 
 class GuruController extends Controller
 {
+    // show dashboard guru
     function index()
     {
         $user = Auth::user();
@@ -32,16 +33,13 @@ class GuruController extends Controller
         return view('dashboard', compact('siswa', 'guru'));
     }
 
+    // show profile guru
     function profile()
     {
         return view('/pages/guru/profile');
     }
 
-    function jadwal()
-    {
-        return view('/pages/guru/jadwal');
-    }
-
+    // show penilaian guru
     function penilaian()
     {
         $user = Auth::user();
@@ -62,6 +60,8 @@ class GuruController extends Controller
         return view('/pages/guru/penilaian', compact('siswa', 'guru'));
     }
 
+
+    // show form penilaian
     function form_penilaian($id_siswa)
     {
         $siswa = Siswa::findOrFail($id_siswa);
@@ -69,6 +69,7 @@ class GuruController extends Controller
         return view('/pages/guru/form_penilaian', compact('siswa'));
     }
 
+    // show list siswa guru
     function listsiswa()
     {
         $user = Auth::user();
@@ -94,6 +95,8 @@ class GuruController extends Controller
     //     $guru = Guru::with('kelas.siswa')->findOrFail($id);
     //     return view('/pages/guru/listsiswa', compact('guru'));
     // }
+
+    // update profile guru
     public function updateProfile(Request $request, $id)
     {
 
@@ -125,6 +128,7 @@ class GuruController extends Controller
         return view('guru.form_penilaian', compact('siswa'));
     }
 
+    // submit nilai
     public function nilai(Request $request)
     {
         $nilai = new Aktivitas();

@@ -57,7 +57,6 @@ Route::middleware(['web'])->group(function () {
     //menu guru
     Route::middleware(['checkRole:guru'])->group(function () {
         Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
-        Route::get('/guru/jadwal', [GuruController::class, 'jadwal'])->name('guru.jadwal');
         Route::get('/guru/penilaian', [GuruController::class, 'penilaian'])->name('guru.penilaian');
         Route::get('/guru/penilaian/form/{id}', [GuruController::class, 'form_penilaian'])->name('guru.form_penilaian');
         Route::get('/guru/listsiswa/', [GuruController::class, 'listsiswa'])->name('guru.listsiswa');
@@ -71,7 +70,6 @@ Route::middleware(['web'])->group(function () {
     Route::middleware(['checkRole:orangtua'])->group(function () {
         Route::get('/orangtua', [OrtuController::class, 'index'])->name('orangtua.index');
         Route::get('/orangtua/report', [OrtuController::class, 'report'])->name('orangtua.report');
-        Route::get('/orangtua/payment', [OrtuController::class, 'payment'])->name('orangtua.payment');
         Route::get('/orangtua/profile', [OrtuController::class, 'profile'])->name('orangtua.profile');
     });
 });

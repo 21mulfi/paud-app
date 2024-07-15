@@ -111,9 +111,9 @@
             <li class="nav-item">
               <a class="nav-link text-light poppins-regular" href="{{ route('orangtua.report') }}"><i class="fa fa-book ms-3" aria-hidden="true"></i>&nbsp;&nbsp;Laporan Siswa</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link text-light poppins-regular" href="{{ route('orangtua.payment') }}"><i class="fa fa-money ms-3" aria-hidden="true"></i>&nbsp;&nbsp;History Pembayaran</a>
-            </li>
+            </li> --}}
             @endif
           </ul>
         </div>

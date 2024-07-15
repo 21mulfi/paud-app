@@ -13,25 +13,28 @@ use Illuminate\Support\Facades\Hash;
 
 class OrtuController extends Controller
 {
+    // show dashboard orang tua
     function index()
     {
-    $user = Auth::user();
-    $orangtua = Orangtua::where('nama_ibu', $user->name)->first();
+        $user = Auth::user();
+        $orangtua = Orangtua::where('nama_ibu', $user->name)->first();
 
-    if ($orangtua) {
-        $siswa = $orangtua->siswa;
-    } else {
-        $siswa = collect();
+        if ($orangtua) {
+            $siswa = $orangtua->siswa;
+        } else {
+            $siswa = collect();
+        }
+
+        return view('dashboard', compact('siswa', 'orangtua'));
     }
 
-    return view('dashboard', compact('siswa', 'orangtua'));
-    }
-
+    // show profil orang tua
     function profile()
     {
         return view('/pages/orangtua/profile');
     }
 
+    // show report siswa
     function report()
     {
         $user = Auth::user();
@@ -50,10 +53,5 @@ class OrtuController extends Controller
             $aktivitas = collect();
     }
         return view('/pages/orangtua/report', compact('siswa', 'orangtua', 'aktivitas'));
-    }
-
-    function payment()
-    {
-        return view('/pages/orangtua/payment');
     }
 }

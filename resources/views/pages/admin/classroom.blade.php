@@ -94,7 +94,7 @@
                   <input type="text" value="{{ $k->nama_kelas}}" name="nama_kelas" class="form-control" required>
               </div>
               <div class="mb-3">
-                <label for="kapasitas_maks" class="form-label fw-bold">Nama Kelas</label>
+                <label for="kapasitas_maks" class="form-label fw-bold">Kapasitas Kelas</label>
                 <input type="text" value="{{ $k->kapasitas_maks }}" name="kapasitas_maks" class="form-control" required>
               </div>
               <button class="btn btn-primary w-100" type="submit">Simpan</button>
