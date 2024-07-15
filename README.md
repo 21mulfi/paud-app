@@ -21,7 +21,10 @@ Role Guru memungkinkan pengguna untuk melakukan penginputan laporan aktivitas ya
 
 Role Orang Tua memungkinkan pengguna untuk memantau laporan aktivitas yang sebelumnya telah di input oleh guru pengajar secara real-time.
 
+##
 ## 
+Figma Link : https://www.figma.com/design/cW5kTb3jGPsefLMRRljBQt/Protoytpe-Menu-Admin?node-id=0-88&t=uNDuCQCDmJoWWlOp-0
+##
 ##
 
 
